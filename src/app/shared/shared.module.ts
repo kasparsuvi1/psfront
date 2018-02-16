@@ -3,10 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {routes} from '../core/routes';
-
-// components
-import {NavbarComponent} from './components/navbar/navbar.component';
+import {CoreRoutingModule} from '../core/core-routing.module';
 
 // Material
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -15,24 +12,18 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 
-
-
 @NgModule({
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
+    CoreRoutingModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule,
+    MatButtonModule
   ],
-  declarations: [
-    NavbarComponent
-  ],
-  exports: [
-    NavbarComponent
-  ]
+  declarations: [],
+  exports: []
 })
-export class SharedModule { }
+export class SharedModule {}
