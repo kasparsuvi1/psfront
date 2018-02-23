@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers} from '@angular/http';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {map, catchError} from 'rxjs/operators';
+import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 
-import 'rxjs/add/operator/map';
-
+import * as decode from 'jwt-decode';
 import {TOKEN_AUTH_PASSWORD, TOKEN_AUTH_USERNAME, TOKEN_NAME} from './auth.constants';
+import {AccountModel} from '../models/account.models';
+import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class AuthenticationService {
@@ -12,19 +14,19 @@ export class AuthenticationService {
 
   constructor(private httpClient: HttpClient) {}
 
-  login(username: string, password: string, grant_type: string) {
+  login(payload) {
     const body = new HttpParams()
-      .set('username', username)
-      .set('password', password)
-      .set('grant_type', grant_type);
+      .set('username', payload.username)
+      .set('password', payload.password)
+      .set('grant_type', payload.grant_type);
 
-    this.httpClient
+    return this.httpClient
       .post<Auth>('/oauth/token', body.toString(), {
         headers: new HttpHeaders()
           .set('Content-Type', 'application/x-www-form-urlencoded')
           .set('Authorization', 'Basic ' + btoa(TOKEN_AUTH_USERNAME + ':' + TOKEN_AUTH_PASSWORD))
       })
-      .subscribe(response => localStorage.setItem(TOKEN_NAME, response.access_token));
+      .pipe(map(res => res.access_token), catchError(error => of(error)));
   }
 
   logout() {

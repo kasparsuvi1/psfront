@@ -1,23 +1,46 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AuthenticationService} from '../../../core/services/authentication.service';
+import {Store} from '@ngrx/store';
+import {State} from '../../../core/store/reducers';
+import * as accountActions from '../../../core/store/actions/account.actions';
+import {AccountState} from '../../../core/store/index';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   template: `
-    <p>
-      login works!
-      <button (click)="login()">Login</button>
-      <span>{{ result | json}}</span>
-    </p>
-  `,
+  <div class="login">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <p>
+        <label>Email:</label>
+        <input type="text" formControlName="email">
+      </p>
+      <p>
+        <label>password:</label>
+        <input type="text" formControlName="password">
+      </p>
+      <p>
+        <button type="submit">Login</button>
+      </p>
+    </form>
+  </div>
+`,
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  constructor(private authService: AuthenticationService) {}
-  result;
-  ngOnInit() {}
+export class LoginComponent {
+  form = this.fb.group({
+    email: 'John',
+    password: 'Doe'
+  });
 
-  login() {
-    this.result = this.authService.login('standard@user.com', 'password', 'password');
+  constructor(private fb: FormBuilder, private store: Store<State>) {}
+
+  onSubmit() {
+    const payload = {
+      password: 'password',
+      username: 'standard@user.com',
+      grant_type: 'password'
+    };
+    this.store.dispatch(new accountActions.Login(payload));
   }
 }

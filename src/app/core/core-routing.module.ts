@@ -1,10 +1,9 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import {RoleValues} from './models/account.models';
+import {AuthGuardService} from './services/auth-guard.service';
 
-// import {AuthGuard} from './guards/auth-guard.service';
-// import {AdminAuthGuard} from './guards/admin-auth-guard.service';
-
-const routes: Routes = [
+export const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {
     path: 'login',
@@ -20,15 +19,19 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: '../dashboard/dashboard.module#DashboardModule',
+    canActivate: [AuthGuardService],
     data: {
-      title: 'DASHBOARD'
+      title: 'DASHBOARD',
+      expectedRoles: [RoleValues.ADMIN_USER, RoleValues.STANDARD_USER]
     }
   },
   {
     path: 'admin',
     loadChildren: '../admin/admin.module#AdminModule',
+    canActivate: [AuthGuardService],
     data: {
-      title: 'ADMIN'
+      title: 'ADMIN',
+      expectedRoles: [RoleValues.ADMIN_USER]
     }
   },
   {path: '**', redirectTo: '/dashboard'}

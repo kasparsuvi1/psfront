@@ -8,12 +8,21 @@ import {CoreRoutingModule} from './core-routing.module';
 
 import {AppComponent} from './shell/app.component';
 
-// import {UserService} from './services/user.service';
 import {AuthenticationService} from './services/authentication.service';
-// import {AuthGuard} from './guards/auth-guard.service';
-// import {AdminAuthGuard} from './guards/admin-auth-guard.service';
+import {AuthGuardService} from './services/auth-guard.service';
 import {TOKEN_NAME} from './services/auth.constants';
-// import {AppDataService} from './services/app-data.service';
+
+// store
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {reducers, metaReducers} from './store/reducers';
+import {effects} from './store/effects';
+
+// MAterial
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +30,8 @@ import {TOKEN_NAME} from './services/auth.constants';
     BrowserModule,
     FormsModule,
     CoreRoutingModule,
+    StoreModule.forRoot(reducers, {metaReducers}),
+    EffectsModule.forRoot(effects),
     HttpClientModule,
     JwtModule.forRoot({
       config: {
@@ -29,15 +40,13 @@ import {TOKEN_NAME} from './services/auth.constants';
         },
         whitelistedDomains: ['138.68.71.15:8080']
       }
-    })
+    }),
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule
   ],
-  providers: [
-    AuthenticationService
-    // UserService,
-    // AuthGuard,
-    // AdminAuthGuard,
-    // AppDataService
-  ],
+  providers: [AuthenticationService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class CoreModule {}
