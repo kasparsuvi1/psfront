@@ -1,40 +1,38 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {Http, HttpModule} from '@angular/http';
-import {AuthConfig, AuthHttp} from 'angular2-jwt';
+import {JwtModule} from '@auth0/angular-jwt';
+import {HttpClientModule} from '@angular/common/http';
 
 import {CoreRoutingModule} from './core-routing.module';
 
 import {AppComponent} from './shell/app.component';
 
 // import {UserService} from './services/user.service';
-// import {AuthenticationService} from './services/authentication.service';
+import {AuthenticationService} from './services/authentication.service';
 // import {AuthGuard} from './guards/auth-guard.service';
 // import {AdminAuthGuard} from './guards/admin-auth-guard.service';
-// import {TOKEN_NAME} from './services/auth.constant';
+import {TOKEN_NAME} from './services/auth.constants';
 // import {AppDataService} from './services/app-data.service';
-
-// export function authHttpServiceFactory(http: Http) {
-//   return new AuthHttp(
-//     new AuthConfig({
-//       headerPrefix: 'Bearer',
-//       tokenName: TOKEN_NAME,
-//       globalHeaders: [{'Content-Type': 'application/json'}],
-//       noJwtError: false,
-//       noTokenScheme: true,
-//       tokenGetter: () => localStorage.getItem(TOKEN_NAME)
-//     }),
-//     http
-//   );
-// }
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, FormsModule, HttpModule, CoreRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    CoreRoutingModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        whitelistedDomains: ['138.68.71.15:8080']
+      }
+    })
+  ],
   providers: [
-    // {provide: AuthHttp, useFactory: authHttpServiceFactory, deps: [Http]},
-    // AuthenticationService,
+    AuthenticationService
     // UserService,
     // AuthGuard,
     // AdminAuthGuard,
