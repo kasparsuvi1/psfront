@@ -9,7 +9,7 @@ export const LOGOUT = '[Account] Logout';
 export class Login implements Action {
   readonly type = LOGIN;
 
-  constructor(public payload: AccountModel) {}
+  constructor(public payload) {}
 }
 
 export class LoginFail implements Action {

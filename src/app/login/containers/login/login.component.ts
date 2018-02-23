@@ -29,16 +29,16 @@ import {FormBuilder} from '@angular/forms';
 })
 export class LoginComponent {
   form = this.fb.group({
-    email: 'John',
-    password: 'Doe'
+    email: 'standard@user.com',
+    password: 'password'
   });
 
   constructor(private fb: FormBuilder, private store: Store<State>) {}
 
   onSubmit() {
     const payload = {
-      password: 'password',
-      username: 'standard@user.com',
+      password: this.form.get('password').value,
+      username: this.form.get('email').value,
       grant_type: 'password'
     };
     this.store.dispatch(new accountActions.Login(payload));
