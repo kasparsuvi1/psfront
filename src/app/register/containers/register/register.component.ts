@@ -7,26 +7,26 @@ import {AccountState} from '../../../core/store/index';
 import {FormBuilder} from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   template: `
-  <div class="wrapper">
-    <form class="form" [formGroup]="form">
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Email" formControlName="email">
-      </mat-form-field>
+    <div class="wrapper">
+      <form class="form" [formGroup]="form">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Password" formControlName="password">
-      </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
 
-      <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Login</button>
-    </form>
-    <a routerLink="/register">What?  You haven't registered yet? Click here!</a>
-  </div>
+        <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Login</button>
+      </form>
+      <a routerLink="/login">Already have an account? Login in</a>
+    </div>
   `,
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent {
+export class RegisterComponent {
   form = this.fb.group({
     email: 'standard@user.com',
     password: 'password'
@@ -40,6 +40,6 @@ export class LoginComponent {
       username: this.form.get('email').value,
       grant_type: 'password'
     };
-    this.store.dispatch(new accountActions.Login(payload));
+    // this.store.dispatch(new accountActions.Register(payload));
   }
 }
