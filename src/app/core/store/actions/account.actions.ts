@@ -21,15 +21,14 @@ export class LoginFail implements Action {
 export class LoginSuccess implements Action {
   readonly type = LOGIN_SUCCESS;
 
-  constructor(public payload: any) {}
+  constructor(public payload: AccountModel) {
+    localStorage.setItem('account', JSON.stringify(payload));
+  }
 }
 
 export class Logout implements Action {
   readonly type = LOGOUT;
-  constructor() {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('account');
-  }
+  constructor() {}
 }
 
 export type All = Login | Logout | LoginSuccess | LoginFail;

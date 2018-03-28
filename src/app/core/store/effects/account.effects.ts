@@ -9,6 +9,8 @@ import * as fromAccount from '../actions/account.actions';
 import {Go} from '../actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs/observable/of';
+import * as decode from 'jwt-decode';
+import {AccountModel} from '../../models/account.models';
 
 @Injectable()
 export class AccountEffects {
@@ -17,12 +19,20 @@ export class AccountEffects {
   @Effect()
   Login: Observable<fromAccount.All> = this.actions$.ofType(fromAccount.LOGIN).pipe(
     switchMap((action: fromAccount.Login) => {
-      return this.authenticationService
-        .login(action.payload)
-        .pipe(
-          map(access_token => new fromAccount.LoginSuccess({access_token, authenticated: true})),
-          catchError(error => of(new fromAccount.LoginFail(error)))
-        );
+      return this.authenticationService.login(action.payload).pipe(
+        map(access_token => {
+          // Open access token and send the object to loginSuccess
+          const tokenPayload = decode(access_token);
+          const account: AccountModel = {
+            authenticated: true,
+            access_token: access_token,
+            user_name: tokenPayload.user_name,
+            roles: tokenPayload.authorities
+          };
+          return new fromAccount.LoginSuccess(account);
+        }),
+        catchError(error => of(new fromAccount.LoginFail(error)))
+      );
     })
   );
 
@@ -40,5 +50,11 @@ export class AccountEffects {
     })
   );
 
-  @Effect() LoginFail = this.actions$.ofType(fromAccount.LOGIN_FAIL).pipe(map(() => new Go({path: ['/login']})));
+  @Effect()
+  LoginFail = this.actions$.ofType(fromAccount.LOGIN_FAIL).pipe(
+    map(() => {
+      localStorage.clear();
+      return new Go({path: ['/login']});
+    })
+  );
 }
