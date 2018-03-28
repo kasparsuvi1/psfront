@@ -1,10 +1,17 @@
+.login {
+  background-color: #5c6bc0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .form {
   background: #fff;
   bottom: 0;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   display: flex;
   flex-direction: column;
-  height: 20%;
+  height: 25%;
   left: 0;
   margin: auto;
   max-width: 360px;
@@ -13,10 +20,14 @@
   right: 0;
   top: 0;
   width: 100%;
+  text-align: center;
 }
 
-.wrapper {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+.action {
+  margin-top: 1rem;
+
+  &__link {
+    text-decoration: none;
+    color: #5c6bc0;
+  }
 }

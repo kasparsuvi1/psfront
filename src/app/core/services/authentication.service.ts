@@ -20,7 +20,6 @@ export class AuthenticationService {
       .set('password', payload.password)
       .set('grant_type', payload.grant_type);
 
-    console.log(body);
     return this.httpClient
       .post<Auth>('/oauth/token', body.toString(), {
         headers: new HttpHeaders()
@@ -28,9 +27,5 @@ export class AuthenticationService {
           .set('Authorization', 'Basic ' + btoa(TOKEN_AUTH_USERNAME + ':' + TOKEN_AUTH_PASSWORD))
       })
       .pipe(map(res => res.access_token), catchError(error => of(error)));
-  }
-
-  logout() {
-    localStorage.removeItem(TOKEN_NAME);
   }
 }

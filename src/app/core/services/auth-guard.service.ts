@@ -19,7 +19,7 @@ export class AuthGuardService implements CanActivate {
 
     const isMissingRole = account ? account.roles.some(role => expectedRoles.indexOf(role) === -1) : '';
     if (!account || !account.authenticated || isMissingRole) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
       return of(false);
     }
     return of(true);

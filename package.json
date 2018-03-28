@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "start2": "ng serve --open --proxy-config proxy.conf.json",
+    "startlocal": "ng serve --open --proxy-config proxy.conf.json",
     "build": "ng build --prod --base-href=/perfectstrangers/",
     "test": "ng test",
     "lint": "ng lint --fix && npm run lint:scss",

@@ -39,6 +39,7 @@ export class AccountEffects {
   @Effect()
   logout: Observable<fromAccount.All> = this.actions$.ofType(fromAccount.LOGOUT).pipe(
     map((action: fromAccount.Logout) => {
+      localStorage.clear();
       return new fromAccount.LoginFail();
     })
   );
@@ -53,7 +54,6 @@ export class AccountEffects {
   @Effect()
   LoginFail = this.actions$.ofType(fromAccount.LOGIN_FAIL).pipe(
     map(() => {
-      localStorage.clear();
       return new Go({path: ['/login']});
     })
   );

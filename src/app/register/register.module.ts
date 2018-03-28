@@ -12,9 +12,18 @@ import {RegisterComponent} from './containers/register/register.component';
 // material
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(LoginRoutes), FormsModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(LoginRoutes),
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatStepperModule
+  ],
   declarations: [RegisterComponent]
 })
 export class RegisterModule {}

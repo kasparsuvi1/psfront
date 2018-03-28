@@ -26,11 +26,11 @@ export function accountReducer(state: AccountState = initialState, action: fromA
     case fromAccount.LOGIN:
       return {...state, loading: true, loaded: false};
     case fromAccount.LOGIN_FAIL:
-      return {...state, ...initialState, loading: false, loaded: true};
+      return {...state, account: emptyAccount, loading: false, loaded: true};
     case fromAccount.LOGIN_SUCCESS:
       return {...state, account: action.payload, loading: false, loaded: true};
     case fromAccount.LOGOUT:
-      return {...state, ...initialState, loading: true, loaded: false};
+      return {...state, account: emptyAccount, loading: true, loaded: false};
   }
   return state;
 }
