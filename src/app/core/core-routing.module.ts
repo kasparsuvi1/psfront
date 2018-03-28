@@ -4,7 +4,6 @@ import {RoleValues} from './models/account.models';
 import {AuthGuardService} from './services/auth-guard.service';
 
 export const routes: Routes = [
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {
     path: 'login',
     loadChildren: '../login/login.module#LoginModule'
@@ -33,6 +32,11 @@ export const routes: Routes = [
       title: 'ADMIN',
       expectedRoles: [RoleValues.ADMIN_USER]
     }
+  },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
   },
   {path: '**', redirectTo: '/dashboard'}
 ];

@@ -7,7 +7,7 @@ import {RouterModule, Routes} from '@angular/router';
   selector: 'app-dashboard',
   template: `
     <p>
-      dashboard works!
+      Siin on kasutaja juba sisse logitud! ja näeb oma infot.
     </p>
 
   `,

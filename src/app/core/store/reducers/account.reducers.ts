@@ -27,12 +27,17 @@ export function accountReducer(state: AccountState = initialState, action: fromA
       return {...state, ...initialState, loading: false, loaded: true};
     case fromAccount.LOGIN_SUCCESS:
       const tokenPayload = decode(action.payload.access_token);
+      console.log(tokenPayload);
       const account: AccountModel = {
-        authenticated: true,
-        access_token: action.payload,
+        authenticated: action.payload.authenticated,
+        access_token: action.payload.access_token,
         user_name: tokenPayload.user_name,
         roles: tokenPayload.authorities
       };
+
+      localStorage.setItem('access_token', action.payload.access_token);
+      localStorage.setItem('account', JSON.stringify(account));
+
       return {...state, account: account, loading: false, loaded: true};
     case fromAccount.LOGOUT:
       return {...state, ...initialState, loading: true, loaded: false};

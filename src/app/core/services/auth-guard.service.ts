@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {CanActivate, ActivatedRouteSnapshot} from '@angular/router';
+import {CanActivate, ActivatedRouteSnapshot, Router} from '@angular/router';
 import {select, Store} from '@ngrx/store';
 import {State} from '../store/reducers';
 import {getAccountData} from '../store/selectors';
@@ -7,25 +7,21 @@ import {map, take} from 'rxjs/operators';
 import {Login} from '../store/actions';
 import {Observable} from 'rxjs/Observable';
 import {AccountModel} from '../models/account.models';
+import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>, private router: Router) {}
 
   canActivate(next: ActivatedRouteSnapshot): Observable<boolean> {
-    return this.store.pipe(
-      select(getAccountData),
-      map(account => {
-        const expectedRoles = next.data.expectedRoles;
-        const isMissingRole = account.roles.some(role => expectedRoles.indexOf(role) === -1);
-        const payload = JSON.parse(localStorage.getItem('account')) as AccountModel;
+    const account = JSON.parse(localStorage.getItem('account')) as AccountModel;
+    const expectedRoles = next.data.expectedRoles;
 
-        if (!account.authenticated || isMissingRole) {
-          return false;
-        }
-        return true;
-      }),
-      take(1)
-    );
+    const isMissingRole = account ? account.roles.some(role => expectedRoles.indexOf(role) === -1) : '';
+    if (!account || !account.authenticated || isMissingRole) {
+      this.router.navigate(['/login']);
+      return of(false);
+    }
+    return of(true);
   }
 }

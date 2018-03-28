@@ -20,6 +20,7 @@ export class AuthenticationService {
       .set('password', payload.password)
       .set('grant_type', payload.grant_type);
 
+    console.log(body);
     return this.httpClient
       .post<Auth>('/oauth/token', body.toString(), {
         headers: new HttpHeaders()
@@ -31,6 +32,5 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem(TOKEN_NAME);
-    console.log('imhere');
   }
 }
