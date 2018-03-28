@@ -1,0 +1,39 @@
+$space-xxs: 0.125rem;
+$space-xs: 0.25rem;
+$space-s: 0.5rem;
+$space-m: 1rem;
+$space-l: 1.5rem;
+$space-xl: 2rem;
+
+$space-inset-xs: 0.5rem;
+$space-inset-s: 0.25rem;
+$space-inset-m: 1rem;
+$space-inset-l: 1.5rem;
+$space-inset-xl: 2rem;
+
+// Buttons, list-items, cell-like elements
+$space-inset-squish-s: 0.25rem 0.5rem;
+$space-inset-squish-m: 0.5rem 1rem;
+$space-inset-squish-l: 1rem 2rem;
+
+// Textboxes, textares, form elements
+$space-inset-stretch-s: 0.75rem 0.5rem;
+$space-inset-stretch-m: 1.5rem 1rem;
+
+$space-stack-xxs: 0 0 0.125rem;
+$space-stack-xs: 0 0 0.25rem;
+$space-stack-s: 0 0 0.5rem;
+$space-stack-m: 0 0 1rem;
+$space-stack-l: 0 0 2rem;
+$space-stack-xl: 0 0 4rem;
+
+$space-inline-xxs: 0 0.125rem 0 0;
+$space-inline-xs: 0 0.25rem 0 0;
+$space-inline-s: 0 0.5rem 0 0;
+$space-inline-m: 0 1rem 0 0;
+$space-inline-l: 0 2rem 0 0;
+$space-inline-xl: 0 4rem 0 0;
+
+$danger: rgb(255, 0, 0);
+$active: rgb(130, 202, 156);
+$onwait: rgb(209, 178, 4);

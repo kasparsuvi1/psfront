@@ -26,7 +26,7 @@ import {routes} from '../core-routing.module';
 
         <button class="btn-toolbar" mat-button>
           <mat-icon class="material-icons">account_circle</mat-icon>
-          {{account?.firstName}}
+          {{account?.user_name}}
         </button>
         <button class="btn-toolbar" mat-button (click)="logout()">
           <mat-icon class="material-icons">cancel</mat-icon>
