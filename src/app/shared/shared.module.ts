@@ -12,6 +12,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 
+// components
+import {MessageComponent} from './components/message/message.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +26,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatToolbarModule,
     MatButtonModule
   ],
-  declarations: [],
-  exports: []
+  declarations: [MessageComponent],
+  exports: [MessageComponent]
 })
 export class SharedModule {}

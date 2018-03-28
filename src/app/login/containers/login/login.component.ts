@@ -9,22 +9,20 @@ import {FormBuilder} from '@angular/forms';
 @Component({
   selector: 'app-login',
   template: `
-  <div class="login">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-      <p>
-        <label>Email:</label>
-        <input type="text" formControlName="email">
-      </p>
-      <p>
-        <label>password:</label>
-        <input type="text" formControlName="password">
-      </p>
-      <p>
-        <button type="submit">Login</button>
-      </p>
+  <div class="wrapper">
+    <form class="form" [formGroup]="form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Password" formControlName="password">
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Login</button>
     </form>
   </div>
-`,
+  `,
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {

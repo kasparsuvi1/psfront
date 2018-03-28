@@ -35,6 +35,7 @@ import {routes} from '../core-routing.module';
       </mat-toolbar>
     </div>
     <div class="app-wrapper">
+      <app-message></app-message>
       <router-outlet></router-outlet>
     </div>
 `,

@@ -9,8 +9,12 @@ import {LoginRoutes} from './login.routes';
 // components
 import {LoginComponent} from './containers/login/login.component';
 
+// material
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(LoginRoutes), FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule.forChild(LoginRoutes), FormsModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
   declarations: [LoginComponent]
 })
 export class LoginModule {}

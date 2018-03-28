@@ -3,14 +3,18 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {JwtModule} from '@auth0/angular-jwt';
 import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {environment} from '../../environments/environment';
 
 import {CoreRoutingModule} from './core-routing.module';
 
 import {AppComponent} from './shell/app.component';
+import {SharedModule} from '../shared/shared.module';
 
+// services
 import {AuthenticationService} from './services/authentication.service';
 import {AuthGuardService} from './services/auth-guard.service';
+import {MessagesService} from './services/messages.service';
 import {TOKEN_NAME} from './services/auth.constants';
 
 // store
@@ -38,6 +42,7 @@ export function getToken() {
     BrowserModule,
     FormsModule,
     CoreRoutingModule,
+    SharedModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     EffectsModule.forRoot(effects),
     HttpClientModule,
@@ -51,9 +56,10 @@ export function getToken() {
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
-  providers: [AuthenticationService, AuthGuardService],
+  providers: [AuthenticationService, AuthGuardService, MessagesService],
   bootstrap: [AppComponent]
 })
 export class CoreModule {}
