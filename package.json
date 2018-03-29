@@ -4,14 +4,14 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node server.js --proxy-config proxy.conf.json",
     "startlocal": "ng serve --open --proxy-config proxy.conf.json",
     "build": "ng build --prod --base-href=/perfectstrangers/",
     "test": "ng test",
     "lint": "ng lint --fix && npm run lint:scss",
     "lint:scss": "stylelint \"src/**/*.scss\" --fix",
     "e2e": "ng e2e",
-    "postinstall": "HOME=/ ./node_modules/@angular/cli/bin/ng build -prod -aot"
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
