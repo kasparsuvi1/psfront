@@ -13,7 +13,8 @@ import {SharedModule} from '../shared/shared.module';
 
 // services
 import {AuthenticationService} from './services/authentication.service';
-import {AuthGuardService} from './services/auth-guard.service';
+import {AuthGuardService} from './guards/auth-guard.service';
+import {IsLoggedOffService} from './guards/is-logged-off.service';
 import {MessagesService} from './services/messages.service';
 import {TOKEN_NAME} from './services/auth.constants';
 
@@ -59,7 +60,7 @@ export function getToken() {
     MatButtonModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthenticationService, AuthGuardService, MessagesService],
+  providers: [AuthenticationService, AuthGuardService, IsLoggedOffService, MessagesService],
   bootstrap: [AppComponent]
 })
 export class CoreModule {}

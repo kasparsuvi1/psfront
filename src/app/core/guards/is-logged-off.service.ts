@@ -8,20 +8,26 @@ import {Login} from '../store/actions';
 import {Observable} from 'rxjs/Observable';
 import {AccountModel} from '../models/account.models';
 import {of} from 'rxjs/observable/of';
+import {Go} from '../store';
 
 @Injectable()
-export class AuthGuardService implements CanActivate {
+export class IsLoggedOffService {
   constructor(private store: Store<State>, private router: Router) {}
 
   canActivate(next: ActivatedRouteSnapshot): Observable<boolean> {
-    const account = JSON.parse(localStorage.getItem('account')) as AccountModel;
-    const expectedRoles = next.data.expectedRoles;
+    return this.store.pipe(
+      select(getAccountData),
+      map((account: AccountModel) => {
+        console.log(account);
 
-    const isMissingRole = account ? account.roles.some(role => expectedRoles.indexOf(role) === -1) : '';
-    if (!account || !account.authenticated || isMissingRole) {
-      this.router.navigate(['/home']);
-      return of(false);
-    }
-    return of(true);
+        if (!account.authenticated) {
+          return true;
+        } else {
+          this.store.dispatch(new Go({path: ['/dashboard']}));
+          return false;
+        }
+      }),
+      take(1)
+    );
   }
 }
