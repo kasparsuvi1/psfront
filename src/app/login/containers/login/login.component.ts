@@ -9,7 +9,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 @Component({
   selector: 'app-login',
   template: `
-  TEST
+  TEST2
     <div class="login">
       <form class="form" [formGroup]="form">
         <mat-form-field class="example-full-width">
