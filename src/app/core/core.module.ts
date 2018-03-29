@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {JwtModule} from '@auth0/angular-jwt';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {environment} from '../../environments/environment';
 
@@ -17,6 +17,8 @@ import {AuthGuardService} from './guards/auth-guard.service';
 import {IsLoggedOffService} from './guards/is-logged-off.service';
 import {MessagesService} from './services/messages.service';
 import {TOKEN_NAME} from './services/auth.constants';
+
+import {AuthInterceptor} from './interceptors/auth.interceptor';
 
 // store
 import {StoreModule} from '@ngrx/store';
@@ -60,7 +62,13 @@ export function getToken() {
     MatButtonModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthenticationService, AuthGuardService, IsLoggedOffService, MessagesService],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    AuthenticationService,
+    AuthGuardService,
+    IsLoggedOffService,
+    MessagesService
+  ],
   bootstrap: [AppComponent]
 })
 export class CoreModule {}
