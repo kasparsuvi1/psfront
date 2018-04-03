@@ -9,9 +9,8 @@ import {FormBuilder, Validators} from '@angular/forms';
 @Component({
   selector: 'app-login',
   template: `
-  TEST2
-    <div class="login">
-      <form class="form" [formGroup]="form">
+    <div class="fill-background">
+      <form class="centered-box" [formGroup]="form">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Email" formControlName="email">
           <mat-error>Insert your email or alias</mat-error>
@@ -23,8 +22,9 @@ import {FormBuilder, Validators} from '@angular/forms';
         </mat-form-field>
 
         <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Login</button>
-        <div class="action">
-          <span class="muted">What? You haven't registered yet?</span> <a class="action__link" routerLink="/register">Click here!</a>
+        <div class="mt-1">
+          <span class="muted">What? You haven't registered yet?</span> <a routerLink="/register">Click here!</a> <br>
+          <span class="muted dp-block mt-1">Didn't get the activation link? <a routerLink="/register/resend">Send again!</a></span>
         </div>
       </form>
     </div>

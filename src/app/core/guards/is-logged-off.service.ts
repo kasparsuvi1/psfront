@@ -18,8 +18,6 @@ export class IsLoggedOffService {
     return this.store.pipe(
       select(getAccountData),
       map((account: AccountModel) => {
-        console.log(account);
-
         if (!account.authenticated) {
           return true;
         } else {

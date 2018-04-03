@@ -40,7 +40,7 @@ export class MessageComponent implements OnInit, OnDestroy {
       this.messages = [...this.messages, message];
       setTimeout(() => {
         this.messages = this.messages.filter(i => i !== message);
-      }, 2500);
+      }, 4500);
     });
   }
 

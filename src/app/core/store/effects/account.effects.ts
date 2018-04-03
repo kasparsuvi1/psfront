@@ -11,10 +11,11 @@ import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs/observable/of';
 import * as decode from 'jwt-decode';
 import {AccountModel} from '../../models/account.models';
+import {MessagesService, messages} from '../../services/messages.service';
 
 @Injectable()
 export class AccountEffects {
-  constructor(private actions$: Actions, private authenticationService: AuthenticationService) {}
+  constructor(private actions$: Actions, private authenticationService: AuthenticationService, private messagesService: MessagesService) {}
 
   @Effect()
   Login: Observable<fromAccount.All> = this.actions$.ofType(fromAccount.LOGIN).pipe(
@@ -37,10 +38,10 @@ export class AccountEffects {
   );
 
   @Effect()
-  logout: Observable<fromAccount.All> = this.actions$.ofType(fromAccount.LOGOUT).pipe(
+  logout = this.actions$.ofType(fromAccount.LOGOUT).pipe(
     map((action: fromAccount.Logout) => {
       localStorage.clear();
-      return new fromAccount.LoginFail();
+      return new Go({path: ['/home']});
     })
   );
 
@@ -53,7 +54,11 @@ export class AccountEffects {
 
   @Effect()
   LoginFail = this.actions$.ofType(fromAccount.LOGIN_FAIL).pipe(
-    map(() => {
+    map((action: fromAccount.LoginFail) => {
+      if (action.payload) {
+        this.messagesService.warn(action.payload);
+      }
+
       return new Go({path: ['/login']});
     })
   );

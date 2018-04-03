@@ -19,8 +19,9 @@ export class AuthInterceptor implements HttpInterceptor {
     const hash = Math.floor(Math.random() * 900000) + 100000;
     console.log('Request: ', req.url, ' - and hash - ', hash);
 
-    // If request is /oauth/token, dont add header.
-    if (req.url !== '/oauth/token') {
+    const noheader = ['/oauth/token', 'api/public/register/new-user', '/api/public/register/resend-registration-confirmation'];
+
+    if (!noheader.includes(req.url)) {
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${this.account.access_token}`

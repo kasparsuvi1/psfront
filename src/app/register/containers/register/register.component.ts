@@ -1,17 +1,15 @@
 import {Component} from '@angular/core';
-import {AuthenticationService} from '../../../core/services/authentication.service';
 import {Store} from '@ngrx/store';
-import {State} from '../../../core/store/reducers';
-import * as accountActions from '../../../core/store/actions/account.actions';
-import {AccountState} from '../../../core/store/index';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Validation} from '../validators/password-validation';
+import {Register} from '../../store/actions';
+import {RegisterViewState} from '../../store/reducers';
 
 @Component({
   selector: 'app-register',
   template: `
-    <div class="register">
-      <form class="form" [formGroup]="form">
+    <div class="fill-background">
+      <form class="centered-box centered-box--long" [formGroup]="form">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Email" formControlName="email">
           <mat-error>Email is not valid</mat-error>
@@ -30,8 +28,8 @@ import {Validation} from '../validators/password-validation';
         </mat-form-field>
         <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Register</button>
 
-        <div class="action">
-          <span class="muted">Already have an account?</span> <a class="action__link" routerLink="/login">Log in!</a>
+        <div class="mt-1">
+          <span class="muted">Already have an account?</span> <a routerLink="/login">Log in!</a>
         </div>
       </form>
     </div>
@@ -51,16 +49,16 @@ export class RegisterComponent {
     }
   );
 
-  constructor(private fb: FormBuilder, private store: Store<State>) {}
+  constructor(private fb: FormBuilder, private store: Store<RegisterViewState>) {}
 
   onSubmit() {
     if (this.form.valid) {
       const payload = {
         password: this.form.get('password').value,
-        username: this.form.get('email').value
+        email: this.form.get('email').value
       };
       console.log('Registered:', payload);
-      // this.store.dispatch(new accountActions.Register(payload));
+      this.store.dispatch(new Register(payload));
     }
   }
 }
