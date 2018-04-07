@@ -4,8 +4,8 @@ body {
 }
 
 a {
-  text-decoration: none;
   color: #5c6bc0;
+  text-decoration: none;
 }
 
 h1,
@@ -20,8 +20,8 @@ body {
 
 .fill-background {
   background-color: #5c6bc0;
-  width: 100vw;
   height: 100vh;
+  width: 100vw;
 }
 
 .centered-box {
@@ -30,22 +30,31 @@ body {
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   display: flex;
   flex-direction: column;
-  height: 25%;
+  height: 230px;
   left: 0;
   margin: auto;
   max-width: 360px;
   padding: 45px;
   position: absolute;
   right: 0;
+  text-align: center;
   top: 0;
   width: 100%;
-  text-align: center;
 
   &--long {
-    height: 40%;
+    height: 335px;
   }
 
   &--wide {
     max-width: 50%;
+  }
+
+  &__logo {
+    left: 50%;
+    margin-left: -200px;
+    position: inherit;
+    top: -100px;
+    width: 400px;
+    z-index: 1000;
   }
 }

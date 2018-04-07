@@ -10,7 +10,10 @@ import {FormBuilder, Validators} from '@angular/forms';
   selector: 'app-login',
   template: `
     <div class="fill-background">
+
       <form class="centered-box" [formGroup]="form">
+        <img class="centered-box__logo" src="../../../../assets/images/logo.png" alt="Logo">
+
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Email" formControlName="email">
           <mat-error>Insert your email or alias</mat-error>

@@ -10,6 +10,7 @@ import {RegisterViewState} from '../../store/reducers';
   template: `
     <div class="fill-background">
       <form class="centered-box centered-box--long" [formGroup]="form">
+        <img class="centered-box__logo" src="../../../../assets/images/logo.png" alt="Logo">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Email" formControlName="email">
           <mat-error>Email is not valid</mat-error>
@@ -45,7 +46,7 @@ export class RegisterComponent {
       confirmPassword: ['', Validators.required]
     },
     {
-      validator: Validators.compose([Validation.MatchPassword, Validation.MatchEmail]) // your validation method
+      validator: Validators.compose([Validation.MatchPassword, Validation.MatchEmail])
     }
   );
 
