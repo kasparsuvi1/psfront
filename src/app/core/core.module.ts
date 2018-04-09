@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {JwtModule} from '@auth0/angular-jwt';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {environment} from '../../environments/environment';
 
@@ -34,6 +34,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import {APP_BASE_HREF} from '@angular/common';
 
 export function getToken() {
   return localStorage.getItem('access_token');
@@ -43,6 +44,8 @@ export function getToken() {
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule,
     CoreRoutingModule,
     SharedModule,
@@ -59,10 +62,11 @@ export function getToken() {
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule,
-    BrowserAnimationsModule
+    MatButtonModule
   ],
   providers: [
+    HttpClientModule,
+    {provide: APP_BASE_HREF, useValue: '/'},
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     AuthenticationService,
     AuthGuardService,
