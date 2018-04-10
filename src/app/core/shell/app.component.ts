@@ -13,27 +13,50 @@ import {routes} from '../core-routing.module';
   template: `
     <div *ngIf="$account | async as account">
       <mat-toolbar color="primary" *ngIf="account.authenticated">
+        <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+
+        <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+          <ng-container *ngFor="let route of routes">
+            <button mat-button
+                    [routerLink]="['/' + route.path]"
+                    routerLinkActive="btn-toolbar--active"
+                    *ngIf="isRouteAvailable(route, account.roles)">
+              {{route.data.title}}
+            </button>
+          </ng-container>
+        </div>
+
+        <span class="fill-space"></span>
+
+        <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+          <button mat-button>
+            <mat-icon class="material-icons">account_circle</mat-icon>
+            {{account?.user_name}}
+          </button>
+        </div>
+        <button mat-button (click)="logout()">
+          Logi välja
+        </button>
+
+      </mat-toolbar>
+      <mat-menu x-position="before" #menu="matMenu">
         <ng-container *ngFor="let route of routes">
-          <button class="btn-toolbar" mat-button
+          <button class="menu-item"
+                  mat-menu-item
                   [routerLink]="['/' + route.path]"
-                  routerLinkActive="btn-toolbar--active"
                   *ngIf="isRouteAvailable(route, account.roles)">
             {{route.data.title}}
           </button>
         </ng-container>
-
-        <span class="fill-space"></span>
-
-        <button class="btn-toolbar" mat-button>
-          <mat-icon class="material-icons">account_circle</mat-icon>
-          {{account?.user_name}}
+        <button mat-menu-item>
+          Profile
         </button>
-        <button class="btn-toolbar" mat-button (click)="logout()">
-          <mat-icon class="material-icons">cancel</mat-icon>
-          Logi välja
-        </button>
-      </mat-toolbar>
+
+      </mat-menu>
     </div>
+
     <div class="app-wrapper">
       <app-message></app-message>
       <router-outlet></router-outlet>

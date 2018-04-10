@@ -29,7 +29,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {reducers, metaReducers} from './store/reducers';
 import {effects} from './store/effects';
 
-// MAterial
+// Material
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
@@ -59,6 +60,7 @@ export function getToken() {
       }
     }),
     environment.production ? [] : StoreDevtoolsModule.instrument({actionSanitizer: action => JSON.parse(JSON.stringify(action))}),
+    FlexLayoutModule,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,

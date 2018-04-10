@@ -1,0 +1,46 @@
+.container {
+  margin: 0 auto 3rem;
+  padding: 0 15px;
+
+  &__header {
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    flex: 0 0 100%;
+
+    span {
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    span::after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 115%;
+      height: 2px;
+      border-bottom: 2px solid #4a569a;
+      content: '';
+    }
+  }
+
+  &__content {
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1366px) {
+  .container {
+    width: 1366px;
+  }
+}

@@ -5,3 +5,11 @@
 app-message {
   margin-top: 2rem;
 }
+
+.menu-item {
+  text-transform: lowercase;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}

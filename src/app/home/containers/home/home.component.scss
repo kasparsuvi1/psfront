@@ -1,0 +1,100 @@
+.jumbotron {
+  background: url('../../../../assets/images/home.jpg') no-repeat center center;
+  background-size: cover;
+  background-position: 50% 20%;
+  margin-bottom: 0;
+  min-height: 413px;
+  padding: 40px 20px;
+  text-align: center;
+
+  h1 {
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    font-size: 50px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__button {
+    border-radius: 60px;
+    border: 1px solid #fff;
+    box-shadow: 0px 1px 3px #666666;
+    color: #fff;
+    background: transparent;
+    font-size: 16px;
+    padding: 5px 30px;
+    margin-top: 2rem;
+  }
+
+  &__button:hover {
+    background: rgba(74, 86, 154, 0.7);
+    border-color: rgba(74, 86, 154, 0.7);
+  }
+
+  &__logo {
+    height: 64px;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+  }
+
+  &__login {
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 200;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.community {
+  &__wrapper {
+    display: flex;
+  }
+
+  &__content {
+  }
+
+  &__image {
+    width: 540px; /* you can use % */
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .jumbotron {
+    background-position: 50% 45%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .jumbotron__login {
+    top: 430px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .jumbotron__logo {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .jumbotron {
+    h1 {
+      margin: 0.5rem 0;
+    }
+  }
+}

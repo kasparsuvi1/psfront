@@ -18,12 +18,12 @@ import {effects} from './store/effects';
 // material
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import {MatStepperModule} from '@angular/material/stepper';
+import {MatIconModule} from '@angular/material/icon';
 
 // components
 import {RegisterComponent} from './containers/register/register.component';
-import { ActivateComponent } from './containers/activate/activate.component';
-import { ResendComponent } from './containers/resend/resend.component';
+import {ActivateComponent} from './containers/activate/activate.component';
+import {ResendComponent} from './containers/resend/resend.component';
 
 @NgModule({
   imports: [
@@ -33,7 +33,7 @@ import { ResendComponent } from './containers/resend/resend.component';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatStepperModule,
+    MatIconModule,
     StoreModule.forFeature('register', reducers),
     EffectsModule.forFeature(effects)
   ],
