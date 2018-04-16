@@ -8,21 +8,78 @@ interface NodeModule {
   id: string;
 }
 
+// TODO: viia samale nimetustele backiga.
 interface User {
   id: number;
+  firstName: string;
+  lastName: string;
   email: string;
-  password: string;
   alias: string;
-  sex: string;
-  age: string;
-  occupation: string;
-  degree: string;
-  role: string;
-  reg_date: Date;
-  last_visit: Date;
-  prefered_sex: string;
-  language: string[];
+  password: string;
   activated: boolean;
+  gender: string;
+  age: string;
+  regDate: Date;
+  lastVisit: Date;
+  degree: string;
+  occupation: string;
+  roles: Role[]; // ROLE
+  responses: Response[];
+}
+
+interface Role {
+  id: number;
+  roleName: string;
+  description: string;
+}
+
+interface Hotel {
+  id: number;
+  name: string;
+  webpage: string;
+  country: string;
+  state: string;
+  city: string;
+  address: string;
+  zipCode: string;
+  restos?: Resto[];
+  adverts?: Advert[];
+}
+
+// TODO: Resto should have open times or something like that too?
+interface Resto {
+  id: number;
+  name: string;
+  webpage: string;
+  country: string;
+  state: string;
+  city: string;
+  address: string;
+  zipCode: string;
+  hotel: Hotel;
+}
+
+interface Advert {
+  id: number;
+  advertStatus: string; // ENUM
+  createdDate: string;
+  advertText: string;
+  mealType: string; // ENUM
+  preferredStart: string;
+  preferredEnd: string;
+  acceptedTime: string;
+  restos: Resto[];
+  hotels: Hotel[];
+  responses: Response[];
+  user: User;
+}
+
+interface Response {
+  id: number;
+  responseText: string;
+  proposedTime: string;
+  responseStatus: string; // ENUM
+  user: User;
 }
 
 interface Auth {

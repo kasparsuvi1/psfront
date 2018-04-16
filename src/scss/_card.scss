@@ -1,0 +1,17 @@
+.card {
+  box-shadow: none;
+
+  &--border-top {
+    border-top: 2px solid #eee;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    padding: $space-m $space-l 0;
+  }
+
+  &__content {
+    margin: 0 $space-l;
+  }
+}

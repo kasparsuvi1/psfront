@@ -26,7 +26,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
-import {reducers, metaReducers} from './store/reducers';
+import {reducers, metaReducers, CustomSerializer} from './store/reducers';
 import {effects} from './store/effects';
 
 // Material
@@ -59,6 +59,7 @@ export function getToken() {
         whitelistedDomains: ['138.68.71.15:8080']
       }
     }),
+    StoreRouterConnectingModule,
     environment.production ? [] : StoreDevtoolsModule.instrument({actionSanitizer: action => JSON.parse(JSON.stringify(action))}),
     FlexLayoutModule,
     MatToolbarModule,
@@ -69,6 +70,7 @@ export function getToken() {
   providers: [
     HttpClientModule,
     {provide: APP_BASE_HREF, useValue: '/'},
+    {provide: RouterStateSerializer, useClass: CustomSerializer},
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     AuthenticationService,
     AuthGuardService,

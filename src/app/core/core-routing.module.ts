@@ -42,6 +42,15 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'hotels',
+    loadChildren: '../hotels/hotels.module#HotelsModule',
+    canActivate: [AuthGuardService],
+    data: {
+      title: 'HOTELS',
+      expectedRoles: [RoleValues.ADMIN_USER]
+    }
+  },
+  {
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'
@@ -50,7 +59,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class CoreRoutingModule {}

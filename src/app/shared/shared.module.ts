@@ -1,9 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
-import {CoreRoutingModule} from '../core/core-routing.module';
 
 // Material
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -11,22 +8,38 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 // components
 import {MessageComponent} from './components/message/message.component';
+import {TableComponent} from './components/table/table.component';
+
+// pipes
+import {DataSourcePipe} from './pipe/data-source.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
-    CoreRoutingModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTooltipModule
   ],
-  declarations: [MessageComponent],
-  exports: [MessageComponent]
+  declarations: [MessageComponent, TableComponent, DataSourcePipe],
+  exports: [MessageComponent, TableComponent, DataSourcePipe]
 })
 export class SharedModule {}

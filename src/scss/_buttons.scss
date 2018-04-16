@@ -1,0 +1,6 @@
+.btn {
+  &--inline {
+    align-self: flex-end;
+    margin: 0 0 calc(#{$space-l} + 2px) $space-m !important;
+  }
+}

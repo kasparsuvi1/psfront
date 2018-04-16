@@ -1,0 +1,29 @@
+.clickable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
+}
+
+.table {
+  margin: 0 1.5rem;
+
+  p {
+    margin: 0;
+  }
+
+  &__empty {
+    margin: 2rem 0 0 0;
+  }
+}
+
+.time {
+  color: rgba(0, 0, 0, 0.57);
+  font-size: 12px;
+}
+
+/* Because countryCode comes from typescript data. Material changes it to class name. */
+/* stylelint-disable */
+
+/* stylelint-enable */
