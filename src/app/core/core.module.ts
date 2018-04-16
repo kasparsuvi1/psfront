@@ -10,6 +10,7 @@ import {CoreRoutingModule} from './core-routing.module';
 
 import {AppComponent} from './shell/app.component';
 import {SharedModule} from '../shared/shared.module';
+import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
 
 // services
 import {AuthenticationService} from './services/authentication.service';
@@ -44,6 +45,7 @@ export function getToken() {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    GooglePlaceModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,

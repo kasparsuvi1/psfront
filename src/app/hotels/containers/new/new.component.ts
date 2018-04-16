@@ -7,8 +7,10 @@ import {Component, OnInit} from '@angular/core';
       <div class="card__title">
         <h2 class="mat-title">Add new Hotel</h2>
       </div>
-      <app-hotels-form>
-      </app-hotels-form>
+      <div class="card__content">
+        <app-hotels-form>
+        </app-hotels-form>
+      </div>
     </div>
   `,
   styleUrls: ['./new.component.scss']

@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
 
 // store
 import {StoreModule} from '@ngrx/store';
@@ -27,6 +28,7 @@ import {MatButtonModule, MatInputModule, MatFormFieldModule} from '@angular/mate
 
 @NgModule({
   imports: [
+    GooglePlaceModule,
     CommonModule,
     SharedModule,
     FormsModule,
