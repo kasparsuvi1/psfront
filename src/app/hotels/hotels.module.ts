@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 // store
 import {StoreModule} from '@ngrx/store';
@@ -17,22 +18,27 @@ import {HotelService} from './services/hotel.service';
 
 // components
 import {HotelsComponent} from './containers/hotels/hotels.component';
+import {NewComponent} from './containers/new/new.component';
+import {HotelComponent} from './containers/hotel/hotel.component';
+import {HotelsFormComponent} from './components/hotels-form/hotels-form.component';
 
 // material
-import {MatButtonModule} from '@angular/material';
-import { NewComponent } from './containers/new/new.component';
-import { HotelComponent } from './containers/hotel/hotel.component';
+import {MatButtonModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(HotelRoutes),
     StoreModule.forFeature('hotels', reducers),
     EffectsModule.forFeature(effects),
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
-  declarations: [HotelsComponent, NewComponent, HotelComponent],
+  declarations: [HotelsComponent, NewComponent, HotelComponent, HotelsFormComponent],
   providers: [HotelService]
 })
 export class HotelsModule {}

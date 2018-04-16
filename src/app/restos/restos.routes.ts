@@ -1,9 +1,9 @@
 import {Routes} from '@angular/router';
-import {HotelsComponent} from './containers/hotels/hotels.component';
+import {RestosComponent} from './containers/restos/restos.component';
 import {NewComponent} from './containers/new/new.component';
 import {AuthGuardService} from '../core/guards/auth-guard.service';
 import {RoleValues} from '../core/models/account.models';
-import {HotelComponent} from './containers/hotel/hotel.component';
+import {RestoComponent} from './containers/resto/resto.component';
 
 export const HotelRoutes: Routes = [
   {
@@ -14,13 +14,13 @@ export const HotelRoutes: Routes = [
   },
   {
     path: '',
-    component: HotelsComponent,
+    component: RestosComponent,
     canActivate: [AuthGuardService],
     data: {expectedRoles: [RoleValues.ADMIN_USER]}
   },
   {
     path: ':id',
-    component: HotelComponent,
+    component: RestoComponent,
     data: {expectedRoles: [RoleValues.ADMIN_USER]}
   }
 ];
