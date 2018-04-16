@@ -88,3 +88,9 @@ body {
 .logo-small {
   width: 48px;
 }
+
+// To remove google logo from aaddress choosing.
+
+.pac-logo:after {
+  content: none !important;
+}
