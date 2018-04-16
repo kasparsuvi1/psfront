@@ -51,6 +51,15 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'restos',
+    loadChildren: '../restos/restos.module#RestosModule',
+    canActivate: [AuthGuardService],
+    data: {
+      title: 'RESTOS',
+      expectedRoles: [RoleValues.ADMIN_USER]
+    }
+  },
+  {
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'
