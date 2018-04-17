@@ -18,7 +18,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
       </mat-form-field>
 
       <mat-form-field class="form-field">
-        <input  matInput placeholder="address"
+        <input  matInput placeholder="Address"
                 ngx-google-places-autocomplete
                 formControlName="address"
                 (onAddressChange)="adressChange($event)">

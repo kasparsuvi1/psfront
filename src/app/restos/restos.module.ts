@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SharedModule} from '../shared/shared.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 // store
 import {RouterModule} from '@angular/router';
@@ -14,7 +15,7 @@ import {effects} from './store/effects';
 import {RestoService} from './service/resto.service';
 
 // material
-import {MatButtonModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 
 // components
 import {RestosComponent} from './containers/restos/restos.component';
@@ -26,10 +27,14 @@ import {RestoFormComponent} from './components/resto-form/resto-form.component';
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(HotelRoutes),
     StoreModule.forFeature('restos', reducers),
     EffectsModule.forFeature(effects),
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   declarations: [RestosComponent, RestoComponent, NewComponent, RestoFormComponent],
   providers: [RestoService]

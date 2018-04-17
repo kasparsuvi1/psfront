@@ -8,6 +8,6 @@ export class HotelService {
   constructor(private httpClient: HttpClient) {}
 
   getHotels(): Observable<Hotel[]> {
-    return this.httpClient.get('/api/private/hotels').pipe(map(res => res as Hotel[]));
+    return this.httpClient.get('/api/private/hotel').pipe(map(res => res as Hotel[]));
   }
 }

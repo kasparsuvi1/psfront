@@ -33,6 +33,18 @@ interface Role {
   description: string;
 }
 
+interface Degree {
+  id: number;
+  description: string;
+  name: string;
+}
+
+interface Occupation {
+  id: number;
+  description: string;
+  name: string;
+}
+
 interface Hotel {
   id: number;
   name: string;

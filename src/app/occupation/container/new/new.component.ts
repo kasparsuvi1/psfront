@@ -5,14 +5,13 @@ import {Component, OnInit} from '@angular/core';
   template: `
   <div class="card">
     <div class="card__title">
-      <h2 class="mat-title">Add new resto</h2>
+      <h2 class="mat-title">Add new occupation</h2>
     </div>
     <div class="card__content">
-      <app-resto-form>
-      </app-resto-form>
+      <app-occupation-form>
+      </app-occupation-form>
     </div>
   </div>
-
   `,
   styleUrls: ['./new.component.scss']
 })

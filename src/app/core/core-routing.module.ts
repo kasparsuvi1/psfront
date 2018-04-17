@@ -60,6 +60,24 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'occupations',
+    loadChildren: '../occupation/occupation.module#OccupationModule',
+    canActivate: [AuthGuardService],
+    data: {
+      title: 'OCCUPATIONS',
+      expectedRoles: [RoleValues.ADMIN_USER]
+    }
+  },
+  {
+    path: 'degrees',
+    loadChildren: '../degree/degree.module#DegreeModule',
+    canActivate: [AuthGuardService],
+    data: {
+      title: 'DEGREES',
+      expectedRoles: [RoleValues.ADMIN_USER]
+    }
+  },
+  {
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'

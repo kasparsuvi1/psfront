@@ -10,7 +10,7 @@ export class HotelsEffect {
   constructor(private actions$: Actions, private hotelService: HotelService) {}
 
   @Effect()
-  loadUserActivityLog$ = this.actions$.ofType(GET_HOTELS).pipe(
+  getHotels$ = this.actions$.ofType(GET_HOTELS).pipe(
     switchMap((action: GetHotels) => {
       return this.hotelService.getHotels().pipe(map(res => new GetHotelsSuccess(res)), catchError(error => of(new GetHotelsFail(error))));
     })
