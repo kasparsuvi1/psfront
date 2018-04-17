@@ -3,7 +3,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {Store} from '@ngrx/store';
 import {RestosViewState} from '../../store/reducers';
 import {getSelectedResto} from '../../store/selectors';
-import {GetRestos} from '../../store/actions';
+import {GetRestos, DeleteResto} from '../../store/actions';
 
 @Component({
   selector: 'app-resto',
@@ -12,6 +12,11 @@ import {GetRestos} from '../../store/actions';
       resto works!
       {{resto | json}}
     </p>
+    <button class="btn" color="warn" type="button" mat-raised-button (click)="deleteResto()">
+      Delete
+    </button>
+
+
   `,
   styleUrls: ['./resto.component.scss']
 })
@@ -32,5 +37,9 @@ export class RestoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.$resto.unsubscribe();
+  }
+
+  deleteResto() {
+    this.store.dispatch(new DeleteResto(this.resto.id));
   }
 }

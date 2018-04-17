@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-resto-form',
@@ -23,6 +23,13 @@ import {FormBuilder} from '@angular/forms';
               (onAddressChange)="adressChange($event)">
     </mat-form-field>
 
+    <mat-form-field class="form-field">
+      <mat-select placeholder="Hotel" [(ngModel)]="hotelId" [ngModelOptions]="{standalone: true}">
+        <mat-option value="">None</mat-option>
+        <mat-option *ngFor="let hotel of hotels" [value]="hotel.id">{{hotel.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <button class="btn" type="button" mat-raised-button (click)="emitData()">
       Salvesta
     </button>
@@ -32,27 +39,42 @@ import {FormBuilder} from '@angular/forms';
   styleUrls: ['./resto-form.component.scss']
 })
 export class RestoFormComponent implements OnInit {
-  @Input() hotel?: Resto = {} as Resto;
+  @Input() resto?: Resto = {} as Resto;
+  @Input() hotels: Hotel[] = [{} as Hotel];
   @Output() save = new EventEmitter<Resto>();
   @Output() add = new EventEmitter<Resto>();
 
+  hotelId: number;
+
   optionsForCities = {types: ['(cities)']};
   optionsForCountry = {types: ['(regions)']};
+
   form = this.fb.group({
     name: '',
     webpage: '',
     country: '',
     city: '',
     address: '',
-    zipCode: ''
+    zipCode: '',
+    state: ''
   });
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.resto.hotel && this.resto.hotel.id) {
+      this.hotelId = this.resto.hotel.id;
+    }
+  }
 
   emitData() {
-    console.log(this.form.value);
+    if (this.form.valid && this.resto.id) {
+      this.save.emit({...this.form.value, hotel: {id: this.hotelId}});
+    } else if (this.form.valid && !this.resto.id) {
+      this.add.emit({...this.form.value, hotel: {id: this.hotelId}});
+    } else {
+      this.markFormGroupTouched(this.form);
+    }
   }
 
   countryChange(event) {
@@ -77,7 +99,11 @@ export class RestoFormComponent implements OnInit {
     if (country[0]) {
       this.form.get('country').setValue(country[0].long_name);
     }
+  }
 
-    console.log(event);
+  private markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+    });
   }
 }

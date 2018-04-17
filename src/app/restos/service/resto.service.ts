@@ -10,4 +10,12 @@ export class RestoService {
   getRestos(): Observable<Resto[]> {
     return this.httpClient.get('/api/private/resto').pipe(map(res => res as Resto[]));
   }
+
+  addResto(resto): Observable<Resto> {
+    return this.httpClient.post('/api/private/resto/new', resto).pipe(map(res => res as Resto));
+  }
+
+  deleteResto(id): Observable<Resto> {
+    return this.httpClient.delete(`/api/private/resto/delete/${id}`).pipe(map(res => res as Resto));
+  }
 }

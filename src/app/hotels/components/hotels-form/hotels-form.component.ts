@@ -44,7 +44,8 @@ export class HotelsFormComponent implements OnInit {
     country: '',
     city: '',
     address: '',
-    zipCode: ''
+    zipCode: '',
+    state: ''
   });
 
   constructor(private fb: FormBuilder) {}
@@ -52,7 +53,13 @@ export class HotelsFormComponent implements OnInit {
   ngOnInit() {}
 
   emitData() {
-    console.log(this.form.value);
+    if (this.form.valid && this.hotel.id) {
+      this.save.emit(this.form.value);
+    } else if (this.form.valid && !this.hotel.id) {
+      this.add.emit(this.form.value);
+    } else {
+      this.markFormGroupTouched(this.form);
+    }
   }
 
   countryChange(event) {
@@ -77,7 +84,11 @@ export class HotelsFormComponent implements OnInit {
     if (country[0]) {
       this.form.get('country').setValue(country[0].long_name);
     }
+  }
 
-    console.log(event);
+  private markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+    });
   }
 }

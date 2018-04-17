@@ -10,6 +10,14 @@
     "success": "Added occupation successfully!",
     "warning": "Failed at adding occupation!"
   },
+  "addHotel": {
+    "success": "Added hotel successfully!",
+    "warning": "Failed at adding hotel!"
+  },
+  "addResto": {
+    "success": "Added restoran successfully!",
+    "warning": "Failed at adding restoran!"
+  },
   "deleteDegree": {
     "success": "Deleted degree successfully!",
     "warning": "Failed at deleting degree!"
@@ -17,5 +25,13 @@
   "deleteOccupation": {
     "success": "Deleted occupation successfully!",
     "warning": "Failed at deleting occupation!"
+  },
+  "deleteHotel": {
+    "success": "Deleted hotel successfully!",
+    "warning": "Failed at deleting hotel!"
+  },
+  "deleteResto": {
+    "success": "Deleted restoran successfully!",
+    "warning": "Failed at deleting restoran!"
   }
 }
