@@ -24,9 +24,9 @@ import {FormBuilder, FormGroup} from '@angular/forms';
     </mat-form-field>
 
     <mat-form-field class="form-field">
-      <mat-select placeholder="Hotel" [(ngModel)]="hotelId" [ngModelOptions]="{standalone: true}">
+      <mat-select placeholder="Hotel" [(ngModel)]="hotel" [ngModelOptions]="{standalone: true}">
         <mat-option value="">None</mat-option>
-        <mat-option *ngFor="let hotel of hotels" [value]="hotel.id">{{hotel.name}}</mat-option>
+        <mat-option *ngFor="let hotel of hotels" [value]="hotel">{{hotel.name}}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -44,7 +44,7 @@ export class RestoFormComponent implements OnInit {
   @Output() save = new EventEmitter<Resto>();
   @Output() add = new EventEmitter<Resto>();
 
-  hotelId: number;
+  hotel: Hotel;
 
   optionsForCities = {types: ['(cities)']};
   optionsForCountry = {types: ['(regions)']};
@@ -63,15 +63,15 @@ export class RestoFormComponent implements OnInit {
 
   ngOnInit() {
     if (this.resto.hotel && this.resto.hotel.id) {
-      this.hotelId = this.resto.hotel.id;
+      this.hotel = this.resto.hotel;
     }
   }
 
   emitData() {
     if (this.form.valid && this.resto.id) {
-      this.save.emit({...this.form.value, hotel: {id: this.hotelId}});
+      this.save.emit({...this.form.value, hotel: {id: this.hotel}});
     } else if (this.form.valid && !this.resto.id) {
-      this.add.emit({...this.form.value, hotel: {id: this.hotelId}});
+      this.add.emit({...this.form.value, hotel: this.hotel});
     } else {
       this.markFormGroupTouched(this.form);
     }

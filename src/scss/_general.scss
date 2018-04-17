@@ -20,21 +20,21 @@ body {
 
 .fill-background {
   background: url('../assets/images/home.jpg') no-repeat center center fixed;
+  background-position: 50% 20%;
   background-size: cover;
   min-height: 100vh;
-  background-position: 50% 20%;
 
   &__back {
-    font-family: 'Raleway', sans-serif;
     color: #fff;
+    display: inline;
+    font-family: 'Raleway', sans-serif;
     font-size: 20px;
     font-weight: 200;
+    left: 30px;
+    line-height: 26px;
     position: absolute;
     top: 30px;
-    left: 30px;
-    display: inline;
     vertical-align: middle;
-    line-height: 26px;
 
     &:hover {
       cursor: pointer;
@@ -91,6 +91,6 @@ body {
 
 // To remove google logo from aaddress choosing.
 
-.pac-logo:after {
+.pac-logo::after {
   content: none !important;
 }

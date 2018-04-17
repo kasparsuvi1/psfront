@@ -1,15 +1,15 @@
 .jumbotron {
   background: url('../../../../assets/images/home.jpg') no-repeat center center;
-  background-size: cover;
   background-position: 50% 20%;
+  background-size: cover;
   margin-bottom: 0;
   min-height: 413px;
   padding: 40px 20px;
   text-align: center;
 
   h1 {
-    font-family: 'Raleway', sans-serif;
     color: #fff;
+    font-family: 'Raleway', sans-serif;
     font-size: 50px;
     font-weight: 300;
     text-transform: uppercase;
@@ -20,14 +20,14 @@
   }
 
   &__button {
-    border-radius: 60px;
-    border: 1px solid #fff;
-    box-shadow: 0px 1px 3px #666666;
-    color: #fff;
     background: transparent;
+    border: 1px solid #fff;
+    border-radius: 60px;
+    box-shadow: 0 1px 3px #666;
+    color: #fff;
     font-size: 16px;
-    padding: 5px 30px;
     margin-top: 2rem;
+    padding: 5px 30px;
   }
 
   &__button:hover {
@@ -37,19 +37,19 @@
 
   &__logo {
     height: 64px;
+    left: 30px;
     position: absolute;
     top: 20px;
-    left: 30px;
   }
 
   &__login {
-    font-family: 'Raleway', sans-serif;
     color: #fff;
+    font-family: 'Raleway', sans-serif;
     font-size: 20px;
     font-weight: 200;
     position: absolute;
-    top: 20px;
     right: 30px;
+    top: 20px;
 
     &:hover {
       cursor: pointer;
@@ -62,12 +62,9 @@
     display: flex;
   }
 
-  &__content {
-  }
-
   &__image {
-    width: 540px; /* you can use % */
     height: auto;
+    width: 540px; /* you can use % */
   }
 }
 
@@ -85,9 +82,9 @@
 
 @media only screen and (max-width: 768px) {
   .jumbotron__logo {
+    left: 0;
     position: relative;
     top: 0;
-    left: 0;
   }
 }
 
