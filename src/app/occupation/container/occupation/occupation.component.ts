@@ -3,7 +3,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {Store} from '@ngrx/store';
 import {OccupationsViewState} from '../../store/reducers';
 import {getSelectedOccupation} from '../../store/selectors';
-import {GetOccupations} from '../../store/actions';
+import {GetOccupations, DeleteOccupation} from '../../store/actions';
 
 @Component({
   selector: 'app-occupation',
@@ -12,6 +12,11 @@ import {GetOccupations} from '../../store/actions';
       occupation works!
       {{occupation | json}}
     </p>
+
+    <button class="btn" color="warn" type="button" mat-raised-button (click)="deleteOccupation()">
+      Delete
+    </button>
+
   `,
   styleUrls: ['./occupation.component.scss']
 })
@@ -32,5 +37,9 @@ export class OccupationComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.$occupation.unsubscribe();
+  }
+
+  deleteOccupation() {
+    this.store.dispatch(new DeleteOccupation(this.occupation.id));
   }
 }

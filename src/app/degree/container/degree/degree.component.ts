@@ -3,7 +3,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {Store} from '@ngrx/store';
 import {DegreesViewState} from '../../store/reducers';
 import {getSelectedDegree} from '../../store/selectors';
-import {GetDegrees} from '../../store/actions';
+import {GetDegrees, DeleteDegree} from '../../store/actions';
 
 @Component({
   selector: 'app-degree',
@@ -12,6 +12,11 @@ import {GetDegrees} from '../../store/actions';
       degree works!
       {{degree | json}}
     </p>
+
+    <button class="btn" color="warn" type="button" mat-raised-button (click)="deleteDegree()">
+      Delete
+    </button>
+
   `,
   styleUrls: ['./degree.component.scss']
 })
@@ -32,5 +37,9 @@ export class DegreeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.$degree.unsubscribe();
+  }
+
+  deleteDegree() {
+    this.store.dispatch(new DeleteDegree(this.degree.id));
   }
 }

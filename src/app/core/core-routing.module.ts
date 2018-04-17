@@ -29,7 +29,7 @@ export const routes: Routes = [
     canActivate: [AuthGuardService],
     data: {
       title: 'DASHBOARD',
-      expectedRoles: [RoleValues.ADMIN_USER, RoleValues.STANDARD_USER]
+      expectedRoles: [RoleValues.STANDARD_USER]
     }
   },
   {

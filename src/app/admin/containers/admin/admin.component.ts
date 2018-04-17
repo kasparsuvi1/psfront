@@ -2,14 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {AdminViewState} from '../../store/reducers';
-import {getUsersState} from '../../store/selectors';
+import {getUsersState, getUsers} from '../../store/selectors';
 import {GetUsers} from '../../store/actions';
 
 @Component({
   selector: 'app-admin',
   template: `
-    Admin works
-    {{ $users | async | json}}
+
+      <app-stastics [users]="$users | async">
+      </app-stastics>
   `,
   styleUrls: ['./admin.component.scss']
 })
@@ -19,7 +20,7 @@ export class AdminComponent implements OnInit {
   constructor(private store: Store<AdminViewState>) {}
 
   ngOnInit() {
-    this.$users = this.store.select(getUsersState);
+    this.$users = this.store.select(getUsers);
     this.store.dispatch(new GetUsers());
   }
 }

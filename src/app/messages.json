@@ -1,5 +1,21 @@
 {
   "login": {
     "warning": ""
+  },
+  "addDegree": {
+    "success": "Added degree successfully!",
+    "warning": "Failed at adding degree!"
+  },
+  "addOccupation": {
+    "success": "Added occupation successfully!",
+    "warning": "Failed at adding occupation!"
+  },
+  "deleteDegree": {
+    "success": "Deleted degree successfully!",
+    "warning": "Failed at deleting degree!"
+  },
+  "deleteOccupation": {
+    "success": "Deleted occupation successfully!",
+    "warning": "Failed at deleting occupation!"
   }
 }

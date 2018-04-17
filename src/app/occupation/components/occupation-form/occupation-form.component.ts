@@ -1,5 +1,5 @@
 import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-occupation-form',
@@ -7,13 +7,22 @@ import {FormBuilder} from '@angular/forms';
     <form [formGroup]="form">
 
       <mat-form-field class="form-field">
-        <input  matInput placeholder="Occupation name"
+        <input  matInput
+                placeholder="Occupation name"
                 formControlName="name">
+        <mat-error *ngIf="form.controls['name'].errors">
+          Occupation name is required!
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="form-field">
-        <input  matInput placeholder="Occupation description"
-                formControlName="description">
+        <textarea matInput
+                  placeholder="Occupation description"
+                  formControlName="description">
+        </textarea>
+        <mat-error *ngIf="form.controls['description'].errors">
+          Occupation description is required!
+        </mat-error>
       </mat-form-field>
 
       <button class="btn" type="button" mat-raised-button (click)="emitData()">
@@ -30,8 +39,8 @@ export class OccupationFormComponent implements OnInit {
   @Output() add = new EventEmitter<Occupation>();
 
   form = this.fb.group({
-    name: '',
-    description: ''
+    name: ['', [Validators.required]],
+    description: ['', [Validators.required]]
   });
 
   constructor(private fb: FormBuilder) {}
@@ -39,6 +48,18 @@ export class OccupationFormComponent implements OnInit {
   ngOnInit() {}
 
   emitData() {
-    console.log(this.form.value);
+    if (this.occupation.id && this.form.valid) {
+      this.save.emit(this.form.value);
+    } else if (!this.occupation.id && this.form.valid) {
+      this.add.emit(this.form.value);
+    } else {
+      this.markFormGroupTouched(this.form);
+    }
+  }
+
+  private markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+    });
   }
 }
