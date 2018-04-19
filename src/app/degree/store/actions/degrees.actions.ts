@@ -66,6 +66,28 @@ export class DeleteDegreeSuccess implements Action {
   constructor(public payload: Degree) {}
 }
 
+export const UPDATE_DEGREE = '[DEGREE] Update degree ';
+export const UPDATE_DEGREE_FAIL = '[DEGREE] Update degree Fail';
+export const UPDATE_DEGREE_SUCCESS = '[DEGREE] Update degree Success';
+
+export class UpdateDegree implements Action {
+  readonly type = UPDATE_DEGREE;
+
+  constructor(public payload: Degree) {}
+}
+
+export class UpdateDegreeFail implements Action {
+  readonly type = UPDATE_DEGREE_FAIL;
+
+  constructor(public payload?: any) {}
+}
+
+export class UpdateDegreeSuccess implements Action {
+  readonly type = UPDATE_DEGREE_SUCCESS;
+
+  constructor(public payload: Degree) {}
+}
+
 export type DegreesActions =
   | GetDegrees
   | GetDegreesFail
@@ -75,4 +97,7 @@ export type DegreesActions =
   | AddDegreeSuccess
   | DeleteDegree
   | DeleteDegreeFail
-  | DeleteDegreeSuccess;
+  | DeleteDegreeSuccess
+  | UpdateDegree
+  | UpdateDegreeFail
+  | UpdateDegreeSuccess;

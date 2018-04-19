@@ -8,7 +8,10 @@ import {
   ADD_OCCUPATION_SUCCESS,
   DELETE_OCCUPATION,
   DELETE_OCCUPATION_FAIL,
-  DELETE_OCCUPATION_SUCCESS
+  DELETE_OCCUPATION_SUCCESS,
+  UPDATE_OCCUPATION,
+  UPDATE_OCCUPATION_FAIL,
+  UPDATE_OCCUPATION_SUCCESS
 } from '../actions/occupations.actions';
 
 export interface OccupationsState {
@@ -47,6 +50,12 @@ export function occupationsReducer(state: OccupationsState = initialState, actio
     case DELETE_OCCUPATION_FAIL:
       return {...state, loading: false, loaded: true};
     case DELETE_OCCUPATION_SUCCESS:
+      return {...state, loading: false, loaded: true};
+    case UPDATE_OCCUPATION:
+      return {...state, loading: true, loaded: false};
+    case UPDATE_OCCUPATION_FAIL:
+      return {...state, loading: false, loaded: true};
+    case UPDATE_OCCUPATION_SUCCESS:
       return {...state, loading: false, loaded: true};
 
     default:

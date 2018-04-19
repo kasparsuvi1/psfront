@@ -2,20 +2,18 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {Store} from '@ngrx/store';
 import {RestosViewState} from '../../store/reducers';
-import {getSelectedResto} from '../../store/selectors';
-import {GetRestos, DeleteResto} from '../../store/actions';
+import {getSelectedResto, getHotels} from '../../store/selectors';
+import {GetRestos, DeleteResto, GetHotels, UpdateResto} from '../../store/actions';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-resto',
   template: `
-    <p>
-      resto works!
-      {{resto | json}}
-    </p>
-    <button class="btn" color="warn" type="button" mat-raised-button (click)="deleteResto()">
-      Delete
-    </button>
-
+    <app-resto-form   [resto]="resto"
+                      [hotels]="$hotels | async"
+                      (save)="saveResto($event)"
+                      (delete)="deleteResto()">
+    </app-resto-form>
 
   `,
   styleUrls: ['./resto.component.scss']
@@ -24,6 +22,7 @@ export class RestoComponent implements OnInit, OnDestroy {
   resto: Resto = {} as Resto;
   editResto = false;
 
+  $hotels: Observable<Hotel[]>;
   $resto: Subscription;
 
   constructor(private store: Store<RestosViewState>) {}
@@ -33,6 +32,9 @@ export class RestoComponent implements OnInit, OnDestroy {
       this.resto = res as Resto;
     });
     this.store.dispatch(new GetRestos());
+
+    this.$hotels = this.store.select(getHotels);
+    this.store.dispatch(new GetHotels());
   }
 
   ngOnDestroy() {
@@ -41,5 +43,9 @@ export class RestoComponent implements OnInit, OnDestroy {
 
   deleteResto() {
     this.store.dispatch(new DeleteResto(this.resto.id));
+  }
+
+  saveResto(event) {
+    this.store.dispatch(new UpdateResto(event));
   }
 }

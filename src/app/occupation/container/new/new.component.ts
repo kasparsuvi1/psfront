@@ -6,15 +6,8 @@ import {AddOccupation} from '../../store/actions';
 @Component({
   selector: 'app-new',
   template: `
-  <div class="card">
-    <div class="card__title">
-      <h2 class="mat-title">Add new occupation</h2>
-    </div>
-    <div class="card__content">
-      <app-occupation-form (add)="addOccupation($event)">
-      </app-occupation-form>
-    </div>
-  </div>
+    <app-occupation-form (add)="addOccupation($event)">
+    </app-occupation-form>
   `,
   styleUrls: ['./new.component.scss']
 })

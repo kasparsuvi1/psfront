@@ -8,17 +8,9 @@ import {getHotels} from '../../store/selectors';
 @Component({
   selector: 'app-new',
   template: `
-  <div class="card">
-    <div class="card__title">
-      <h2 class="mat-title">Add new resto</h2>
-    </div>
-    <div class="card__content">
-      <app-resto-form [hotels]="$hotels | async"
-                      (add)="addResto($event)">
-      </app-resto-form>
-    </div>
-  </div>
-
+    <app-resto-form [hotels]="$hotels | async"
+                    (add)="addResto($event)">
+    </app-resto-form>
   `,
   styleUrls: ['./new.component.scss']
 })

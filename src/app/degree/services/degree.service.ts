@@ -15,6 +15,10 @@ export class DegreeService {
     return this.httpClient.post('/api/private/degree/new', degree).pipe(map(res => res as Degree));
   }
 
+  updateDegree(degree): Observable<Degree> {
+    return this.httpClient.put(`/api/private/degree/update/${degree.id}`, degree).pipe(map(res => res as Degree));
+  }
+
   deleteDegree(id): Observable<Degree> {
     return this.httpClient.delete(`/api/private/degree/delete/${id}`).pipe(map(res => res as Degree));
   }

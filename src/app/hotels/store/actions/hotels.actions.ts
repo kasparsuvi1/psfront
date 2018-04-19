@@ -66,6 +66,28 @@ export class DeleteHotelSuccess implements Action {
   constructor(public payload: Hotel) {}
 }
 
+export const UPDATE_HOTEL = '[HOTEL] Update hotel ';
+export const UPDATE_HOTEL_FAIL = '[HOTEL] Update hotel Fail';
+export const UPDATE_HOTEL_SUCCESS = '[HOTEL] Update hotel Success';
+
+export class UpdateHotel implements Action {
+  readonly type = UPDATE_HOTEL;
+
+  constructor(public payload: Hotel) {}
+}
+
+export class UpdateHotelFail implements Action {
+  readonly type = UPDATE_HOTEL_FAIL;
+
+  constructor(public payload?: any) {}
+}
+
+export class UpdateHotelSuccess implements Action {
+  readonly type = UPDATE_HOTEL_SUCCESS;
+
+  constructor(public payload: Hotel) {}
+}
+
 export type HotelsActions =
   | GetHotels
   | GetHotelsFail
@@ -75,4 +97,7 @@ export type HotelsActions =
   | AddHotelSuccess
   | DeleteHotel
   | DeleteHotelFail
-  | DeleteHotelSuccess;
+  | DeleteHotelSuccess
+  | UpdateHotel
+  | UpdateHotelFail
+  | UpdateHotelSuccess;

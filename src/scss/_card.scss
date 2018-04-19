@@ -1,9 +1,6 @@
 .card {
   box-shadow: none;
-
-  &--border-top {
-    border-top: 2px solid #eee;
-  }
+  margin-bottom: 2rem;
 
   &__title {
     display: flex;

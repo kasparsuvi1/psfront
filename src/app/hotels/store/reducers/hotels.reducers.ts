@@ -8,7 +8,10 @@ import {
   ADD_HOTEL_SUCCESS,
   DELETE_HOTEL,
   DELETE_HOTEL_FAIL,
-  DELETE_HOTEL_SUCCESS
+  DELETE_HOTEL_SUCCESS,
+  UPDATE_HOTEL,
+  UPDATE_HOTEL_SUCCESS,
+  UPDATE_HOTEL_FAIL
 } from '../actions/hotels.actions';
 
 export interface HotelsState {
@@ -48,6 +51,13 @@ export function hotelsReducer(state: HotelsState = initialState, action: HotelsA
       return {...state, loading: false, loaded: true};
     case DELETE_HOTEL_SUCCESS:
       return {...state, loading: false, loaded: true};
+    case UPDATE_HOTEL:
+      return {...state, loading: true, loaded: false};
+    case UPDATE_HOTEL_FAIL:
+      return {...state, loading: false, loaded: true};
+    case UPDATE_HOTEL_SUCCESS:
+      return {...state, loading: false, loaded: true};
+
     default:
       return state;
   }

@@ -39,7 +39,9 @@ export interface FilterPayload {
           </mat-header-cell>
           <mat-cell *matCellDef="let row" [ngSwitch]="column.columnDef">
 
-            <ng-container *ngSwitchCase="''">
+            <ng-container *ngSwitchCase="'hotelName'">
+              <ng-container *ngIf="row.hotel && row.hotel.name">{{row.hotel.name}}</ng-container>
+              <ng-container *ngIf="!row.hotel"></ng-container>
             </ng-container>
 
             <p *ngSwitchDefault>{{column.cell(row)}}</p>

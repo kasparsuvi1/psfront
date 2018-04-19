@@ -3,19 +3,15 @@ import {Subscription} from 'rxjs/Subscription';
 import {Store} from '@ngrx/store';
 import {DegreesViewState} from '../../store/reducers';
 import {getSelectedDegree} from '../../store/selectors';
-import {GetDegrees, DeleteDegree} from '../../store/actions';
+import {GetDegrees, DeleteDegree, UpdateDegree} from '../../store/actions';
 
 @Component({
   selector: 'app-degree',
   template: `
-    <p>
-      degree works!
-      {{degree | json}}
-    </p>
-
-    <button class="btn" color="warn" type="button" mat-raised-button (click)="deleteDegree()">
-      Delete
-    </button>
+    <app-degree-form  [degree]="degree"
+                      (save)="saveDegree($event)"
+                      (delete)="deleteDegree()">
+    </app-degree-form>
 
   `,
   styleUrls: ['./degree.component.scss']
@@ -41,5 +37,9 @@ export class DegreeComponent implements OnInit, OnDestroy {
 
   deleteDegree() {
     this.store.dispatch(new DeleteDegree(this.degree.id));
+  }
+
+  saveDegree(event) {
+    this.store.dispatch(new UpdateDegree(event));
   }
 }

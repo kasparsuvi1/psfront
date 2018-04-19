@@ -19,7 +19,13 @@ import {
   DELETE_OCCUPATION_FAIL,
   DeleteOccupation,
   DeleteOccupationSuccess,
-  DeleteOccupationFail
+  DeleteOccupationFail,
+  UPDATE_OCCUPATION,
+  UPDATE_OCCUPATION_SUCCESS,
+  UPDATE_OCCUPATION_FAIL,
+  UpdateOccupation,
+  UpdateOccupationSuccess,
+  UpdateOccupationFail
 } from '../actions/occupations.actions';
 import {MessagesService, messages} from '../../../core/services/messages.service';
 import {Go} from '../../../core/store';
@@ -85,6 +91,32 @@ export class OccupationsEffect {
   deleteOccupationFail$ = this.actions$.ofType(DELETE_OCCUPATION_FAIL).pipe(
     map(() => {
       this.messagesService.warn(messages.deleteOccupation.warning);
+    }),
+    map(() => new GetOccupations())
+  );
+
+  @Effect()
+  updateOccupation$ = this.actions$.ofType(UPDATE_OCCUPATION).pipe(
+    switchMap((action: UpdateOccupation) => {
+      return this.occupationService
+        .updateOccupation(action.payload)
+        .pipe(map(res => new UpdateOccupationSuccess(res)), catchError(error => of(new UpdateOccupationFail(error))));
+    })
+  );
+
+  @Effect()
+  updateOccupationSuccess$ = this.actions$.ofType(UPDATE_OCCUPATION_SUCCESS).pipe(
+    map(() => new GetOccupations()),
+    map(() => {
+      this.messagesService.success(messages.updateOccupation.success);
+      return new Go({path: [`/occupations/`]});
+    })
+  );
+
+  @Effect()
+  updateOccupationFail$ = this.actions$.ofType(UPDATE_OCCUPATION_FAIL).pipe(
+    map(() => {
+      this.messagesService.warn(messages.updateOccupation.warning);
     }),
     map(() => new GetOccupations())
   );

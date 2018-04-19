@@ -1,36 +1,15 @@
-.form-wrapper {
-  display: flex;
-}
-
-.form {
-  display: flex;
-  flex-wrap: wrap;
-
-  &--search {
-    border: 2px solid #eee;
-    margin: $space-m calc(#{$space-l} - 2px);
-    padding: $space-l;
-  }
-
-  &__row {
-    display: flex;
-  }
-
-  &__checkbox {
-    align-self: center;
-    margin: $space-l $space-l $space-l 0;
-  }
-
-  &__submit {
-    flex: 1 0 100%;
-  }
-}
-
 .form-field {
   display: block !important;
-  max-width: 400px;
 
   &:last-of-type {
     margin-bottom: 1rem;
+  }
+}
+
+.admin-form {
+  max-width: 400px;
+
+  &__delete {
+    float: right;
   }
 }

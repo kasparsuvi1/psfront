@@ -33,5 +33,21 @@
   "deleteResto": {
     "success": "Deleted restoran successfully!",
     "warning": "Failed at deleting restoran!"
+  },
+  "updateDegree": {
+    "success": "Updated degree successfully!",
+    "warning": "Failed at updating degree!"
+  },
+  "updateOccupation": {
+    "success": "Updated occupation successfully!",
+    "warning": "Failed at updating occupation!"
+  },
+  "updateHotel": {
+    "success": "Updated hotel successfully!",
+    "warning": "Failed at updating hotel!"
+  },
+  "updateResto": {
+    "success": "Updated restoran successfully!",
+    "warning": "Failed at updating restoran!"
   }
 }

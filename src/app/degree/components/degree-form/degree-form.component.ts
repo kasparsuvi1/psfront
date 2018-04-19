@@ -4,29 +4,44 @@ import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-degree-form',
   template: `
-    <form [formGroup]="form">
+    <div class="card">
+      <div class="card__title">
+        <h2 class="mat-title">{{degree && degree.id ? 'Edit' : 'Add new'}} degree</h2>
+      </div>
+      <div class="card__content">
+        <form [formGroup]="form" class="admin-form">
 
-      <mat-form-field class="form-field">
-        <input  matInput placeholder="Degree name"
-                formControlName="name">
-          <mat-error *ngIf="form.controls['name'].errors">
-            Degree name is required!
-          </mat-error>
-      </mat-form-field>
+          <mat-form-field class="form-field">
+            <input  matInput placeholder="Degree name"
+                    formControlName="name">
+              <mat-error *ngIf="form.controls['name'].errors">
+                Degree name is required!
+              </mat-error>
+          </mat-form-field>
 
-      <mat-form-field class="form-field">
-        <textarea  matInput placeholder="Degree description"
-                formControlName="description"></textarea>
-        <mat-error *ngIf="form.controls['description'].errors">
-          Degree description is required!
-        </mat-error>
+          <mat-form-field class="form-field">
+            <textarea  matInput placeholder="Degree description"
+                    formControlName="description"></textarea>
+            <mat-error *ngIf="form.controls['description'].errors">
+              Degree description is required!
+            </mat-error>
+          </mat-form-field>
 
-      </mat-form-field>
+          <button class="btn" type="button" mat-raised-button (click)="emitData()">
+            {{degree && degree.id ? 'Save' : 'Add'}}
+          </button>
 
-      <button class="btn" type="button" mat-raised-button (click)="emitData()">
-        Save
-      </button>
-    </form>
+          <button class="btn admin-form__delete"
+                  *ngIf="degree && degree.id"
+                  color="warn"
+                  type="button"
+                  mat-raised-button
+                  (click)="deleteDegree()">
+            Delete
+          </button>
+        </form>
+      </div>
+    </div>
 
   `,
   styleUrls: ['./degree-form.component.scss']
@@ -35,6 +50,7 @@ export class DegreeFormComponent implements OnInit {
   @Input() degree?: Degree = {} as Degree;
   @Output() save = new EventEmitter<Degree>();
   @Output() add = new EventEmitter<Degree>();
+  @Output() delete = new EventEmitter<any>();
 
   form = this.fb.group({
     name: ['', [Validators.required]],
@@ -43,16 +59,27 @@ export class DegreeFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.degree && this.degree.id) {
+      this.form = this.fb.group({
+        name: [this.degree.name, [Validators.required]],
+        description: [this.degree.description, [Validators.required]]
+      });
+    }
+  }
 
   emitData() {
     if (this.degree.id && this.form.valid) {
-      this.save.emit(this.form.value);
+      this.save.emit({...this.degree, ...this.form.value});
     } else if (!this.degree.id && this.form.valid) {
       this.add.emit(this.form.value);
     } else {
       this.markFormGroupTouched(this.form);
     }
+  }
+
+  deleteDegree() {
+    this.delete.emit();
   }
 
   private markFormGroupTouched(formGroup: FormGroup) {

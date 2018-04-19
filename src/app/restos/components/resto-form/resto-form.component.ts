@@ -1,40 +1,65 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {VALID} from '@angular/forms/src/model';
 
 @Component({
   selector: 'app-resto-form',
   template: `
-  <form [formGroup]="form">
 
-    <mat-form-field class="form-field">
-      <input  matInput placeholder="Resto name"
-              formControlName="name">
-    </mat-form-field>
+  <div class="card">
+    <div class="card__title">
+      <h2 class="mat-title">{{resto && resto.id ? 'Edit' : 'Add new'}} resto</h2>
+    </div>
+    <div class="card__content">
 
-    <mat-form-field class="form-field">
-      <input  matInput placeholder="Resto webpage"
-              formControlName="webpage">
-    </mat-form-field>
+      <form [formGroup]="form" class="admin-form">
 
-    <mat-form-field class="form-field">
-      <input  matInput placeholder="Address"
-              ngx-google-places-autocomplete
-              formControlName="address"
-              (onAddressChange)="adressChange($event)">
-    </mat-form-field>
+        <mat-form-field class="form-field">
+          <input  matInput placeholder="Resto name"
+                  formControlName="name">
+          <mat-error *ngIf="form.controls['name'].errors">
+            Resto name is required!
+          </mat-error>
 
-    <mat-form-field class="form-field">
-      <mat-select placeholder="Hotel" [(ngModel)]="hotel" [ngModelOptions]="{standalone: true}">
-        <mat-option value="">None</mat-option>
-        <mat-option *ngFor="let hotel of hotels" [value]="hotel">{{hotel.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+        </mat-form-field>
 
-    <button class="btn" type="button" mat-raised-button (click)="emitData()">
-      Salvesta
-    </button>
-  </form>
+        <mat-form-field class="form-field">
+          <input  matInput placeholder="Resto webpage"
+                  formControlName="webpage">
+        </mat-form-field>
 
+        <mat-form-field class="form-field">
+          <input  matInput placeholder="Address"
+                  ngx-google-places-autocomplete
+                  formControlName="address"
+                  (onAddressChange)="adressChange($event)">
+          <mat-error *ngIf="form.controls['address'].errors">
+            Resto address is required!
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-select placeholder="Hotel" [(ngModel)]="hotelId" [ngModelOptions]="{standalone: true}">
+            <mat-option value="">None</mat-option>
+            <mat-option *ngFor="let hotel of hotels" [value]="hotel.id">{{hotel.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button class="btn" type="button" mat-raised-button (click)="emitData()">
+          Salvesta
+        </button>
+        <button class="btn admin-form__delete"
+                *ngIf="resto && resto.id"
+                color="warn"
+                type="button"
+                mat-raised-button
+                (click)="deleteResto()">
+          Delete
+        </button>
+      </form>
+    </div>
+  </div>
   `,
   styleUrls: ['./resto-form.component.scss']
 })
@@ -43,38 +68,55 @@ export class RestoFormComponent implements OnInit {
   @Input() hotels: Hotel[] = [{} as Hotel];
   @Output() save = new EventEmitter<Resto>();
   @Output() add = new EventEmitter<Resto>();
+  @Output() delete = new EventEmitter<any>();
 
-  hotel: Hotel;
+  hotelId: number;
 
   optionsForCities = {types: ['(cities)']};
   optionsForCountry = {types: ['(regions)']};
 
   form = this.fb.group({
-    name: '',
-    webpage: '',
-    country: '',
-    city: '',
-    address: '',
-    zipCode: '',
-    state: ''
+    name: ['', Validators.required],
+    webpage: [''],
+    country: [''],
+    city: [''],
+    address: ['', Validators.required],
+    zipCode: [''],
+    state: ['']
   });
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    if (this.resto.hotel && this.resto.hotel.id) {
-      this.hotel = this.resto.hotel;
+    if (this.resto && this.resto.hotel && this.resto.hotel.id) {
+      this.hotelId = this.resto.hotel.id;
+    }
+
+    if (this.resto && this.resto.id) {
+      this.form = this.fb.group({
+        name: [this.resto.name, Validators.required],
+        webpage: [this.resto.webpage],
+        country: [this.resto.country],
+        city: [this.resto.city],
+        address: [this.resto.address, Validators.required],
+        zipCode: [this.resto.zipCode],
+        state: [this.resto.state]
+      });
     }
   }
 
   emitData() {
     if (this.form.valid && this.resto.id) {
-      this.save.emit({...this.form.value, hotel: {id: this.hotel}});
+      this.save.emit({...this.resto, ...this.form.value, hotel: {id: this.hotelId}});
     } else if (this.form.valid && !this.resto.id) {
-      this.add.emit({...this.form.value, hotel: this.hotel});
+      this.add.emit({...this.form.value, hotel: {id: this.hotelId}});
     } else {
       this.markFormGroupTouched(this.form);
     }
+  }
+
+  deleteResto() {
+    this.delete.emit();
   }
 
   countryChange(event) {

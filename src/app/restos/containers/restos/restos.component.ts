@@ -36,6 +36,7 @@ export class RestosComponent implements OnInit {
 
   columns = [
     {columnDef: 'name', header: 'Resto name', cell: row => `${row.name}`},
+    {columnDef: 'hotelName', header: 'Hotel name', cell: row => `${row}`},
     {columnDef: 'country', header: 'Country', cell: row => `${row.country}`},
     {columnDef: 'city', header: 'City', cell: row => `${row.city}`},
     {columnDef: 'webpage', header: 'Webpage', cell: row => `${row.webpage}`}

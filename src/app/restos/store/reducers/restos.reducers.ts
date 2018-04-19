@@ -8,7 +8,10 @@ import {
   ADD_RESTO_SUCCESS,
   DELETE_RESTO,
   DELETE_RESTO_FAIL,
-  DELETE_RESTO_SUCCESS
+  DELETE_RESTO_SUCCESS,
+  UPDATE_RESTO,
+  UPDATE_RESTO_FAIL,
+  UPDATE_RESTO_SUCCESS
 } from '../actions/restos.actions';
 
 export interface RestosState {
@@ -47,6 +50,12 @@ export function restosReducer(state: RestosState = initialState, action: RestosA
     case DELETE_RESTO_FAIL:
       return {...state, loading: false, loaded: true};
     case DELETE_RESTO_SUCCESS:
+      return {...state, loading: false, loaded: true};
+    case UPDATE_RESTO:
+      return {...state, loading: true, loaded: false};
+    case UPDATE_RESTO_FAIL:
+      return {...state, loading: false, loaded: true};
+    case UPDATE_RESTO_SUCCESS:
       return {...state, loading: false, loaded: true};
 
     default:

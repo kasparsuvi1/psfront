@@ -6,15 +6,8 @@ import {AddHotel} from '../../store/actions';
 @Component({
   selector: 'app-new',
   template: `
-    <div class="card">
-      <div class="card__title">
-        <h2 class="mat-title">Add new Hotel</h2>
-      </div>
-      <div class="card__content">
-        <app-hotels-form (add)="addHotel($event)">
-        </app-hotels-form>
-      </div>
-    </div>
+    <app-hotels-form (add)="addHotel($event)">
+    </app-hotels-form>
   `,
   styleUrls: ['./new.component.scss']
 })

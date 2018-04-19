@@ -5,29 +5,49 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   selector: 'app-hotels-form',
   template: `
 
-    <form [formGroup]="form">
+  <div class="card">
+    <div class="card__title">
+      <h2 class="mat-title">{{hotel && hotel.id ? 'Edit' : 'Add new'}} hotel</h2>
+    </div>
+    <div class="card__content">
 
-      <mat-form-field class="form-field">
-        <input  matInput placeholder="Hotel name"
-                formControlName="name">
-      </mat-form-field>
+      <form [formGroup]="form" class="admin-form">
 
-      <mat-form-field class="form-field">
-        <input  matInput placeholder="Hotel webpage"
-                formControlName="webpage">
-      </mat-form-field>
+        <mat-form-field class="form-field">
+          <input  matInput placeholder="Hotel name"
+                  formControlName="name">
+        </mat-form-field>
 
-      <mat-form-field class="form-field">
-        <input  matInput placeholder="Address"
-                ngx-google-places-autocomplete
-                formControlName="address"
-                (onAddressChange)="adressChange($event)">
-      </mat-form-field>
+        <mat-form-field class="form-field">
+          <input  matInput placeholder="Hotel webpage"
+                  formControlName="webpage">
+        </mat-form-field>
 
-      <button class="btn" type="button" mat-raised-button (click)="emitData()">
-        Salvesta
-      </button>
-    </form>
+        <mat-form-field class="form-field">
+          <input  matInput placeholder="Address"
+                  ngx-google-places-autocomplete
+                  formControlName="address"
+                  (onAddressChange)="adressChange($event)">
+        </mat-form-field>
+
+        <button class="btn" type="button" mat-raised-button (click)="emitData()">
+          Salvesta
+        </button>
+
+        <button class="btn admin-form__delete"
+                *ngIf="hotel && hotel.id"
+                color="warn"
+                type="button"
+                mat-raised-button
+                (click)="deleteHotel()">
+          Delete
+        </button>
+      </form>
+    </div>
+  </div>
+  {{hotel.restos | json}}
+  <br>
+  {{test | json}}
   `,
   styleUrls: ['./hotels-form.component.scss']
 })
@@ -35,31 +55,52 @@ export class HotelsFormComponent implements OnInit {
   @Input() hotel?: Hotel = {} as Hotel;
   @Output() save = new EventEmitter<Hotel>();
   @Output() add = new EventEmitter<Hotel>();
+  @Output() delete = new EventEmitter<any>();
 
   optionsForCities = {types: ['(cities)']};
   optionsForCountry = {types: ['(regions)']};
+
   form = this.fb.group({
-    name: '',
-    webpage: '',
-    country: '',
-    city: '',
-    address: '',
-    zipCode: '',
-    state: ''
+    name: ['', Validators.required],
+    webpage: [''],
+    country: [''],
+    city: [''],
+    address: ['', Validators.required],
+    zipCode: [''],
+    state: ['']
   });
 
+  test;
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.hotel && this.hotel.id) {
+      this.form = this.fb.group({
+        name: [this.hotel.name, Validators.required],
+        webpage: [this.hotel.webpage],
+        country: [this.hotel.country],
+        city: [this.hotel.city],
+        address: [this.hotel.address, Validators.required],
+        zipCode: [this.hotel.zipCode],
+        state: [this.hotel.state]
+      });
+    }
+  }
 
   emitData() {
     if (this.form.valid && this.hotel.id) {
-      this.save.emit(this.form.value);
+      console.log({...this.hotel, ...this.form.value});
+      this.test = {...this.hotel, ...this.form.value};
+      // this.save.emit({...this.hotel, ...this.form.value});
     } else if (this.form.valid && !this.hotel.id) {
       this.add.emit(this.form.value);
     } else {
       this.markFormGroupTouched(this.form);
     }
+  }
+
+  deleteHotel() {
+    this.delete.emit();
   }
 
   countryChange(event) {

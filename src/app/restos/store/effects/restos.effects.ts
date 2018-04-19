@@ -19,7 +19,13 @@ import {
   DeleteRestoSuccess,
   DeleteRestoFail,
   DELETE_RESTO_SUCCESS,
-  DELETE_RESTO_FAIL
+  DELETE_RESTO_FAIL,
+  UPDATE_RESTO,
+  UPDATE_RESTO_SUCCESS,
+  UPDATE_RESTO_FAIL,
+  UpdateResto,
+  UpdateRestoSuccess,
+  UpdateRestoFail
 } from '../actions/restos.actions';
 import {MessagesService, messages} from '../../../core/services/messages.service';
 import {Go} from '../../../core/store';
@@ -83,6 +89,32 @@ export class RestosEffect {
   deleteRestoFail$ = this.actions$.ofType(DELETE_RESTO_FAIL).pipe(
     map(() => {
       this.messagesService.warn(messages.deleteResto.warning);
+    }),
+    map(() => new GetRestos())
+  );
+
+  @Effect()
+  updateResto$ = this.actions$.ofType(UPDATE_RESTO).pipe(
+    switchMap((action: UpdateResto) => {
+      return this.restoService
+        .updateResto(action.payload)
+        .pipe(map(res => new UpdateRestoSuccess(res)), catchError(error => of(new UpdateRestoFail(error))));
+    })
+  );
+
+  @Effect()
+  updateRestoSuccess$ = this.actions$.ofType(UPDATE_RESTO_SUCCESS).pipe(
+    map(() => new GetRestos()),
+    map(() => {
+      this.messagesService.success(messages.updateResto.success);
+      return new Go({path: [`/restos/`]});
+    })
+  );
+
+  @Effect()
+  updateRestoFail$ = this.actions$.ofType(UPDATE_RESTO_FAIL).pipe(
+    map(() => {
+      this.messagesService.warn(messages.updateResto.warning);
     }),
     map(() => new GetRestos())
   );

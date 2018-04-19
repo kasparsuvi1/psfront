@@ -19,7 +19,13 @@ import {
   DELETE_DEGREE_FAIL,
   DeleteDegree,
   DeleteDegreeSuccess,
-  DeleteDegreeFail
+  DeleteDegreeFail,
+  UPDATE_DEGREE,
+  UPDATE_DEGREE_SUCCESS,
+  UPDATE_DEGREE_FAIL,
+  UpdateDegree,
+  UpdateDegreeSuccess,
+  UpdateDegreeFail
 } from '../actions/degrees.actions';
 import {MessagesService, messages} from '../../../core/services/messages.service';
 import {Go} from '../../../core/store';
@@ -85,6 +91,32 @@ export class DegreesEffect {
   deleteDegreeFail$ = this.actions$.ofType(DELETE_DEGREE_FAIL).pipe(
     map(() => {
       this.messagesService.warn(messages.deleteDegree.warning);
+    }),
+    map(() => new GetDegrees())
+  );
+
+  @Effect()
+  updateDegree$ = this.actions$.ofType(UPDATE_DEGREE).pipe(
+    switchMap((action: UpdateDegree) => {
+      return this.degreeService
+        .updateDegree(action.payload)
+        .pipe(map(res => new UpdateDegreeSuccess(res)), catchError(error => of(new UpdateDegreeFail(error))));
+    })
+  );
+
+  @Effect()
+  updateDegreeSuccess$ = this.actions$.ofType(UPDATE_DEGREE_SUCCESS).pipe(
+    map(() => new GetDegrees()),
+    map(() => {
+      this.messagesService.success(messages.updateDegree.success);
+      return new Go({path: [`/degrees/`]});
+    })
+  );
+
+  @Effect()
+  updateDegreeFail$ = this.actions$.ofType(UPDATE_DEGREE_FAIL).pipe(
+    map(() => {
+      this.messagesService.warn(messages.updateDegree.warning);
     }),
     map(() => new GetDegrees())
   );

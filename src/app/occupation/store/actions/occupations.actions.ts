@@ -66,6 +66,28 @@ export class DeleteOccupationSuccess implements Action {
   constructor(public payload: Occupation) {}
 }
 
+export const UPDATE_OCCUPATION = '[OCCUPATION] Update occupation ';
+export const UPDATE_OCCUPATION_FAIL = '[OCCUPATION] Update occupation Fail';
+export const UPDATE_OCCUPATION_SUCCESS = '[OCCUPATION] Update occupation Success';
+
+export class UpdateOccupation implements Action {
+  readonly type = UPDATE_OCCUPATION;
+
+  constructor(public payload: Occupation) {}
+}
+
+export class UpdateOccupationFail implements Action {
+  readonly type = UPDATE_OCCUPATION_FAIL;
+
+  constructor(public payload?: any) {}
+}
+
+export class UpdateOccupationSuccess implements Action {
+  readonly type = UPDATE_OCCUPATION_SUCCESS;
+
+  constructor(public payload: Occupation) {}
+}
+
 export type OccupationsActions =
   | GetOccupations
   | GetOccupationsFail
@@ -75,4 +97,7 @@ export type OccupationsActions =
   | AddOccupationSuccess
   | DeleteOccupation
   | DeleteOccupationFail
-  | DeleteOccupationSuccess;
+  | DeleteOccupationSuccess
+  | UpdateOccupation
+  | UpdateOccupationFail
+  | UpdateOccupationSuccess;

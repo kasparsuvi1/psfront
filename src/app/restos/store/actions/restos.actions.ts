@@ -66,6 +66,28 @@ export class DeleteRestoSuccess implements Action {
   constructor(public payload: Resto) {}
 }
 
+export const UPDATE_RESTO = '[RESTO] Update resto ';
+export const UPDATE_RESTO_FAIL = '[RESTO] Update resto Fail';
+export const UPDATE_RESTO_SUCCESS = '[RESTO] Update resto Success';
+
+export class UpdateResto implements Action {
+  readonly type = UPDATE_RESTO;
+
+  constructor(public payload: Resto) {}
+}
+
+export class UpdateRestoFail implements Action {
+  readonly type = UPDATE_RESTO_FAIL;
+
+  constructor(public payload?: any) {}
+}
+
+export class UpdateRestoSuccess implements Action {
+  readonly type = UPDATE_RESTO_SUCCESS;
+
+  constructor(public payload: Resto) {}
+}
+
 export type RestosActions =
   | GetRestos
   | GetRestosFail
@@ -75,4 +97,7 @@ export type RestosActions =
   | AddRestoSuccess
   | DeleteResto
   | DeleteRestoFail
-  | DeleteRestoSuccess;
+  | DeleteRestoSuccess
+  | UpdateResto
+  | UpdateRestoFail
+  | UpdateRestoSuccess;

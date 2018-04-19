@@ -3,19 +3,16 @@ import {Subscription} from 'rxjs/Subscription';
 import {Store} from '@ngrx/store';
 import {OccupationsViewState} from '../../store/reducers';
 import {getSelectedOccupation} from '../../store/selectors';
-import {GetOccupations, DeleteOccupation} from '../../store/actions';
+import {GetOccupations, DeleteOccupation, UpdateOccupation} from '../../store/actions';
 
 @Component({
   selector: 'app-occupation',
   template: `
-    <p>
-      occupation works!
-      {{occupation | json}}
-    </p>
+    <app-occupation-form  [occupation]="occupation"
+                      (save)="saveOccupation($event)"
+                      (delete)="deleteOccupation()">
+    </app-occupation-form>
 
-    <button class="btn" color="warn" type="button" mat-raised-button (click)="deleteOccupation()">
-      Delete
-    </button>
 
   `,
   styleUrls: ['./occupation.component.scss']
@@ -37,6 +34,10 @@ export class OccupationComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.$occupation.unsubscribe();
+  }
+
+  saveOccupation(event) {
+    this.store.dispatch(new UpdateOccupation(event));
   }
 
   deleteOccupation() {

@@ -15,6 +15,10 @@ export class OccupationService {
     return this.httpClient.post('/api/private/occupation/new', occupation).pipe(map(res => res as Occupation));
   }
 
+  updateOccupation(occupation): Observable<Occupation> {
+    return this.httpClient.put(`/api/private/occupation/update/${occupation.id}`, occupation).pipe(map(res => res as Occupation));
+  }
+
   deleteOccupation(id): Observable<Occupation> {
     return this.httpClient.delete(`/api/private/occupation/delete/${id}`).pipe(map(res => res as Occupation));
   }

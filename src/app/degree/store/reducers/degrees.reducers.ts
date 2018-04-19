@@ -8,7 +8,10 @@ import {
   ADD_DEGREE_SUCCESS,
   DELETE_DEGREE,
   DELETE_DEGREE_FAIL,
-  DELETE_DEGREE_SUCCESS
+  DELETE_DEGREE_SUCCESS,
+  UPDATE_DEGREE,
+  UPDATE_DEGREE_FAIL,
+  UPDATE_DEGREE_SUCCESS
 } from '../actions/degrees.actions';
 
 export interface DegreesState {
@@ -54,6 +57,12 @@ export function degreesReducer(state: DegreesState = initialState, action: Degre
     case DELETE_DEGREE_FAIL:
       return {...state, loading: false, loaded: true};
     case DELETE_DEGREE_SUCCESS:
+      return {...state, loading: false, loaded: true};
+    case UPDATE_DEGREE:
+      return {...state, loading: true, loaded: false};
+    case UPDATE_DEGREE_FAIL:
+      return {...state, loading: false, loaded: true};
+    case UPDATE_DEGREE_SUCCESS:
       return {...state, loading: false, loaded: true};
 
     default:

@@ -54,7 +54,7 @@ interface Hotel {
   city: string;
   address: string;
   zipCode: string;
-  restos?: Resto[];
+  restos: Resto[];
   adverts?: Advert[];
 }
 
