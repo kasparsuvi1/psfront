@@ -3,12 +3,12 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from '../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
+import {RestoRoutes} from './restos.routes';
 
 // store
 import {RouterModule} from '@angular/router';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
-import {HotelRoutes} from './restos.routes';
 import {reducers} from './store/reducers';
 import {effects} from './store/effects';
 
@@ -32,7 +32,7 @@ import {RestoFormComponent} from './components/resto-form/resto-form.component';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(HotelRoutes),
+    RouterModule.forChild(RestoRoutes),
     StoreModule.forFeature('restos', reducers),
     EffectsModule.forFeature(effects),
     MatButtonModule,

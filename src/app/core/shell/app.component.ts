@@ -5,7 +5,7 @@ import {State} from '../store';
 import * as accountActions from '../../core/store/actions/account.actions';
 import {Observable} from 'rxjs/Observable';
 import {AccountModel} from '../models/account.models';
-import {getAccountData} from '../store/selectors';
+import {getAccountData, getUserData} from '../store/selectors';
 import {routes} from '../core-routing.module';
 
 @Component({
@@ -30,10 +30,10 @@ import {routes} from '../core-routing.module';
 
         <span class="fill-space"></span>
 
-        <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+        <div fxLayout="row" fxShow="false" fxShow.gt-sm *ngIf="$user | async as user">
           <button mat-button>
             <mat-icon class="material-icons">account_circle</mat-icon>
-            {{account?.user_name}}
+            {{user?.alias}}
           </button>
         </div>
         <button mat-button (click)="logout()">
@@ -66,6 +66,7 @@ import {routes} from '../core-routing.module';
 })
 export class AppComponent implements OnInit {
   $account: Observable<AccountModel>;
+  $user: Observable<User>;
 
   routes = routes;
 
@@ -73,6 +74,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.$account = this.store.select(getAccountData);
+    this.$user = this.store.select(getUserData);
   }
 
   isRouteAvailable(route: any, roles: any) {

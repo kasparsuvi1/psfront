@@ -8,6 +8,6 @@ export namespace RoleValues {
 export interface AccountModel {
   authenticated: boolean;
   access_token: string;
-  user_name: string;
+  userId: number;
   roles: Role[];
 }

@@ -31,4 +31,28 @@ export class Logout implements Action {
   constructor() {}
 }
 
-export type All = Login | Logout | LoginSuccess | LoginFail;
+export const WHOAMI = '[Account] Who Am i';
+export const WHOAMI_FAIL = '[Account] Who Am i fail';
+export const WHOAMI_SUCCESS = '[Account] Who Am i success';
+
+export class WhoAmI implements Action {
+  readonly type = WHOAMI;
+
+  constructor(public payload: number) {}
+}
+
+export class WhoAmIFail implements Action {
+  readonly type = WHOAMI_FAIL;
+
+  constructor(public payload?: any) {}
+}
+
+export class WhoAmISuccess implements Action {
+  readonly type = WHOAMI_SUCCESS;
+
+  constructor(public payload: User) {
+    localStorage.setItem('user', JSON.stringify(payload));
+  }
+}
+
+export type All = Login | LoginFail | LoginSuccess | Logout | WhoAmI | WhoAmIFail | WhoAmISuccess;

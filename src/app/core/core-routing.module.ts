@@ -78,6 +78,15 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'user',
+    loadChildren: '../user/user.module#UserModule',
+    canActivate: [AuthGuardService],
+    data: {
+      title: 'PROFILE',
+      expectedRoles: [RoleValues.ADMIN_USER, RoleValues.STANDARD_USER]
+    }
+  },
+  {
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'

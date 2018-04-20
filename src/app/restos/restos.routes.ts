@@ -5,7 +5,7 @@ import {AuthGuardService} from '../core/guards/auth-guard.service';
 import {RoleValues} from '../core/models/account.models';
 import {RestoComponent} from './containers/resto/resto.component';
 
-export const HotelRoutes: Routes = [
+export const RestoRoutes: Routes = [
   {
     path: 'new',
     component: NewComponent,

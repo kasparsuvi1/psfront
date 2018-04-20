@@ -27,7 +27,7 @@ export class AccountEffects {
           const account: AccountModel = {
             authenticated: true,
             access_token: access_token,
-            user_name: tokenPayload.user_name,
+            userId: tokenPayload.user_name,
             roles: tokenPayload.authorities
           };
           return new fromAccount.LoginSuccess(account);
@@ -47,8 +47,8 @@ export class AccountEffects {
 
   @Effect()
   LoginSuccess = this.actions$.ofType(fromAccount.LOGIN_SUCCESS).pipe(
-    map((data: any) => {
-      return new Go({path: ['/dashboard']});
+    map((action: fromAccount.LoginSuccess) => {
+      return new fromAccount.WhoAmI(action.payload.userId);
     })
   );
 
@@ -60,6 +60,36 @@ export class AccountEffects {
       }
 
       return new Go({path: ['/login']});
+    })
+  );
+
+  @Effect()
+  whoAmI = this.actions$.ofType(fromAccount.WHOAMI).pipe(
+    switchMap((action: fromAccount.WhoAmI) => {
+      return this.authenticationService.whoAmI(action.payload).pipe(
+        map(user => {
+          return new fromAccount.WhoAmISuccess(user);
+        }),
+        catchError(error => of(new fromAccount.WhoAmIFail(error)))
+      );
+    })
+  );
+
+  @Effect()
+  whoAmIFail = this.actions$.ofType(fromAccount.WHOAMI_FAIL).pipe(
+    map((action: fromAccount.WhoAmIFail) => {
+      if (action.payload) {
+        this.messagesService.warn(action.payload);
+      }
+
+      return new Go({path: ['/login']});
+    })
+  );
+
+  @Effect()
+  whoAmISuccess = this.actions$.ofType(fromAccount.WHOAMI_SUCCESS).pipe(
+    map((action: fromAccount.WhoAmISuccess) => {
+      return new Go({path: ['/dashboard']});
     })
   );
 }

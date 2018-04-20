@@ -28,4 +28,8 @@ export class AuthenticationService {
       })
       .pipe(map(res => res.access_token), catchError(error => of(error)));
   }
+
+  whoAmI(id): Observable<User> {
+    return this.httpClient.get(`/api/private/user/${id}`).pipe(map(res => res as User));
+  }
 }
