@@ -34,6 +34,10 @@
     "success": "Deleted restoran successfully!",
     "warning": "Failed at deleting restoran!"
   },
+  "deleteUser": {
+    "success": "Deleted user sucessfully!",
+    "warning": "Failed at deleting user!"
+  },
   "updateDegree": {
     "success": "Updated degree successfully!",
     "warning": "Failed at updating degree!"
@@ -49,5 +53,13 @@
   "updateResto": {
     "success": "Updated restoran successfully!",
     "warning": "Failed at updating restoran!"
+  },
+  "updateUser": {
+    "success": "Updated user successfully!",
+    "warning": "Failed at updating user!"
+  },
+  "changePassword": {
+    "success": "Updated password successfully!",
+    "warning": "Failed at updating password!"
   }
 }
