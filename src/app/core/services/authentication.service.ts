@@ -10,8 +10,6 @@ import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class AuthenticationService {
-  static AUTH_TOKEN = '/oauth/token';
-
   constructor(private httpClient: HttpClient) {}
 
   login(payload) {
