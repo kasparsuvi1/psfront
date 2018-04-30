@@ -61,7 +61,7 @@ export class UserEffect {
     })
   );
 
-  @Effect()
+  @Effect({dispatch: false})
   deleteUserFail$ = this.actions$.ofType(DELETE_USER_FAIL).pipe(
     map(() => {
       this.messagesService.warn(messages.deleteUser.warning);
@@ -85,7 +85,7 @@ export class UserEffect {
     })
   );
 
-  @Effect()
+  @Effect({dispatch: false})
   updateUserFail$ = this.actions$.ofType(UPDATE_USER_FAIL).pipe(
     map(() => {
       this.messagesService.warn(messages.updateUser.warning);
@@ -109,7 +109,7 @@ export class UserEffect {
     })
   );
 
-  @Effect()
+  @Effect({dispatch: false})
   changePasswordFail$ = this.actions$.ofType(CHANGE_PASSWORD_FAIL).pipe(
     map(() => {
       this.messagesService.warn(messages.changePassword.warning);

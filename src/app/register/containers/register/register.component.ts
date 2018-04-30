@@ -12,6 +12,8 @@ import {RegisterViewState} from '../../store/reducers';
       <span class="fill-background__back" routerLink="/"><mat-icon>keyboard_backspace</mat-icon> Back to homepage</span>
 
       <form class="centered-box centered-box--long" [formGroup]="form">
+        <h1 class="headline">Register</h1>
+        <p class="muted">Join to our community now!</p>
         <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/logo.png" alt="Logo">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Email" formControlName="email">

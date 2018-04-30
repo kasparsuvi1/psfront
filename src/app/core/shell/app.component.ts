@@ -1,17 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
 import {Store} from '@ngrx/store';
-import {State} from '../store';
+import {State, WhoAmI} from '../store';
 import * as accountActions from '../../core/store/actions/account.actions';
 import {Observable} from 'rxjs/Observable';
 import {AccountModel} from '../models/account.models';
 import {getAccountData, getUserData} from '../store/selectors';
 import {routes} from '../core-routing.module';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',
   template: `
-    <div *ngIf="$account | async as account">
+    <div *ngIf="account">
       <mat-toolbar color="primary" *ngIf="account.authenticated">
         <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
           <mat-icon>menu</mat-icon>
@@ -31,13 +32,13 @@ import {routes} from '../core-routing.module';
         <span class="fill-space"></span>
 
         <div fxLayout="row" fxShow="false" fxShow.gt-sm *ngIf="$user | async as user">
-          <button mat-button>
+          <button [routerLink]="['/user']" mat-button>
             <mat-icon class="material-icons">account_circle</mat-icon>
-            {{user?.alias}}
+            {{user?.alias ? user.alias : 'username'}}
           </button>
         </div>
         <button mat-button (click)="logout()">
-          Logi välja
+          Log out
         </button>
 
       </mat-toolbar>
@@ -50,8 +51,10 @@ import {routes} from '../core-routing.module';
             {{route.data.title}}
           </button>
         </ng-container>
-        <button mat-menu-item>
-          Profile
+        <button class="menu-item"
+                mat-menu-item
+                [routerLink]="['/user']">
+                Profile
         </button>
 
       </mat-menu>
@@ -65,16 +68,20 @@ import {routes} from '../core-routing.module';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  $account: Observable<AccountModel>;
+  $accountSubscription: Subscription;
+  account: AccountModel;
   $user: Observable<User>;
 
-  routes = routes;
+  routes = routes.filter(route => route.path !== 'user');
 
   constructor(private authService: AuthenticationService, private store: Store<State>) {}
 
   ngOnInit() {
-    this.$account = this.store.select(getAccountData);
+    this.$accountSubscription = this.store.select(getAccountData).subscribe(res => {
+      this.account = res as AccountModel;
+    });
     this.$user = this.store.select(getUserData);
+    this.store.dispatch(new WhoAmI(this.account.userId));
   }
 
   isRouteAvailable(route: any, roles: any) {

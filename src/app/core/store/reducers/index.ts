@@ -4,6 +4,8 @@ import {routerReducer, RouterReducerState} from '@ngrx/router-store';
 import {storeFreeze} from 'ngrx-store-freeze';
 import {environment} from '../../../../environments/environment';
 import {accountReducer, AccountState} from './account.reducers';
+import {DegreesState, degreesReducer} from './degrees.reducers';
+import {OccupationsState, occupationsReducer} from './occupations.reducers';
 
 export * from './router.reducers';
 export * from './account.reducers';
@@ -17,11 +19,15 @@ export interface RouterStateUrl {
 export interface State {
   routerReducer: RouterReducerState<RouterStateUrl>;
   account: AccountState;
+  degrees: DegreesState;
+  occupations: OccupationsState;
 }
 
 export const reducers: ActionReducerMap<State> = {
   routerReducer: routerReducer,
-  account: accountReducer
+  account: accountReducer,
+  degrees: degreesReducer,
+  occupations: occupationsReducer
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [storeFreeze] : [];

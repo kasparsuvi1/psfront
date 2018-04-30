@@ -21,8 +21,8 @@ interface User {
   age: string;
   regDate: Date;
   lastVisit: Date;
-  degree: string;
-  occupation: string;
+  degree: Degree;
+  occupation: Occupation;
   roles: Role[]; // ROLE
   responses: Response[];
 }

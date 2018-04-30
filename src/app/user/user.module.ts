@@ -16,9 +16,11 @@ import {UserService} from './services/user.service';
 
 // material
 import {MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule} from '@angular/material';
+import {MatIconModule} from '@angular/material/icon';
 
 // components
 import {ProfileComponent} from './containers/profile/profile.component';
+import {UserFormComponent} from './components/user-form/user-form.component';
 
 @NgModule({
   imports: [
@@ -32,9 +34,10 @@ import {ProfileComponent} from './containers/profile/profile.component';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
-  declarations: [ProfileComponent],
+  declarations: [ProfileComponent, UserFormComponent],
   providers: [UserService]
 })
 export class UserModule {}

@@ -113,7 +113,7 @@ export class OccupationsEffect {
     })
   );
 
-  @Effect()
+  @Effect({dispatch: false})
   updateOccupationFail$ = this.actions$.ofType(UPDATE_OCCUPATION_FAIL).pipe(
     map(() => {
       this.messagesService.warn(messages.updateOccupation.warning);

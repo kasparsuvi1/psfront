@@ -1,0 +1,80 @@
+.card {
+  margin: 1rem 2rem;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+
+  &__image {
+    overflow: hidden;
+    height: 250px;
+
+    & img {
+      display: block;
+      position: relative;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+
+  &__profile__image {
+    width: 90px;
+    cursor: pointer;
+    position: relative;
+    top: -45px;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 50%;
+  }
+
+  &__content {
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  &__reveal {
+    padding: 20px;
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    overflow-y: auto;
+    top: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+  }
+}
+
+.circle {
+  max-width: 100%;
+  height: auto;
+}
+
+.focused {
+  font-size: 20px;
+  margin: 1rem 0;
+}
+
+.edit {
+  position: relative;
+  top: -28px;
+}
+
+@media only screen and (max-width: 767px) {
+  .card {
+    &__content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .edit {
+    align-self: flex-end;
+  }
+}

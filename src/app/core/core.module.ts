@@ -17,6 +17,8 @@ import {AuthenticationService} from './services/authentication.service';
 import {AuthGuardService} from './guards/auth-guard.service';
 import {IsLoggedOffService} from './guards/is-logged-off.service';
 import {MessagesService} from './services/messages.service';
+import {DegreeService} from './services/degree.service';
+import {OccupationService} from './services/occupation.service';
 import {TOKEN_NAME} from './services/auth.constants';
 
 import {AuthInterceptor} from './interceptors/auth.interceptor';
@@ -77,7 +79,9 @@ export function getToken() {
     AuthenticationService,
     AuthGuardService,
     IsLoggedOffService,
-    MessagesService
+    MessagesService,
+    DegreeService,
+    OccupationService
   ],
   bootstrap: [AppComponent]
 })
