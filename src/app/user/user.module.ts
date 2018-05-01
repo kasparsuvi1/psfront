@@ -13,14 +13,19 @@ import {effects} from './store/effects';
 
 // services
 import {UserService} from './services/user.service';
+import {HotelService} from './services/hotel.service';
+import {RestoService} from './services/resto.service';
 
 // material
-import {MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatDatepickerModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
+import {MatNativeDateModule} from '@angular/material';
+import {Ng5TimePickerModule} from 'ng5-time-picker';
 
 // components
 import {ProfileComponent} from './containers/profile/profile.component';
 import {UserFormComponent} from './components/user-form/user-form.component';
+import {AdvertComponent} from './components/advert/advert.component';
 
 @NgModule({
   imports: [
@@ -35,9 +40,12 @@ import {UserFormComponent} from './components/user-form/user-form.component';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    Ng5TimePickerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  declarations: [ProfileComponent, UserFormComponent],
-  providers: [UserService]
+  declarations: [ProfileComponent, UserFormComponent, AdvertComponent],
+  providers: [UserService, HotelService, RestoService]
 })
 export class UserModule {}

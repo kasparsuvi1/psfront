@@ -25,6 +25,8 @@ interface User {
   occupation: Occupation;
   roles: Role[]; // ROLE
   responses: Response[];
+  totalResponses: number;
+  totalAdverts: number;
 }
 
 interface Role {

@@ -22,6 +22,7 @@ import {TableComponent} from './components/table/table.component';
 
 // pipes
 import {DataSourcePipe} from './pipe/data-source.pipe';
+import {HourMinPipe} from './pipe/hour-min.pipe';
 
 @NgModule({
   imports: [
@@ -39,7 +40,7 @@ import {DataSourcePipe} from './pipe/data-source.pipe';
     MatSelectModule,
     MatTooltipModule
   ],
-  declarations: [MessageComponent, TableComponent, DataSourcePipe],
-  exports: [MessageComponent, TableComponent, DataSourcePipe]
+  declarations: [MessageComponent, TableComponent, DataSourcePipe, HourMinPipe],
+  exports: [MessageComponent, TableComponent, DataSourcePipe, HourMinPipe]
 })
 export class SharedModule {}

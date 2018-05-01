@@ -37,9 +37,7 @@ export class UserEffect {
   @Effect()
   getUser$ = this.actions$.ofType(GET_USER).pipe(
     switchMap((action: GetUser) => {
-      return this.userService
-        .getUser(action.payload)
-        .pipe(map(res => new GetUserSuccess(res)), catchError(error => of(new GetUserFail(error))));
+      return this.userService.getCurrentUser().pipe(map(res => new GetUserSuccess(res)), catchError(error => of(new GetUserFail(error))));
     })
   );
 
@@ -80,8 +78,7 @@ export class UserEffect {
   @Effect()
   updateUserSuccess$ = this.actions$.ofType(UPDATE_USER_SUCCESS).pipe(
     map(() => {
-      this.messagesService.success(messages.updateUser.success);
-      return new Go({path: [`/user`]});
+      return new GetUser();
     })
   );
 

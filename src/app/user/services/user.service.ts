@@ -11,6 +11,10 @@ export class UserService {
     return this.httpClient.get(`/api/private/user/${id}`).pipe(map(res => res as User));
   }
 
+  getCurrentUser(): Observable<User> {
+    return this.httpClient.get(`/api/private/user/current-user`).pipe(map(res => res as User));
+  }
+
   deleteUser(id: number) {
     return this.httpClient.delete(`/api/private/user/delete/${id}`).pipe(map(res => res as User));
   }

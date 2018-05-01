@@ -4,68 +4,69 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-user-form',
   template: `
-    <form [formGroup]="form" class="admin-form">
+    <div class="card">
+      <form [formGroup]="form" class="admin-form centered">
+        <mat-form-field class="form-field">
+          <input  matInput
+                  placeholder="Alias"
+                  formControlName="alias">
+          <mat-error *ngIf="form.controls['alias'].errors">
+            alias is required!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-select placeholder="Occupation" formControlName="occupation">
+            <mat-option *ngFor="let occupation of occupations" [value]="occupation">
+              {{ occupation.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-select placeholder="degree" formControlName="degree">
+            <mat-option *ngFor="let degree of degrees" [value]="degree">
+              {{ degree.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field class="form-field">
-        <input  matInput
-                placeholder="Alias"
-                formControlName="alias">
-        <mat-error *ngIf="form.controls['alias'].errors">
-          alias is required!
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field class="form-field">
-        <mat-select placeholder="Occupation" formControlName="occupation">
-          <mat-option *ngFor="let occupation of occupations" [value]="occupation">
-            {{ occupation.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="form-field">
-        <mat-select placeholder="degree" formControlName="degree">
-          <mat-option *ngFor="let degree of degrees" [value]="degree">
-            {{ degree.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-select placeholder="Age" formControlName="age">
+            <mat-option value="">
+              Rather not say
+            </mat-option>
+            <mat-option value="18-">
+              18-
+            </mat-option>
+            <mat-option value="20-35">
+              20-35
+            </mat-option>
+            <mat-option value="35-50">
+              35-50
+            </mat-option>
+            <mat-option value="50+">
+              50+
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-field">
+          <mat-select placeholder="Gender" formControlName="gender">
+            <mat-option value="">
+              Rather not say
+            </mat-option>
+            <mat-option value="FEMALE">
+              Female
+            </mat-option>
+            <mat-option value="MALE">
+              Male
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-select placeholder="Age" formControlName="age">
-          <mat-option value="">
-            Rather not say
-          </mat-option>
-          <mat-option value="18-">
-            18-
-          </mat-option>
-          <mat-option value="20-35">
-            20-35
-          </mat-option>
-          <mat-option value="35-50">
-            35-50
-          </mat-option>
-          <mat-option value="50+">
-            50+
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-select placeholder="Gender" formControlName="gender">
-          <mat-option value="">
-            Rather not say
-          </mat-option>
-          <mat-option value="FEMALE">
-            Female
-          </mat-option>
-          <mat-option value="MALE">
-            Male
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <button class="btn" type="button" mat-raised-button (click)="emitData()">
-        Save
-      </button>
-    </form>
+        <button class="btn save" color="primary" type="button" mat-raised-button (click)="emitData()">
+          Save
+        </button>
+      </form>
+    </div>
   `,
   styleUrls: ['./user-form.component.scss']
 })
