@@ -77,7 +77,7 @@ export class UserEffect {
 
   @Effect()
   updateUserSuccess$ = this.actions$.ofType(UPDATE_USER_SUCCESS).pipe(
-    map(() => {
+    map((action: UpdateUserSuccess) => {
       return new GetUser();
     })
   );

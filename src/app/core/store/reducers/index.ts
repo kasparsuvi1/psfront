@@ -6,6 +6,7 @@ import {environment} from '../../../../environments/environment';
 import {accountReducer, AccountState} from './account.reducers';
 import {DegreesState, degreesReducer} from './degrees.reducers';
 import {OccupationsState, occupationsReducer} from './occupations.reducers';
+import {AdvertsState, advertsReducer} from './advert.reducers';
 
 export * from './router.reducers';
 export * from './account.reducers';
@@ -21,13 +22,15 @@ export interface State {
   account: AccountState;
   degrees: DegreesState;
   occupations: OccupationsState;
+  userAdverts: AdvertsState;
 }
 
 export const reducers: ActionReducerMap<State> = {
   routerReducer: routerReducer,
   account: accountReducer,
   degrees: degreesReducer,
-  occupations: occupationsReducer
+  occupations: occupationsReducer,
+  userAdverts: advertsReducer
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [storeFreeze] : [];

@@ -84,7 +84,7 @@ export class UserFormComponent implements OnChanges {
   ngOnChanges() {
     this.form = this.fb.group({
       alias: [this.user.alias, [Validators.required]],
-      gender: [this.user.gender, [Validators.required]],
+      gender: [this.user.gender],
       age: [this.user.age],
       occupation: [this.user.occupation],
       degree: [this.user.degree]

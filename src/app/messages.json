@@ -18,6 +18,10 @@
     "success": "Added restoran successfully!",
     "warning": "Failed at adding restoran!"
   },
+  "addAdvert": {
+    "success": "Added advert successfully!",
+    "warning": "Failed at adding advert!"
+  },
   "deleteDegree": {
     "success": "Deleted degree successfully!",
     "warning": "Failed at deleting degree!"
@@ -38,6 +42,10 @@
     "success": "Deleted user sucessfully!",
     "warning": "Failed at deleting user!"
   },
+  "deleteAdvert": {
+    "success": "Deleted advert sucessfully!",
+    "warning": "Failed at deleting advert!"
+  },
   "updateDegree": {
     "success": "Updated degree successfully!",
     "warning": "Failed at updating degree!"
@@ -57,6 +65,10 @@
   "updateUser": {
     "success": "Updated user successfully!",
     "warning": "Failed at updating user!"
+  },
+  "updateAdvert": {
+    "success": "Updated advert successfully!",
+    "warning": "Failed at updating advert!"
   },
   "changePassword": {
     "success": "Updated password successfully!",

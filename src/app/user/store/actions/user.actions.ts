@@ -63,7 +63,9 @@ export class UpdateUserFail implements Action {
 export class UpdateUserSuccess implements Action {
   readonly type = UPDATE_USER_SUCCESS;
 
-  constructor(public payload: User) {}
+  constructor(public payload: User) {
+    localStorage.setItem('user', JSON.stringify(payload));
+  }
 }
 
 export const CHANGE_PASSWORD = '[USER] Change password ';

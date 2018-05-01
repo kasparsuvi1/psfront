@@ -10,7 +10,7 @@ import {Validators, FormBuilder} from '@angular/forms';
 
       <div class="form__row">
         <div class="time-wrapper">
-          <span class="time-label muted">
+          <span class="time-label">
               Choose a preferred time
           </span>
           <timepicker color="primary" [(userTime)]="startTime" (userTimeChange)="startTimeChange($event)"></timepicker>
@@ -31,7 +31,7 @@ import {Validators, FormBuilder} from '@angular/forms';
         <!-- Hotel -->
         <mat-form-field>
           <mat-select placeholder="Hotel" formControlName="hotels" (selectionChange)="hotelChange($event)">
-            <mat-option *ngFor="let hotel of hotels" [value]="[hotel]">
+            <mat-option *ngFor="let hotel of hotels" [value]="hotel.id">
               {{ hotel.name }}
             </mat-option>
           </mat-select>
@@ -40,7 +40,7 @@ import {Validators, FormBuilder} from '@angular/forms';
         <!-- Resto -->
         <mat-form-field>
           <mat-select placeholder="Restoran" formControlName="restos">
-            <mat-option *ngFor="let resto of restos" [value]="[resto]">
+            <mat-option *ngFor="let resto of restos" [value]="resto.id">
               {{ resto.name }}
             </mat-option>
           </mat-select>

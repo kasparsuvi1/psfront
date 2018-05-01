@@ -5,7 +5,7 @@ import {GetUser, UpdateUser, GetHotels, GetRestos, SetRestoFilter} from '../../s
 import {AccountModel} from '../../../core/models/account.models';
 import {Observable} from 'rxjs/Observable';
 import {getUser, getHotels} from '../../store/selectors';
-import {State, GetDegrees, GetOccupations} from '../../../core/store';
+import {State, GetDegrees, GetOccupations, AddAdvert} from '../../../core/store';
 import {getDegrees} from '../../../core/store/selectors/degrees.selectors';
 import {getOccupations} from '../../../core/store/selectors/occupations.selectors';
 import {getRestos, getFilteredRestos} from '../../store/selectors/restos.selectors';
@@ -21,7 +21,7 @@ import {getRestos, getFilteredRestos} from '../../store/selectors/restos.selecto
       </div>
       <div class="user__content">
         <div class="user__profile__image">
-          <img  src="https://pixinvent.com/materialize-material-design-admin-template/images/avatar/avatar-7.png"
+          <img  [src]="profileImagePath"
                 alt="profile image"
                 class="circle">
         </div>
@@ -71,11 +71,13 @@ export class ProfileComponent implements OnInit {
   $restos: Observable<Resto[]>;
   editing: Boolean = false;
   daysRegistered: any;
+  profileImagePath = '../../../../assets/avatars/man5.png';
 
   constructor(private store: Store<UserViewState>, private globalStore: Store<State>) {}
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('user'));
+    this.profileImagePath = this.getProfileImage(this.user.gender);
 
     // user
     this.$user = this.store.select(getUser);
@@ -107,7 +109,7 @@ export class ProfileComponent implements OnInit {
   }
 
   addAdvert(advert) {
-    console.log(advert);
+    this.globalStore.dispatch(new AddAdvert(advert));
   }
 
   setRestoFilter(id) {
@@ -116,5 +118,17 @@ export class ProfileComponent implements OnInit {
 
   edit() {
     this.editing = !this.editing;
+  }
+
+  getProfileImage(gender) {
+    const number = Math.floor(Math.random() * 5) + 1;
+
+    if (gender === 'MALE') {
+      return '../../../../assets/avatars/man' + number + '.png';
+    } else if (gender === 'FEMALE') {
+      return '../../../../assets/avatars/woman' + number + '.png';
+    } else {
+      return '../../../../assets/avatars/man5.png';
+    }
   }
 }

@@ -18,6 +18,7 @@ import {AuthGuardService} from './guards/auth-guard.service';
 import {IsLoggedOffService} from './guards/is-logged-off.service';
 import {MessagesService} from './services/messages.service';
 import {DegreeService} from './services/degree.service';
+import {AdvertService} from './services/advert.service';
 import {OccupationService} from './services/occupation.service';
 import {TOKEN_NAME} from './services/auth.constants';
 
@@ -81,7 +82,8 @@ export function getToken() {
     IsLoggedOffService,
     MessagesService,
     DegreeService,
-    OccupationService
+    OccupationService,
+    AdvertService
   ],
   bootstrap: [AppComponent]
 })
