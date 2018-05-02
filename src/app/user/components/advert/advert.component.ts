@@ -31,7 +31,7 @@ import {Validators, FormBuilder} from '@angular/forms';
         <!-- Hotel -->
         <mat-form-field>
           <mat-select placeholder="Hotel" formControlName="hotels" (selectionChange)="hotelChange($event)">
-            <mat-option *ngFor="let hotel of hotels" [value]="hotel.id">
+            <mat-option *ngFor="let hotel of hotels" [value]="[{id: hotel.id}]">
               {{ hotel.name }}
             </mat-option>
           </mat-select>
@@ -40,7 +40,7 @@ import {Validators, FormBuilder} from '@angular/forms';
         <!-- Resto -->
         <mat-form-field>
           <mat-select placeholder="Restoran" formControlName="restos">
-            <mat-option *ngFor="let resto of restos" [value]="resto.id">
+            <mat-option *ngFor="let resto of restos" [value]="[{id: resto.id}]">
               {{ resto.name }}
             </mat-option>
           </mat-select>
@@ -49,8 +49,8 @@ import {Validators, FormBuilder} from '@angular/forms';
         <!-- Type -->
         <mat-form-field>
           <mat-select placeholder="Meal type" formControlName="mealType">
-            <mat-option *ngFor="let type of types" [value]="type">
-              {{ type }}
+            <mat-option *ngFor="let type of types" [value]="type.value">
+              {{ type.text }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -75,11 +75,11 @@ export class AdvertComponent implements OnInit {
   @Output() add = new EventEmitter<Advert>();
   @Output() ChangeRestoFilter = new EventEmitter<number>();
 
-  startTime = {hour: 12, minute: 0, format: 24};
-  endTime = {hour: 14, minute: 0, format: 24};
+  startTime = {hour: new Date().getHours() + 1, minute: 0, format: 24};
+  endTime = {hour: new Date().getHours() + 2, minute: 0, format: 24};
   date = new Date();
   minDate = new Date();
-  types = ['Breakfast', 'Lunch', 'Dinner'];
+  types = [{value: 'BREAKFAST', text: 'Breakfast'}, {value: 'LUNCH', text: 'Lunch'}, {value: 'DINNER', text: 'Dinner'}];
   preferredStart;
   preferredEnd;
 
