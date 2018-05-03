@@ -8,6 +8,6 @@ export const getUserResponsesData = createSelector(getUserResponsesState, (state
 /*
 * Get all entities and parse them
 */
-export const getUserResponsess = createSelector(getUserResponsesData, entities => {
+export const getUserResponses = createSelector(getUserResponsesData, entities => {
   return Object.keys(entities).map(id => entities[id]);
 });

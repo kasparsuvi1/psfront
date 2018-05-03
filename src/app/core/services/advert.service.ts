@@ -23,4 +23,9 @@ export class AdvertService {
   deleteAdvert(id: number): Observable<Advert> {
     return this.httpClient.delete(`/api/private/advert/delete/${id}`).pipe(map(res => res as Advert));
   }
+
+  acceptResponse(advertId: number, responseId: number) {
+    const empty = {};
+    return this.httpClient.put(`/api/private/advert/${advertId}/accept/${responseId}`, empty).pipe(map(res => res as Response));
+  }
 }

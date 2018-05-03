@@ -27,14 +27,14 @@ import {getRestos, getFilteredRestos} from '../../store/selectors/restos.selecto
         </div>
         <div>
           <h4 class="focused">{{ user.alias ? user.alias : 'alias' }}</h4>
-          <p class="muted">{{ user.occupation ? user.occupation.name : 'Programmer' }}</p>
+          <p class="muted">{{ user.occupation ? user.occupation.name : 'Unkown' }}</p>
         </div>
         <div>
-          <h4 class="focused">{{ user.totalAdverts}}</h4>
+          <h4 class="focused">{{ user.totalAdverts || '0'}}</h4>
           <p class="muted">Posted Adverts</p>
         </div>
         <div>
-          <h4 class="focused">{{ user.totalResponses }}</h4>
+          <h4 class="focused">{{ user.totalResponses || '0'}}</h4>
           <p class="muted">Posted responses</p>
         </div>
         <div>

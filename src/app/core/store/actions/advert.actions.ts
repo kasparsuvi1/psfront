@@ -88,6 +88,28 @@ export class UpdateAdvertSuccess implements Action {
   constructor(public payload: Advert) {}
 }
 
+export const ACCEPT_RESPONSE = '[RESPONSE] Accept advert ';
+export const ACCEPT_RESPONSE_FAIL = '[RESPONSE] Accept advert Fail';
+export const ACCEPT_RESPONSE_SUCCESS = '[RESPONSE] Accept advert Success';
+
+export class AcceptResponse implements Action {
+  readonly type = ACCEPT_RESPONSE;
+
+  constructor(public payload: {advertId: number; responseId: number}) {}
+}
+
+export class AcceptResponseFail implements Action {
+  readonly type = ACCEPT_RESPONSE_FAIL;
+
+  constructor(public payload?: any) {}
+}
+
+export class AcceptResponseSuccess implements Action {
+  readonly type = ACCEPT_RESPONSE_SUCCESS;
+
+  constructor(public payload: Response) {}
+}
+
 export type AdvertsActions =
   | GetUserAdverts
   | GetUserAdvertsFail
@@ -100,4 +122,7 @@ export type AdvertsActions =
   | DeleteAdvertSuccess
   | UpdateAdvert
   | UpdateAdvertFail
-  | UpdateAdvertSuccess;
+  | UpdateAdvertSuccess
+  | AcceptResponse
+  | AcceptResponseFail
+  | AcceptResponseSuccess;

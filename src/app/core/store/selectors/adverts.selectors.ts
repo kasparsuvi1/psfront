@@ -8,6 +8,6 @@ export const getUserAdvertsData = createSelector(getUserAdvertsState, (state: Ad
 /*
 * Get all entities and parse them
 */
-export const getUserAdvertss = createSelector(getUserAdvertsData, entities => {
+export const getUserAdverts = createSelector(getUserAdvertsData, entities => {
   return Object.keys(entities).map(id => entities[id]);
 });
