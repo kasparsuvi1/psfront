@@ -9,12 +9,17 @@ import {getUserResponses} from '../../../core/store/selectors/responses.selector
 @Component({
   selector: 'app-dashboard',
   template: `
-    <p>
-      Siin on kasutaja juba sisse logitud! ja näeb oma infot.
-    </p>
-
-    {{$userAdverts | async | json}}
-    {{$userResponses | async | json}}
+    <div class="header">
+    </div>
+    <div class="wrapper">
+      <!-- User Adverts -->
+      <app-adverts [adverts]="$userAdverts | async"></app-adverts>
+      <!-- User Responses -->
+      <app-responses [responses]="$userResponses | async"></app-responses>
+    </div>
+    <!-- {{$userAdverts | async | json}}
+    <hr>
+    {{$userResponses | async | json}} -->
 
   `,
   styleUrls: ['./dashboard.component.scss']

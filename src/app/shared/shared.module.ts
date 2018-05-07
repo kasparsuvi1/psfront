@@ -23,6 +23,7 @@ import {TableComponent} from './components/table/table.component';
 // pipes
 import {DataSourcePipe} from './pipe/data-source.pipe';
 import {HourMinPipe} from './pipe/hour-min.pipe';
+import {StateTranslaterPipe} from './pipe/state-translater.pipe';
 
 @NgModule({
   imports: [
@@ -40,7 +41,7 @@ import {HourMinPipe} from './pipe/hour-min.pipe';
     MatSelectModule,
     MatTooltipModule
   ],
-  declarations: [MessageComponent, TableComponent, DataSourcePipe, HourMinPipe],
-  exports: [MessageComponent, TableComponent, DataSourcePipe, HourMinPipe]
+  declarations: [MessageComponent, TableComponent, DataSourcePipe, HourMinPipe, StateTranslaterPipe],
+  exports: [MessageComponent, TableComponent, DataSourcePipe, HourMinPipe, StateTranslaterPipe]
 })
 export class SharedModule {}
