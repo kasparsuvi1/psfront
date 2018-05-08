@@ -1,10 +1,10 @@
 {
   "/oauth": {
-    "target": "http://144.202.77.179",
+    "target": "https://144.202.77.179/",
     "secure": false
   },
   "/api": {
-    "target": "http://144.202.77.179",
+    "target": "https://144.202.77.179/",
     "secure": false
   },
   "changeOrigin": true,

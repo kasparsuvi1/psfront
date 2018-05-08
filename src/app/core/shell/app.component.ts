@@ -81,7 +81,9 @@ export class AppComponent implements OnInit {
       this.account = res as AccountModel;
     });
     this.$user = this.store.select(getUserData);
-    this.store.dispatch(new WhoAmI(this.account.userId));
+    if (this.account.userId) {
+      this.store.dispatch(new WhoAmI(this.account.userId));
+    }
   }
 
   isRouteAvailable(route: any, roles: any) {
