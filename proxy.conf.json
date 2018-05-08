@@ -1,10 +1,10 @@
 {
   "/oauth": {
-    "target": "http://138.68.71.15:8080",
+    "target": "http://144.202.77.179",
     "secure": false
   },
   "/api": {
-    "target": "http://138.68.71.15:8080",
+    "target": "http://144.202.77.179",
     "secure": false
   },
   "changeOrigin": true,
