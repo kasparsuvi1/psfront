@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AdminComponent} from './admin.component';
+import {StasticsComponent} from '../../components/stastics/stastics.component';
 import {StoreModule} from '@ngrx/store';
 import {reducers, metaReducers} from '../../../core/store';
 
@@ -8,14 +9,12 @@ describe('AdminComponent', () => {
   let component: AdminComponent;
   let fixture: ComponentFixture<AdminComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [AdminComponent],
-        imports: [StoreModule.forRoot(reducers, {metaReducers})]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [AdminComponent],
+      imports: [StoreModule.forRoot(reducers, {metaReducers})]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminComponent);

@@ -51,7 +51,6 @@ export function getToken() {
   imports: [
     GooglePlaceModule,
     BrowserModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     CoreRoutingModule,
