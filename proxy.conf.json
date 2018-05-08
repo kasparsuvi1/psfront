@@ -1,12 +1,14 @@
 {
   "/oauth": {
     "target": "https://144.202.77.179/",
-    "secure": false
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   },
   "/api": {
     "target": "https://144.202.77.179/",
-    "secure": false
-  },
-  "changeOrigin": true,
-  "logLevel": "debug"
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
 }
