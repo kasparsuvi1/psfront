@@ -1,6 +1,6 @@
 import {AuthenticationService} from '../../services/authentication.service';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable, of} from 'rxjs';
 
 import {Effect, Actions} from '@ngrx/effects';
 
@@ -8,7 +8,6 @@ import * as fromAccount from '../actions/account.actions';
 
 import {Go} from '../actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {of} from 'rxjs/observable/of';
 import * as decode from 'jwt-decode';
 import {AccountModel} from '../../models/account.models';
 import {MessagesService, messages} from '../../services/messages.service';

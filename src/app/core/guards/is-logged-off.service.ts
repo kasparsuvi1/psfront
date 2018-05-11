@@ -5,9 +5,8 @@ import {State} from '../store/reducers';
 import {getAccountData} from '../store/selectors';
 import {map, take} from 'rxjs/operators';
 import {Login} from '../store/actions';
-import {Observable} from 'rxjs/Observable';
+import {Observable, of} from 'rxjs';
 import {AccountModel} from '../models/account.models';
-import {of} from 'rxjs/observable/of';
 import {Go} from '../store';
 
 @Injectable()

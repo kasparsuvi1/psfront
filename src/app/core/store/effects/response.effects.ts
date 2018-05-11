@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect} from '@ngrx/effects';
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {of} from 'rxjs/observable/of';
+import {of} from 'rxjs';
 import {ResponseService} from '../../services/response.service';
 import {
   GET_USER_RESPONSES,

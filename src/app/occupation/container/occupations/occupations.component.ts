@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {OccupationsViewState} from '../../store/reducers';
 import {getOccupations} from '../../store/selectors';

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {RouterModule, Routes} from '@angular/router';
 import {State, GetUserAdverts, GetUserResponses} from '../../../core/store';
 import {getUserAdverts} from '../../../core/store/selectors/adverts.selectors';

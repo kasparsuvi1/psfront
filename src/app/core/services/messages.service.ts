@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs/Subject';
+import {Subject, Observable} from 'rxjs';
 import {NavigationStart, Router} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
 import * as Messages from '../../messages.json';
 
 export class Message {

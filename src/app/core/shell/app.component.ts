@@ -3,11 +3,10 @@ import {AuthenticationService} from '../services/authentication.service';
 import {Store} from '@ngrx/store';
 import {State, WhoAmI} from '../store';
 import * as accountActions from '../../core/store/actions/account.actions';
-import {Observable} from 'rxjs/Observable';
+import {Observable, Subscription} from 'rxjs';
 import {AccountModel} from '../models/account.models';
 import {getAccountData, getUserData} from '../store/selectors';
 import {routes} from '../core-routing.module';
-import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',

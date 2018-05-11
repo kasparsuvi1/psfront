@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable, of} from 'rxjs';
 import {map, catchError} from 'rxjs/operators';
 import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
 
 import * as decode from 'jwt-decode';
 import {TOKEN_AUTH_PASSWORD, TOKEN_AUTH_USERNAME, TOKEN_NAME} from './auth.constants';
 import {AccountModel} from '../models/account.models';
-import {of} from 'rxjs/observable/of';
 
 @Injectable()
 export class AuthenticationService {

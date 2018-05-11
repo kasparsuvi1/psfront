@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {AdvertsViewState} from '../../store/reducers';
 import {getAdverts} from '../../store/selectors';
