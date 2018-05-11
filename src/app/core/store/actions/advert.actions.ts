@@ -1,8 +1,8 @@
 import {Action} from '@ngrx/store';
 
-export const GET_USER_ADVERTS = '[ADVERTS] Get adverts ';
-export const GET_USER_ADVERTS_FAIL = '[ADVERTS] Get adverts Fail';
-export const GET_USER_ADVERTS_SUCCESS = '[ADVERTS] Get adverts Success';
+export const GET_USER_ADVERTS = '[USER-ADVERTS] Get User adverts ';
+export const GET_USER_ADVERTS_FAIL = '[USER-ADVERTS] Get User adverts Fail';
+export const GET_USER_ADVERTS_SUCCESS = '[USER-ADVERTS] Get User adverts Success';
 
 export class GetUserAdverts implements Action {
   readonly type = GET_USER_ADVERTS;
@@ -22,9 +22,9 @@ export class GetUserAdvertsSuccess implements Action {
   constructor(public payload: Advert[]) {}
 }
 
-export const ADD_ADVERT = '[ADVERT] Add advert ';
-export const ADD_ADVERT_FAIL = '[ADVERT] Add advert Fail';
-export const ADD_ADVERT_SUCCESS = '[ADVERT] Add advert Success';
+export const ADD_ADVERT = '[CORE-ADVERT] Add advert ';
+export const ADD_ADVERT_FAIL = '[CORE-ADVERT] Add advert Fail';
+export const ADD_ADVERT_SUCCESS = '[CORE-ADVERT] Add advert Success';
 
 export class AddAdvert implements Action {
   readonly type = ADD_ADVERT;
@@ -44,9 +44,9 @@ export class AddAdvertSuccess implements Action {
   constructor(public payload: Advert) {}
 }
 
-export const DELETE_ADVERT = '[ADVERT] Delete advert ';
-export const DELETE_ADVERT_FAIL = '[ADVERT] Delete advert Fail';
-export const DELETE_ADVERT_SUCCESS = '[ADVERT] Delete advert Success';
+export const DELETE_ADVERT = '[CORE-ADVERT] Delete advert ';
+export const DELETE_ADVERT_FAIL = '[CORE-ADVERT] Delete advert Fail';
+export const DELETE_ADVERT_SUCCESS = '[CORE-ADVERT] Delete advert Success';
 
 export class DeleteAdvert implements Action {
   readonly type = DELETE_ADVERT;
@@ -66,9 +66,9 @@ export class DeleteAdvertSuccess implements Action {
   constructor(public payload: Advert) {}
 }
 
-export const UPDATE_ADVERT = '[ADVERT] Update advert ';
-export const UPDATE_ADVERT_FAIL = '[ADVERT] Update advert Fail';
-export const UPDATE_ADVERT_SUCCESS = '[ADVERT] Update advert Success';
+export const UPDATE_ADVERT = '[CORE-ADVERT] Update advert ';
+export const UPDATE_ADVERT_FAIL = '[CORE-ADVERT] Update advert Fail';
+export const UPDATE_ADVERT_SUCCESS = '[CORE-ADVERT] Update advert Success';
 
 export class UpdateAdvert implements Action {
   readonly type = UPDATE_ADVERT;

@@ -7,6 +7,10 @@ import {map} from 'rxjs/operators';
 export class AdvertService {
   constructor(private httpClient: HttpClient) {}
 
+  getAdverts(): Observable<Advert[]> {
+    return this.httpClient.get(`/api/private/advert`).pipe(map(res => res as Advert[]));
+  }
+
   // TODO: Renee teeb bäcki ka ilma id'ta päringu
   getUserAdverts(): Observable<Advert[]> {
     return this.httpClient.get(`/api/private/user/adverts`).pipe(map(res => res as Advert[]));
@@ -25,7 +29,6 @@ export class AdvertService {
   }
 
   acceptResponse(advertId: number, responseId: number) {
-    const empty = {};
-    return this.httpClient.put(`/api/private/advert/${advertId}/accept/${responseId}`, empty).pipe(map(res => res as Response));
+    return this.httpClient.put(`/api/private/advert/${advertId}/accept/${responseId}`, {}).pipe(map(res => res as Response));
   }
 }
