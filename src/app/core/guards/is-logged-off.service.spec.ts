@@ -1,11 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { Store } from '@ngrx/store';
 
 import { IsLoggedOffService } from './is-logged-off.service';
 
 describe('IsLoggedOffService', () => {
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [IsLoggedOffService]
+      providers: [IsLoggedOffService],
+      imports: [Store]
     });
   });
 

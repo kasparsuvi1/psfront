@@ -61,7 +61,7 @@ export function getToken() {
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken,
-        whitelistedDomains: ['138.68.71.15:8080']
+        whitelistedDomains: ['144.202.77.179:443']
       }
     }),
     StoreRouterConnectingModule,

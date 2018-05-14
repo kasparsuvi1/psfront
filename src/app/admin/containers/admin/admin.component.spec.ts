@@ -11,7 +11,9 @@ describe('AdminComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminComponent],
+      declarations: [
+        AdminComponent,
+        StasticsComponent],
       imports: [StoreModule.forRoot(reducers, {metaReducers})]
     }).compileComponents();
   }));
