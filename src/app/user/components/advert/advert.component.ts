@@ -21,7 +21,12 @@ import {Validators, FormBuilder} from '@angular/forms';
         </div>
 
         <mat-form-field class="ml1">
-          <input matInput [matDatepicker]="date" [min]="minDate" placeholder="Choose a date" formControlName="date">
+          <input  matInput
+                  [matDatepicker]="date"
+                  [min]="minDate"
+                  placeholder="Choose a date"
+                  formControlName="date"
+                  (dateChange)="dateChange($event)">
           <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
           <mat-datepicker #date></mat-datepicker>
         </mat-form-field>
@@ -108,6 +113,11 @@ export class AdvertComponent implements OnInit {
 
   endTimeChange(time) {
     this.preferredEnd.setValue(this.setTimeDate(time, this.date));
+  }
+
+  dateChange(date) {
+    this.preferredEnd.setValue(this.setTimeDate(this.endTime, date.value));
+    this.preferredStart.setValue(this.setTimeDate(this.startTime, date.value));
   }
 
   emitData() {

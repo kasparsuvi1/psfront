@@ -4,7 +4,7 @@ import {Component, OnInit, Input} from '@angular/core';
   selector: 'app-advert',
   template: `
     <p>
-      advert works!
+      {{advert | json}}
     </p>
   `,
   styleUrls: ['./advert.component.scss']

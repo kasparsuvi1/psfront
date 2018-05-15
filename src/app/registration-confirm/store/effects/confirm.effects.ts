@@ -31,11 +31,10 @@ export class ConfirmEffect {
     })
   );
 
-  @Effect()
+  @Effect({dispatch: false})
   confirmRegistrationSuccess$ = this.actions$.ofType(CONFIRM_REGISTRATION_SUCCESS).pipe(
     map(() => {
       this.messagesService.success(messages.confirmRegistration.success);
-      return new Go({path: [`/dashboard/`]});
     })
   );
 

@@ -16,12 +16,12 @@ import {FormBuilder, Validators} from '@angular/forms';
       <form class="centered-box" [formGroup]="form">
         <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/logo.png" alt="Logo">
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="">
           <input matInput placeholder="Email" formControlName="email">
           <mat-error>Insert your email or alias</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="">
           <input type="password" matInput placeholder="Password" formControlName="password">
           <mat-error>Insert your password</mat-error>
         </mat-form-field>
