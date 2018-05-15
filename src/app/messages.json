@@ -82,6 +82,10 @@
     "success": "Updated response successfully!",
     "warning": "Failed at updating response!"
   },
+  "confirmRegistration": {
+    "success": "Confirmed registration successfully!",
+    "warning": "Failed at confirming registration!"
+  },
   "changePassword": {
     "success": "Updated password successfully!",
     "warning": "Failed at updating password!"

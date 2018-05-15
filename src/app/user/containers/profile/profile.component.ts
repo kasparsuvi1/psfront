@@ -3,7 +3,7 @@ import {Store} from '@ngrx/store';
 import {UserViewState} from '../../store/reducers';
 import {GetUser, UpdateUser, GetHotels, GetRestos, SetRestoFilter} from '../../store/actions';
 import {AccountModel} from '../../../core/models/account.models';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {getUser, getHotels} from '../../store/selectors';
 import {State, GetDegrees, GetOccupations, AddAdvert} from '../../../core/store';
 import {getDegrees} from '../../../core/store/selectors/degrees.selectors';

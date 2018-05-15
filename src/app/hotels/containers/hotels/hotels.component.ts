@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Store, createSelector} from '@ngrx/store';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 import {HotelsViewState, getHotelsViewsState} from '../../store/reducers';
 import {getHotels} from '../../store/selectors';

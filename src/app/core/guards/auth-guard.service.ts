@@ -4,10 +4,9 @@ import {select, Store} from '@ngrx/store';
 import {State} from '../store/reducers';
 import {getAccountData} from '../store/selectors';
 import {map, take} from 'rxjs/operators';
-import {Login} from '../store/actions';
-import {Observable} from 'rxjs/Observable';
+import {Login, Logout} from '../store/actions';
+import {Observable, of} from 'rxjs';
 import {AccountModel} from '../models/account.models';
-import {of} from 'rxjs/observable/of';
 import {Go} from '../store';
 
 @Injectable()
@@ -20,6 +19,9 @@ export class AuthGuardService implements CanActivate {
       map((account: AccountModel) => {
         const expectedRoles = next.data.expectedRoles;
         const havingRole = account.roles.some(role => expectedRoles.indexOf(role) !== -1);
+        if (!account.authenticated) {
+          this.store.dispatch(new Logout());
+        }
 
         if (account.authenticated && havingRole) {
           return true;

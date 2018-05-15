@@ -18,7 +18,9 @@ import {Component, OnInit, Input} from '@angular/core';
       <ng-container *ngFor="let response of advert.responses">
         <div class="response">
           <div class="response__body">
-            <h3 class="mat-subheading-1">{{response.user.alias}} | <span class="muted">{{response.user.occupation.name}}</span></h3>
+            <h3 class="mat-subheading-1">
+              {{response.user.alias || 'Anonymous'}} | <span class="muted">{{response.user.occupation?.name || 'No occupation'}}</span>
+            </h3>
             <p class="mat-body-1">{{response.responseText}}</p>
           </div>
           <div class="response__footer">

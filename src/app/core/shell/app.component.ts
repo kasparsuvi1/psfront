@@ -3,11 +3,10 @@ import {AuthenticationService} from '../services/authentication.service';
 import {Store} from '@ngrx/store';
 import {State, WhoAmI} from '../store';
 import * as accountActions from '../../core/store/actions/account.actions';
-import {Observable} from 'rxjs/Observable';
+import {Observable, Subscription} from 'rxjs';
 import {AccountModel} from '../models/account.models';
 import {getAccountData, getUserData} from '../store/selectors';
 import {routes} from '../core-routing.module';
-import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +22,7 @@ import {Subscription} from 'rxjs/Subscription';
             <button mat-button
                     [routerLink]="['/' + route.path]"
                     routerLinkActive="btn-toolbar--active"
-                    *ngIf="isRouteAvailable(route, account.roles)">
+                    *ngIf="isRouteAvailable(route, account.roles) && route.data.title">
               {{route.data.title}}
             </button>
           </ng-container>
@@ -47,7 +46,7 @@ import {Subscription} from 'rxjs/Subscription';
           <button class="menu-item"
                   mat-menu-item
                   [routerLink]="['/' + route.path]"
-                  *ngIf="isRouteAvailable(route, account.roles)">
+                  *ngIf="isRouteAvailable(route, account.roles) && route.data.title">
             {{route.data.title}}
           </button>
         </ng-container>

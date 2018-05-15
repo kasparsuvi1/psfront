@@ -9,7 +9,7 @@ enum AdvertTranslations {
 enum ResponseTranslations {
   DECLINED = 'Sorry, it was declined',
   NOT_ANSWERED = 'Not yet answered!',
-  ACCEPTED = "Whoop! It's arranged"
+  ACCEPTED = 'Whoop! It\'s arranged'
 }
 
 export type translaterPipeArgs = 'ADVERT' | 'RESPONSE';

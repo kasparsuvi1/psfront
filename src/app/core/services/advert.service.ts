@@ -1,11 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Injectable()
 export class AdvertService {
   constructor(private httpClient: HttpClient) {}
+
+  getAdverts(): Observable<Advert[]> {
+    return this.httpClient.get(`/api/private/advert`).pipe(map(res => res as Advert[]));
+  }
 
   // TODO: Renee teeb bäcki ka ilma id'ta päringu
   getUserAdverts(): Observable<Advert[]> {
@@ -25,7 +29,6 @@ export class AdvertService {
   }
 
   acceptResponse(advertId: number, responseId: number) {
-    const empty = {};
-    return this.httpClient.put(`/api/private/advert/${advertId}/accept/${responseId}`, empty).pipe(map(res => res as Response));
+    return this.httpClient.put(`/api/private/advert/${advertId}/accept/${responseId}`, {}).pipe(map(res => res as Response));
   }
 }

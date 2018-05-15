@@ -78,6 +78,15 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'adverts',
+    loadChildren: '../adverts/adverts.module#AdvertsModule',
+    canActivate: [AuthGuardService],
+    data: {
+      title: 'ADVERTS',
+      expectedRoles: [RoleValues.ADMIN_USER, RoleValues.STANDARD_USER]
+    }
+  },
+  {
     path: 'user',
     loadChildren: '../user/user.module#UserModule',
     canActivate: [AuthGuardService],
@@ -85,6 +94,14 @@ export const routes: Routes = [
       title: 'PROFILE',
       expectedRoles: [RoleValues.ADMIN_USER, RoleValues.STANDARD_USER]
     }
+  },
+  {
+    path: 'registration-confirm',
+    loadChildren: '../registration-confirm/registration-confirm.module#RegistrationConfirmModule'
+  },
+  {
+    path: 'reset-password',
+    loadChildren: '../reset-password/reset-password.module#ResetPasswordModule'
   },
   {
     path: '',

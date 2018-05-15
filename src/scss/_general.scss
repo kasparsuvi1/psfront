@@ -61,7 +61,7 @@ body {
   right: 0;
   text-align: center;
   top: 0;
-  width: 100%;
+  width: calc(100% - 90px);
 
   &--long {
     height: 420px;
@@ -81,6 +81,22 @@ body {
 
     &:hover {
       cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .centered-box {
+    height: 270px;
+
+    &__logo {
+      height: 54px;
+      margin-left: -135px;
+      width: 270px;
+    }
+
+    &--long {
+      height: 420px;
     }
   }
 }

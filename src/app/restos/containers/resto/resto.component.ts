@@ -1,10 +1,9 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription, Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {RestosViewState} from '../../store/reducers';
 import {getSelectedResto, getHotels} from '../../store/selectors';
 import {GetRestos, DeleteResto, GetHotels, UpdateResto} from '../../store/actions';
-import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-resto',
