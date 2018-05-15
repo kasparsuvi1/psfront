@@ -1,4 +1,4 @@
-import {GET_ADVERTS, GET_ADVERTS_FAIL, GET_ADVERTS_SUCCESS, AdvertsActions} from '../actions/adverts.actions';
+import {GET_ADVERTS, GET_ADVERTS_FAIL, GET_ADVERTS_SUCCESS, AdvertsActions, SET_ADVERT_FILTER} from '../actions/adverts.actions';
 
 export interface AdvertsState {
   entities: {[id: number]: Advert};
@@ -31,6 +31,9 @@ export function advertsReducer(state: AdvertsState = initialState, action: Adver
       }, {});
 
       return {...state, entities, loading: false, loaded: true};
+    case SET_ADVERT_FILTER:
+      return {...state, filters: action.payload};
+
     default:
       return state;
   }

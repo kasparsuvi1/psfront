@@ -88,10 +88,11 @@ body {
 @media only screen and (max-width: 768px) {
   .centered-box {
     height: 270px;
+
     &__logo {
-      width: 270px;
       height: 54px;
       margin-left: -135px;
+      width: 270px;
     }
 
     &--long {

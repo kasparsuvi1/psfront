@@ -27,7 +27,7 @@ export const SET_ADVERT_FILTER = '[ADVERTS] Set filter';
 export class SetAdvertFilter implements Action {
   readonly type = SET_ADVERT_FILTER;
 
-  constructor(public payload: {hotel?: number}) {}
+  constructor(public payload: {hotel: number}) {}
 }
 
 export type AdvertsActions = GetAdverts | GetAdvertsFail | GetAdvertsSuccess | SetAdvertFilter;

@@ -1,0 +1,21 @@
+.time-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.time-label {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+}
+
+.form {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

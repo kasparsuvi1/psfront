@@ -15,3 +15,11 @@ export const getAdvertsLoading = createSelector(getAdvertsState, (state: Adverts
 export const getAdverts = createSelector(getAdvertsEntities, entities => {
   return Object.keys(entities).map(id => entities[id]);
 });
+
+export const getFilteredAdverts = createSelector(getAdvertsState, (state: AdvertsState) => {
+  let data = Object.keys(state.entities).map(id => state.entities[id]);
+  if (state.filters.hotel) {
+    data = data.filter(advert => advert.hotels[0] && advert.hotels[0].id === state.filters.hotel);
+  }
+  return data;
+});

@@ -80,6 +80,7 @@ export class AdvertComponent implements OnInit {
   @Output() add = new EventEmitter<Advert>();
   @Output() ChangeRestoFilter = new EventEmitter<number>();
 
+  // TODO: BUG IF TIME IS OVER 23:00, it will give time 25..
   startTime = {hour: new Date().getHours() + 1, minute: 0, format: 24};
   endTime = {hour: new Date().getHours() + 2, minute: 0, format: 24};
   date = new Date();
