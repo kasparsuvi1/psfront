@@ -44,5 +44,5 @@ export class AdvertsComponent implements OnInit {
     this.store.dispatch(new GetHotels());
   }
 
-  statusChange() {}
+  statusChange(test) {}
 }

@@ -96,6 +96,14 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'registration-confirm',
+    loadChildren: '../registration-confirm/registration-confirm.module#RegistrationConfirmModule'
+  },
+  {
+    path: 'reset-password',
+    loadChildren: '../reset-password/reset-password.module#ResetPasswordModule'
+  },
+  {
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'

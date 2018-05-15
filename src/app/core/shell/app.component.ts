@@ -22,7 +22,7 @@ import {routes} from '../core-routing.module';
             <button mat-button
                     [routerLink]="['/' + route.path]"
                     routerLinkActive="btn-toolbar--active"
-                    *ngIf="isRouteAvailable(route, account.roles)">
+                    *ngIf="isRouteAvailable(route, account.roles) && route.data.title">
               {{route.data.title}}
             </button>
           </ng-container>
@@ -46,7 +46,7 @@ import {routes} from '../core-routing.module';
           <button class="menu-item"
                   mat-menu-item
                   [routerLink]="['/' + route.path]"
-                  *ngIf="isRouteAvailable(route, account.roles)">
+                  *ngIf="isRouteAvailable(route, account.roles) && route.data.title">
             {{route.data.title}}
           </button>
         </ng-container>
