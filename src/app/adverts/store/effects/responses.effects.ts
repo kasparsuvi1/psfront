@@ -33,14 +33,16 @@ export class ResponsesEffect {
     map(() => new GetAdverts()),
     map(() => {
       this.messagesService.success(messages.addResponse.success);
+      return new Go({path: [`/adverts/`]});
     })
   );
 
   @Effect()
   addResponseFail$ = this.actions$.ofType(ADD_RESPONSE_FAIL).pipe(
+    map(() => new GetAdverts()),
     map(() => {
       this.messagesService.warn(messages.addResponse.warning);
-    }),
-    map(() => new GetAdverts())
+      return new Go({path: [`/adverts/`]});
+    })
   );
 }

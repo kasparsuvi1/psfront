@@ -3,7 +3,9 @@ import {GET_ADVERTS, GET_ADVERTS_FAIL, GET_ADVERTS_SUCCESS, AdvertsActions, SET_
 export interface AdvertsState {
   entities: {[id: number]: Advert};
   filters: {
-    hotel: number;
+    hotel?: number;
+    occupation?: number;
+    degree?: number;
   };
   loaded: boolean;
   loading: boolean;
@@ -12,7 +14,9 @@ export interface AdvertsState {
 export const initialState: AdvertsState = {
   entities: {},
   filters: {
-    hotel: null
+    hotel: null,
+    occupation: null,
+    degree: null
   },
   loaded: false,
   loading: false
