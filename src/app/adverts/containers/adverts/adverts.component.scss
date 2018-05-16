@@ -1,0 +1,10 @@
+.form__field {
+  margin-right: 1rem;
+}
+
+@media (max-width: 625px) {
+  .form__field {
+    margin-right: 0;
+    width: 100%;
+  }
+}

@@ -28,7 +28,7 @@ import {AnswerAdvertComponent} from '../answer-advert/answer-advert.component';
       </div>
 
       <div class="advert__actions">
-        <button mat-button color="primary" (click)="openDialog()">Answer</button>
+        <button mat-button color="primary" [disabled]="hasAnswered" (click)="openDialog()">Answer</button>
       </div>
     </div>
   `,
@@ -39,7 +39,15 @@ export class AdvertComponent implements OnInit {
   @Output() addResponse = new EventEmitter<Response>();
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit() {}
+  user = JSON.parse(localStorage.getItem('user'));
+  hasAnswered = false;
+  ngOnInit() {
+    if (this.advert.responses.filter(response => response.user.id === this.user.id).length) {
+      this.hasAnswered = true;
+    } else {
+      this.hasAnswered = false;
+    }
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AnswerAdvertComponent, {
@@ -48,7 +56,7 @@ export class AdvertComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && !this.hasAnswered) {
         this.addResponse.emit(result);
       }
     });
