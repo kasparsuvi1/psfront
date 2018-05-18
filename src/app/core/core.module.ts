@@ -61,7 +61,7 @@ export function getToken() {
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken,
-        whitelistedDomains: ['138.68.71.15:8080']
+        whitelistedDomains: ['https://profmeetclub.com']
       }
     }),
     StoreRouterConnectingModule,

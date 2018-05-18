@@ -1,12 +1,12 @@
 {
   "/oauth": {
-    "target": "https://144.202.77.179/",
+    "target": "https://profmeetclub.com",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
   },
   "/api": {
-    "target": "https://144.202.77.179/",
+    "target": "https://profmeetclub.com",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
