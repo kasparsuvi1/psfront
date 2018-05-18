@@ -56,6 +56,12 @@ import {getDegrees} from '../../../core/store/selectors/degrees.selectors';
                 [advert]="advert"
                 (addResponse)="addResponse($event)">
     </app-advert>
+
+    <ng-container *ngIf="$adverts | async as adverts">
+      <p class="muted" *ngIf="!adverts.length">
+        Sorry, there isn't any advert :(
+      </p>
+    </ng-container>
   </div>
 
   `,

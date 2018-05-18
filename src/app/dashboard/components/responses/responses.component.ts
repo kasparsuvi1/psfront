@@ -3,7 +3,7 @@ import {Component, OnInit, Input} from '@angular/core';
 @Component({
   selector: 'app-responses',
   template: `
-  <h3>Responses you have added:</h3>
+  <h3 class="mat-title">Responses you have added:</h3>
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel *ngFor="let response of responses" hideToggle="true">
 

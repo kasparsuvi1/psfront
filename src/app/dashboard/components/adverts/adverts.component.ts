@@ -5,7 +5,7 @@ import {State, AcceptResponse} from '../../../core/store';
 @Component({
   selector: 'app-adverts',
   template: `
-  <h3>Adverts you have added:</h3>
+  <h3 class="mat-title">Adverts you have added:</h3>
   <mat-accordion class="example-headers-align">
     <mat-expansion-panel *ngFor="let advert of adverts" hideToggle="true">
       <mat-expansion-panel-header>
