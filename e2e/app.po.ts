@@ -26,6 +26,18 @@ export class AppPage {
   }
 
   getDashboardButton() {
-    return element(by.css('[routerlinkactive="btn-toolbar--active"]')).getText();
+    return element(by.cssContainingText('button', 'DASHBOARD')).getText();
+  }
+
+  getEmailField() {
+    return element(by.css('[formcontrolname="email"]'));
+  }
+
+  getPasswordField() {
+    return element(by.css('[formcontrolname="password"]'));
+  }
+
+  getLoginButton() {
+    return element(by.css('.mat-button-wrapper'));
   }
 }

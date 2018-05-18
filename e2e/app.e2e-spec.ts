@@ -39,10 +39,12 @@ describe('psfront App', () => {
     page.navigateTo();
     page.getHomeLoginButton().click();
 
-    return element(by.css('[formcontrolname="email"]')).sendKeys('standard@user.com');
-    return element(by.css('[formcontrolname="password"]')).sendKeys('uxt1sRmdmb0LJ34S7pFkeuNcbcSkFqybJEE_tOgbFf5YWJlsm5gw0H0pkeHExO5L');
+    // page.getEmailField().sendKeys('standard@user.com');
+    // page.getPasswordField().sendKeys('uxt1sRmdmb0LJ34S7pFkeuNcbcSkFqybJEE_tOgbFf5YWJlsm5gw0H0pkeHExO5L');
 
-    return element(by.css('.mat-button-wrapper')).click();
+    page.getLoginButton().click();
+
+    browser.debugger();
     expect(page.getDashboardButton()).toEqual('DASHBOARD');
 
   });
