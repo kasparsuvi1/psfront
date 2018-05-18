@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AdminComponent} from './admin.component';
-import {StasticsComponent} from '../../components/stastics/stastics.component';
+import {StatisticsComponent} from '../../components/statistics/statistics.component';
 import {StoreModule} from '@ngrx/store';
 import {reducers, metaReducers} from '../../../core/store';
 
@@ -13,7 +13,7 @@ describe('AdminComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AdminComponent,
-        StasticsComponent],
+        StatisticsComponent],
       imports: [StoreModule.forRoot(reducers, {metaReducers})]
     }).compileComponents();
   }));

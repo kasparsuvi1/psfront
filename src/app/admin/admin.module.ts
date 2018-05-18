@@ -16,11 +16,11 @@ import {UsersService} from './services/users.service';
 
 // components
 import {AdminComponent} from './containers/admin/admin.component';
-import { StasticsComponent } from './components/stastics/stastics.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(AdminRoutes), StoreModule.forFeature('admin', reducers), EffectsModule.forFeature(effects)],
-  declarations: [AdminComponent, StasticsComponent],
+  declarations: [AdminComponent, StatisticsComponent],
   providers: [UsersService]
 })
 export class AdminModule {}

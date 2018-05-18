@@ -9,8 +9,8 @@ import {GetUsers} from '../../store/actions';
   selector: 'app-admin',
   template: `
 
-      <app-stastics [users]="$users | async">
-      </app-stastics>
+      <app-statistics [users]="$users | async">
+      </app-statistics>
   `,
   styleUrls: ['./admin.component.scss']
 })
