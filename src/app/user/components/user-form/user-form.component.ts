@@ -16,14 +16,14 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
         </mat-form-field>
         <mat-form-field class="form-field">
           <mat-select placeholder="Occupation" formControlName="occupation">
-            <mat-option *ngFor="let occupation of occupations" [value]="occupation">
+            <mat-option *ngFor="let occupation of occupations" [value]="occupation.id">
               {{ occupation.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field class="form-field">
           <mat-select placeholder="degree" formControlName="degree">
-            <mat-option *ngFor="let degree of degrees" [value]="degree">
+            <mat-option *ngFor="let degree of degrees" [value]="degree.id">
               {{ degree.name }}
             </mat-option>
           </mat-select>
@@ -31,19 +31,13 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
         <mat-form-field class="form-field">
           <mat-select placeholder="Age" formControlName="age">
-            <mat-option value="">
-              Rather not say
+            <mat-option value="YOUNG">
+              18-30
             </mat-option>
-            <mat-option value="18-">
-              18-
+            <mat-option value="ADULT">
+              31-50
             </mat-option>
-            <mat-option value="20-35">
-              20-35
-            </mat-option>
-            <mat-option value="35-50">
-              35-50
-            </mat-option>
-            <mat-option value="50+">
+            <mat-option value="SENIOR">
               50+
             </mat-option>
           </mat-select>
@@ -86,13 +80,16 @@ export class UserFormComponent implements OnChanges {
       alias: [this.user.alias, [Validators.required]],
       gender: [this.user.gender],
       age: [this.user.age],
-      occupation: [this.user.occupation],
-      degree: [this.user.degree]
+      occupation: [this.user.occupation.id],
+      degree: [this.user.degree.id]
     });
   }
   emitData() {
     if (this.user.id && this.form.valid) {
-      this.save.emit({...this.user, ...this.form.value});
+      let value = this.form.value;
+      value = {...this.user, ...value, occupation: {id: value.occupation}, degree: {id: value.degree}};
+      console.log(value);
+      this.save.emit(value);
     } else {
       this.markFormGroupTouched(this.form);
     }

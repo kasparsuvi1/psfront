@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "node server.js",
     "startlocal": "ng serve --open --proxy-config proxy.conf.json",
-    "build": "ng build --prod --base-href=/perfectstrangers/",
+    "build": "ng build --prod --build-optimizer",
     "test": "ng test",
     "lint": "ng lint psfront psfront-e2e --fix && npm run lint:scss",
     "lint:scss": "stylelint \"src/**/*.scss\" --fix",

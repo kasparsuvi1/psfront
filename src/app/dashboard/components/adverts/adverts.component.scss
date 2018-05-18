@@ -18,9 +18,11 @@
 }
 
 .response {
-  border-bottom-color: rgba(0, 0, 0, 0.12);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+  &not:first-of-type {
+    border-top-color: rgba(0, 0, 0, 0.12);
+    border-top-style: solid;
+    border-top-width: 1px;
+  }
 
   &__body {
     padding: 0.5rem 0;

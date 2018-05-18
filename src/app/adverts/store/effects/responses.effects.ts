@@ -33,7 +33,7 @@ export class ResponsesEffect {
     map(() => new GetAdverts()),
     map(() => {
       this.messagesService.success(messages.addResponse.success);
-      return new Go({path: [`/adverts/`]});
+      return new Go({path: [`/dashboard/`]});
     })
   );
 

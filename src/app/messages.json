@@ -89,5 +89,9 @@
   "changePassword": {
     "success": "Updated password successfully!",
     "warning": "Failed at updating password!"
+  },
+  "acceotResponse": {
+    "success": "Accepted response successfully!",
+    "warning": "Failed at accepting response!"
   }
 }

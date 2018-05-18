@@ -1,0 +1,27 @@
+.mat-expansion-panel-header-description {
+  margin-right: 0;
+  position: relative;
+}
+
+.response {
+  &__body {
+    padding: 0.5rem 0;
+    position: relative;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.accepted-time {
+  margin: 0;
+}
+
+.advert-text {
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}

@@ -89,6 +89,7 @@ interface Advert {
 }
 
 interface Response {
+  advert: Advert;
   id: number;
   responseText: string;
   proposedTime: string;

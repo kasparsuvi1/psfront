@@ -13,7 +13,7 @@ import {getRestos, getFilteredRestos} from '../../store/selectors/restos.selecto
 @Component({
   selector: 'app-profile',
   template: `
-    <div class="user">
+    <div class="user" *ngIf="$user | async as user">
       <div class="user__image">
         <img  class="activator"
               src="https://pixinvent.com/materialize-material-design-admin-template/images/gallary/23.png"
@@ -26,8 +26,8 @@ import {getRestos, getFilteredRestos} from '../../store/selectors/restos.selecto
                 class="circle">
         </div>
         <div>
-          <h4 class="focused">{{ user.alias ? user.alias : 'alias' }}</h4>
-          <p class="muted">{{ user.occupation ? user.occupation.name : 'Unkown' }}</p>
+          <h4 class="focused">{{ user.alias ? user.alias : 'Anonymous' }}</h4>
+          <p class="muted">{{ user.occupation ? user.occupation.name : 'Unknown' }}</p>
         </div>
         <div>
           <h4 class="focused">{{ user.totalAdverts || '0'}}</h4>
@@ -106,6 +106,7 @@ export class ProfileComponent implements OnInit {
   save(user) {
     this.store.dispatch(new UpdateUser(user));
     this.edit();
+    this.getProfileImage(user.gender);
   }
 
   addAdvert(advert) {
