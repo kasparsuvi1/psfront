@@ -55,7 +55,8 @@ export class AccountEffects {
   LoginFail = this.actions$.ofType(fromAccount.LOGIN_FAIL).pipe(
     map((action: fromAccount.LoginFail) => {
       if (action.payload) {
-        this.messagesService.warn(action.payload);
+        console.log(action.payload.message);
+        this.messagesService.warn(action.payload.message);
       }
 
       return new Go({path: ['/login']});

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {RouterModule, Routes} from '@angular/router';
-import {State, GetUserAdverts, GetUserResponses} from '../../../core/store';
+import {State, GetUserAdverts, GetUserResponses, DeclineResponse, AcceptResponse} from '../../../core/store';
 import {getUserAdverts} from '../../../core/store/selectors/adverts.selectors';
 import {getUserResponses} from '../../../core/store/selectors/responses.selectors';
 
@@ -13,7 +13,9 @@ import {getUserResponses} from '../../../core/store/selectors/responses.selector
     </div>
     <div class="wrapper">
       <!-- User Adverts -->
-      <app-adverts [adverts]="$userAdverts | async"></app-adverts>
+      <app-adverts  [adverts]="$userAdverts | async"
+                    (accept)="acceptResponse($event)"
+                    (decline)="declineResponse($event)"></app-adverts>
       <!-- User Responses -->
       <app-responses [responses]="$userResponses | async"></app-responses>
     </div>
@@ -36,5 +38,13 @@ export class DashboardComponent implements OnInit {
 
     this.$userResponses = this.store.select(getUserResponses);
     this.store.dispatch(new GetUserResponses());
+  }
+
+  declineResponse(payload) {
+    this.store.dispatch(new DeclineResponse(payload));
+  }
+
+  acceptResponse(payload) {
+    this.store.dispatch(new AcceptResponse(payload));
   }
 }

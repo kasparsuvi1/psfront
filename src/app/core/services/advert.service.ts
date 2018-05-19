@@ -31,4 +31,7 @@ export class AdvertService {
   acceptResponse(advertId: number, responseId: number) {
     return this.httpClient.put(`/api/private/advert/${advertId}/accept/${responseId}`, {}).pipe(map(res => res as Response));
   }
+  declineResponse(advertId: number, responseId: number) {
+    return this.httpClient.put(`/api/private/advert/${advertId}/decline/${responseId}`, {}).pipe(map(res => res as Response));
+  }
 }

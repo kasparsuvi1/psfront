@@ -28,7 +28,10 @@ import {Component, OnInit, Input} from '@angular/core';
           </div>
           <div class="response__footer">
             <div class="response__info">
-              <p class="accepted-time muted"><mat-icon>access_time</mat-icon>{{response.proposedTime | date: 'HH:mm'}}</p>
+              <p class="accepted-time muted">
+                <mat-icon>access_time</mat-icon>{{response.proposedTime | date: 'HH:mm'}}
+                <span *ngIf="response.responseStatus === 'ACCEPTED'"> at {{response.advert.restos[0].name}}</span>
+              </p>
             </div>
           </div>
         </div>

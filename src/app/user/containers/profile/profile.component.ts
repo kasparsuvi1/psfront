@@ -100,7 +100,9 @@ export class ProfileComponent implements OnInit {
     this.store.dispatch(new GetRestos());
 
     // Get amount of days between regDate
-    this.daysRegistered = Math.ceil(Math.abs(new Date().getTime() - new Date(this.user.regDate).getTime()) / (1000 * 3600 * 24));
+    this.daysRegistered = Math.ceil(
+      Math.abs(new Date().getTime() - (this.user.regDate ? new Date(this.user.regDate) : new Date()).getTime()) / (1000 * 3600 * 24)
+    );
   }
 
   save(user) {

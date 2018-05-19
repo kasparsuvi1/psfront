@@ -38,8 +38,8 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class LoginComponent {
   form = this.fb.group({
-    email: ['standard@user.com', Validators.compose([Validators.required, Validators.email])],
-    password: ['uxt1sRmdmb0LJ34S7pFkeuNcbcSkFqybJEE_tOgbFf5YWJlsm5gw0H0pkeHExO5L', Validators.compose([Validators.required])]
+    email: ['kasutaja@professionalstrangers.com', Validators.compose([Validators.required, Validators.email])],
+    password: ['X-66SFKX1TmPLinvf3qHGBKAQN4XxRNg8c3MIqyjLc_bmd723qv121t8qmJbXZRK', Validators.compose([Validators.required])]
   });
 
   constructor(private fb: FormBuilder, private store: Store<State>) {}

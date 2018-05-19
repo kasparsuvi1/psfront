@@ -1,5 +1,5 @@
-import { AppPage } from './app.po';
-import { browser, by, element } from 'protractor';
+import {AppPage} from './app.po';
+import {browser, by, element} from 'protractor';
 
 describe('psfront App', () => {
   let page: AppPage;
@@ -13,7 +13,7 @@ describe('psfront App', () => {
     expect(page.getParagraphText()).toEqual('MEET STRANGERS');
   });
 
-  it('should display get starter button', () => {
+  it('should display get started button', () => {
     page.navigateTo();
     expect(page.getStartedButton().getText()).toEqual('GET STARTED');
   });
@@ -39,13 +39,12 @@ describe('psfront App', () => {
     page.navigateTo();
     page.getHomeLoginButton().click();
 
-    // page.getEmailField().sendKeys('standard@user.com');
-    // page.getPasswordField().sendKeys('uxt1sRmdmb0LJ34S7pFkeuNcbcSkFqybJEE_tOgbFf5YWJlsm5gw0H0pkeHExO5L');
+    // page.getEmailField().sendKeys('kasutaja@professionalstrangers.com');
+    // page.getPasswordField().sendKeys('X-66SFKX1TmPLinvf3qHGBKAQN4XxRNg8c3MIqyjLc_bmd723qv121t8qmJbXZRK');
 
     page.getLoginButton().click();
 
     browser.debugger();
     expect(page.getDashboardButton()).toEqual('DASHBOARD');
-
   });
 });

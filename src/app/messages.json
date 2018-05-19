@@ -90,8 +90,12 @@
     "success": "Updated password successfully!",
     "warning": "Failed at updating password!"
   },
-  "acceotResponse": {
+  "acceptResponse": {
     "success": "Accepted response successfully!",
     "warning": "Failed at accepting response!"
+  },
+  "declineResponse": {
+    "success": "Declined response successfully!",
+    "warning": "Failed at declining response!"
   }
 }

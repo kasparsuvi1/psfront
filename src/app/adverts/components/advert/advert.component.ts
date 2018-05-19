@@ -9,7 +9,7 @@ import {AnswerAdvertComponent} from '../answer-advert/answer-advert.component';
 
       <div class="advert__header">
         <p class="muted">Occupation:
-          <span class="info">{{advert.user?.occupation.name || '-'}} | {{advert.user?.degree.name || '-'}}</span>
+          <span class="info">{{advert.user.occupation?.name || '-'}} | {{advert.user.degree?.name || '-'}}</span>
         </p>
         <p class="muted">Hotel: <span class="info">{{advert.hotels[0].name}}</span></p>
         <p class="muted">Time:

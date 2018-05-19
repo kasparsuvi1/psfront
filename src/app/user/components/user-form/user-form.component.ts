@@ -80,8 +80,8 @@ export class UserFormComponent implements OnChanges {
       alias: [this.user.alias, [Validators.required]],
       gender: [this.user.gender],
       age: [this.user.age],
-      occupation: [this.user.occupation.id],
-      degree: [this.user.degree.id]
+      occupation: [this.user.occupation ? this.user.occupation.id : null],
+      degree: [this.user.degree ? this.user.degree.id : null]
     });
   }
   emitData() {

@@ -14,7 +14,10 @@ import {
   UPDATE_ADVERT_FAIL,
   ACCEPT_RESPONSE,
   ACCEPT_RESPONSE_FAIL,
-  ACCEPT_RESPONSE_SUCCESS
+  ACCEPT_RESPONSE_SUCCESS,
+  DECLINE_RESPONSE,
+  DECLINE_RESPONSE_FAIL,
+  DECLINE_RESPONSE_SUCCESS
 } from '../actions/advert.actions';
 
 export interface AdvertsState {
@@ -65,6 +68,12 @@ export function advertsReducer(state: AdvertsState = initialState, action: Adver
     case ACCEPT_RESPONSE_FAIL:
       return {...state, loading: false, loaded: true};
     case ACCEPT_RESPONSE_SUCCESS:
+      return {...state, loading: false, loaded: true};
+    case DECLINE_RESPONSE:
+      return {...state, loading: true, loaded: false};
+    case DECLINE_RESPONSE_FAIL:
+      return {...state, loading: false, loaded: true};
+    case DECLINE_RESPONSE_SUCCESS:
       return {...state, loading: false, loaded: true};
 
     default:

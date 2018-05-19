@@ -31,7 +31,13 @@ import {
   AcceptResponseFail,
   ACCEPT_RESPONSE,
   ACCEPT_RESPONSE_SUCCESS,
-  ACCEPT_RESPONSE_FAIL
+  ACCEPT_RESPONSE_FAIL,
+  DECLINE_RESPONSE,
+  DECLINE_RESPONSE_SUCCESS,
+  DECLINE_RESPONSE_FAIL,
+  DeclineResponse,
+  DeclineResponseSuccess,
+  DeclineResponseFail
 } from '../actions/advert.actions';
 import {MessagesService, messages} from '../../../core/services/messages.service';
 import {Go} from '../../../core/store/actions/router.actions';
@@ -136,19 +142,31 @@ export class AdvertsEffect {
     })
   );
 
+  @Effect() acceptResponseSuccess$ = this.actions$.ofType(ACCEPT_RESPONSE_SUCCESS).pipe(map(() => new GetUserAdverts()));
+
   @Effect()
-  acceptResponseSuccess$ = this.actions$.ofType(ACCEPT_RESPONSE_SUCCESS).pipe(
-    map(() => new GetUserAdverts()),
+  acceptResponseFail$ = this.actions$.ofType(ACCEPT_RESPONSE_FAIL).pipe(
     map(() => {
-      this.messagesService.success(messages.acceptResponse.success);
-      return new Go({path: [`/dashboard/`]});
-    })
+      this.messagesService.warn(messages.acceptResponse.warning);
+    }),
+    map(() => new GetUserAdverts())
   );
 
   @Effect()
-  accceptResponseFail$ = this.actions$.ofType(ACCEPT_RESPONSE_FAIL).pipe(
+  declineResponse$ = this.actions$.ofType(DECLINE_RESPONSE).pipe(
+    switchMap((action: DeclineResponse) => {
+      return this.advertService
+        .declineResponse(action.payload.advertId, action.payload.responseId)
+        .pipe(map(res => new DeclineResponseSuccess(res)), catchError(error => of(new DeclineResponseFail(error))));
+    })
+  );
+
+  @Effect() declineResponseSuccess$ = this.actions$.ofType(DECLINE_RESPONSE_SUCCESS).pipe(map(() => new GetUserAdverts()));
+
+  @Effect()
+  declineResponseFail$ = this.actions$.ofType(DECLINE_RESPONSE_FAIL).pipe(
     map(() => {
-      this.messagesService.warn(messages.acceptResponse.warning);
+      this.messagesService.warn(messages.declineResponse.warning);
     }),
     map(() => new GetUserAdverts())
   );

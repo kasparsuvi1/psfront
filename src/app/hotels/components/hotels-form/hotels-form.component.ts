@@ -45,9 +45,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
       </form>
     </div>
   </div>
-  {{hotel.restos | json}}
   <br>
-  {{test | json}}
   `,
   styleUrls: ['./hotels-form.component.scss']
 })
