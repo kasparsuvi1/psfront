@@ -90,8 +90,8 @@ export class UserFormComponent implements OnChanges {
   emitData() {
     if (this.user.id && this.form.valid) {
       let value = this.form.value;
-      value = {...this.user, ...value, occupation: {id: value.occupation}, degree: {id: value.degree}};
-      console.log(value);
+      value = value.occupation ? {...this.user, ...value, occupation: {id: value.occupation}} : {...this.user, ...value};
+      value = value.degree ? {...this.user, ...value, occupation: {id: value.degree}} : {...this.user, ...value};
       this.save.emit(value);
     } else {
       this.markFormGroupTouched(this.form);

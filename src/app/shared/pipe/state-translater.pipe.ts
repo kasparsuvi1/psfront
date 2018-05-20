@@ -2,14 +2,14 @@ import {Pipe, PipeTransform} from '@angular/core';
 
 enum AdvertTranslations {
   COMPLETED = 'Completed',
-  ACCEPTED = "Whoop! It's arranged",
+  ACCEPTED = 'Whoop! It\'s arranged',
   NOT_ACCEPTED = 'Not accepted!'
 }
 
 enum ResponseTranslations {
   DECLINED = 'Sorry, it was declined',
   NOT_ANSWERED = 'Not answered!',
-  ACCEPTED = "Whoop! It's arranged"
+  ACCEPTED = 'Whoop! It\'s arranged'
 }
 
 export type translaterPipeArgs = 'ADVERT' | 'RESPONSE';

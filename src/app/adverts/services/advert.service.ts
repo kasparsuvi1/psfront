@@ -8,6 +8,6 @@ export class AdvertService {
   constructor(private httpClient: HttpClient) {}
 
   getAdverts(): Observable<Advert[]> {
-    return this.httpClient.get(`/api/private/advert`).pipe(map(res => res as Advert[]));
+    return this.httpClient.get(`/api/private/invitation`).pipe(map(res => res as Advert[]));
   }
 }

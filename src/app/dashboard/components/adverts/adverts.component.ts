@@ -12,8 +12,8 @@ import {Store} from '@ngrx/store';
           {{advert.hotels[0].name}} | {{advert.preferredEnd | date: 'MMM d'}}
         </mat-panel-title>
         <mat-panel-description>
-          <div *ngIf="advert.advertStatus === 'ACCEPTED'">{{advert.advertStatus | stateTranslater: 'ADVERT' }}</div>
-          <div *ngIf="advert.advertStatus !== 'ACCEPTED'" class="counter" [matTooltip]="advert.advertText">{{advert.responses.length}}</div>
+          <div *ngIf="advert.invitationStatus === 'ACCEPTED'">{{advert.invitationStatus | stateTranslater: 'ADVERT' }}</div>
+          <div *ngIf="advert.invitationStatus !== 'ACCEPTED'" class="counter" [matTooltip]="advert.invitationText">{{advert.responses.length}}</div>
         </mat-panel-description>
       </mat-expansion-panel-header>
 

@@ -57,7 +57,7 @@ interface Hotel {
   address: string;
   zipCode: string;
   restos: Resto[];
-  adverts?: Advert[];
+  invitations?: Advert[];
 }
 
 // TODO: Resto should have open times or something like that too?
@@ -75,9 +75,9 @@ interface Resto {
 
 interface Advert {
   id: number;
-  advertStatus: string; // ENUM
+  invitationStatus: string; // ENUM
   createdDate: string;
-  advertText: string;
+  invitationText: string;
   mealType: string; // ENUM
   preferredStart: string;
   preferredEnd: string;
@@ -89,7 +89,7 @@ interface Advert {
 }
 
 interface Response {
-  advert: Advert;
+  invitation: Advert;
   id: number;
   responseText: string;
   proposedTime: string;

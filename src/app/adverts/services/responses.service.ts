@@ -11,6 +11,6 @@ export class ResponsesService {
 
   addResponse(payload): Observable<Response> {
     const data = {responseText: payload.responseText, proposedTime: payload.proposedTime};
-    return this.httpClient.post(`/api/private/advert/${payload.advert.id}/response/new`, data).pipe(map(res => res as Response));
+    return this.httpClient.post(`/api/private/invitation/${payload.advert.id}/response/new`, data).pipe(map(res => res as Response));
   }
 }

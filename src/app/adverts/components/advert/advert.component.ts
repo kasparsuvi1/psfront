@@ -5,9 +5,9 @@ import {AnswerAdvertComponent} from '../answer-advert/answer-advert.component';
 @Component({
   selector: 'app-advert',
   template: `
-    <div class="advert">
+    <div class="invitation">
 
-      <div class="advert__header">
+      <div class="invitation__header">
         <p class="muted">Occupation:
           <span class="info">{{advert.user.occupation?.name || '-'}} | {{advert.user.degree?.name || '-'}}</span>
         </p>
@@ -21,13 +21,13 @@ import {AnswerAdvertComponent} from '../answer-advert/answer-advert.component';
         <p class="muted">Alias: <span class="info">{{advert.user?.alias || 'Anonymous'}}</span></p>
       </div>
 
-      <div class="advert__body">
+      <div class="invitation__body">
         <p>
-          {{advert.advertText}}
+          {{advert.invitationText}}
         </p>
       </div>
 
-      <div class="advert__actions">
+      <div class="invitation__actions">
         <button mat-button color="primary" [disabled]="hasAnswered" (click)="openDialog()">Answer</button>
       </div>
     </div>

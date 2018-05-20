@@ -62,7 +62,7 @@ import {Validators, FormBuilder} from '@angular/forms';
       </div>
 
       <mat-form-field>
-        <textarea matInput placeholder="Insert your advert message" formControlName="advertText"></textarea>
+        <textarea matInput placeholder="Insert your advert message" formControlName="invitationText"></textarea>
       </mat-form-field>
 
       <button class="btn" color="primary" type="button" mat-raised-button (click)="emitData()">
@@ -90,7 +90,7 @@ export class AdvertComponent implements OnInit {
   preferredEnd;
 
   form = this.fb.group({
-    advertText: ['', [Validators.compose([Validators.required, Validators.maxLength(140)])]],
+    invitationText: ['', [Validators.compose([Validators.required, Validators.maxLength(140)])]],
     hotels: ['', [Validators.required]],
     restos: [{value: '', disabled: true}],
     mealType: [''],
