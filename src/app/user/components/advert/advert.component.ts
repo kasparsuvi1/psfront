@@ -5,7 +5,7 @@ import {Validators, FormBuilder} from '@angular/forms';
   selector: 'app-advert',
   template: `
 
-  <div class="advert">
+  <div class="wrapper">
     <form [formGroup]="form" class="form">
 
       <div class="form__row">

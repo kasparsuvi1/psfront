@@ -3,7 +3,7 @@ import {Store, createSelector} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
 import {HotelsViewState, getHotelsViewsState} from '../../store/reducers';
-import {getHotels} from '../../store/selectors';
+import {getHotels, getHotelsLoading, getHotelsLoaded} from '../../store/selectors';
 import {GetHotels} from '../../store/actions';
 import {HotelsState} from '../../store/reducers/hotels.reducers';
 
@@ -28,6 +28,8 @@ import {HotelsState} from '../../store/reducers/hotels.reducers';
     [paginator]="true"
     [filter]="{filterString: 'Filter hotels'}"
     [clickable]="true"
+    [loading]="$hotelsLoading | async"
+    [loaded]="$hotelsLoaded | async"
     path="hotels/">
   </app-table>
   `,
@@ -35,6 +37,8 @@ import {HotelsState} from '../../store/reducers/hotels.reducers';
 })
 export class HotelsComponent implements OnInit {
   $hotels: Observable<Hotel[]>;
+  $hotelsLoading: Observable<Boolean>;
+  $hotelsLoaded: Observable<Boolean>;
 
   columns = [
     {columnDef: 'name', header: 'Hotel name', cell: row => `${row.name}`},
@@ -47,5 +51,8 @@ export class HotelsComponent implements OnInit {
   ngOnInit() {
     this.$hotels = this.store.select(getHotels);
     this.store.dispatch(new GetHotels());
+
+    this.$hotelsLoading = this.store.select(getHotelsLoading);
+    this.$hotelsLoaded = this.store.select(getHotelsLoaded);
   }
 }

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {OccupationsViewState} from '../../store/reducers';
-import {getOccupations} from '../../store/selectors';
+import {getOccupations, getOccupationsLoading, getOccupationsLoaded} from '../../store/selectors';
 import {GetOccupations} from '../../store/actions';
 
 @Component({
@@ -26,6 +26,8 @@ import {GetOccupations} from '../../store/actions';
       [paginator]="true"
       [filter]="{filterString: 'Filter occupations'}"
       [clickable]="true"
+      [loading]="$occupationsLoading | async"
+      [loaded]="$occupationsLoaded | async"
       path="occupations/">
     </app-table>
 
@@ -34,6 +36,8 @@ import {GetOccupations} from '../../store/actions';
 })
 export class OccupationsComponent implements OnInit {
   $occupations: Observable<Occupation[]>;
+  $occupationsLoading: Observable<Boolean>;
+  $occupationsLoaded: Observable<Boolean>;
 
   columns = [
     {columnDef: 'id', header: 'ID', cell: row => `${row.id}`},
@@ -45,5 +49,8 @@ export class OccupationsComponent implements OnInit {
   ngOnInit() {
     this.$occupations = this.store.select(getOccupations);
     this.store.dispatch(new GetOccupations());
+
+    this.$occupationsLoaded = this.store.select(getOccupationsLoaded);
+    this.$occupationsLoading = this.store.select(getOccupationsLoading);
   }
 }

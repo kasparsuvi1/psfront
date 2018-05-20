@@ -15,22 +15,6 @@ export interface FilterPayload {
       <mat-form-field *ngIf="filter" class="input-inline">
         <input [placeholder]="filter.filterString" matInput (keyup)="applyFilter($event.target.value)">
       </mat-form-field>
-<!--
-      <mat-form-field *ngIf="filter" class="input-inline">
-        <label>{{filter.roleString}}</label>
-        <mat-select [value]="''">
-          <mat-option [value]="''" (onSelectionChange)="statusChange($event)">
-            Kõik
-          </mat-option>
-          <mat-option
-            *ngFor="let status of filter.values"
-            [value]="status.type"
-            (onSelectionChange)="statusChange($event)">
-            {{ status.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
--->
 
       <mat-table #table [dataSource]="data" matSort *ngIf="data?.data?.length">
         <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
@@ -62,9 +46,11 @@ export interface FilterPayload {
         [pageSizeOptions]="[5, 10, 20, 50]">
       </mat-paginator>
 
-      <div class="table__empty" *ngIf="!data?.data?.length">
+      <div class="table__empty" *ngIf="!data?.data?.length && !loading">
         Andmed puuduvad
       </div>
+      <app-loader *ngIf="loading && !data?.data?.length"></app-loader>
+
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -75,6 +61,7 @@ export class TableComponent implements AfterViewInit, OnInit {
   @Input() paginator;
   @Input() columns;
   @Input() loading?;
+  @Input() loaded?;
   @Input() filter?;
   @Input() path?;
   @Input() clickable;

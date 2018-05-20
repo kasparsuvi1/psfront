@@ -24,6 +24,6 @@ export class UserService {
   }
 
   changePassword(password: string) {
-    return this.httpClient.post(`/api/private/user/change-password`, password).pipe(map(res => res as User));
+    return this.httpClient.post(`/api/private/user/change-password`, {password}).pipe(map(res => res as User));
   }
 }

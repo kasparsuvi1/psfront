@@ -46,8 +46,14 @@ export class AccountEffects {
 
   @Effect()
   LoginSuccess = this.actions$.ofType(fromAccount.LOGIN_SUCCESS).pipe(
-    map((action: fromAccount.LoginSuccess) => {
-      return new fromAccount.WhoAmI(action.payload.userId);
+    switchMap((action: fromAccount.LoginSuccess) => {
+      return this.authenticationService.whoAmI(action.payload.userId).pipe(
+        map(user => {
+          return new fromAccount.WhoAmISuccess(user);
+        }),
+        map(() => new Go({path: ['/dashboard']})),
+        catchError(error => of(new fromAccount.WhoAmIFail(error)))
+      );
     })
   );
 
@@ -58,7 +64,6 @@ export class AccountEffects {
         console.log(action.payload.message);
         this.messagesService.warn(action.payload.message);
       }
-
       return new Go({path: ['/login']});
     })
   );
@@ -83,13 +88,6 @@ export class AccountEffects {
       }
 
       return new Go({path: ['/login']});
-    })
-  );
-
-  @Effect()
-  whoAmISuccess = this.actions$.ofType(fromAccount.WHOAMI_SUCCESS).pipe(
-    map((action: fromAccount.WhoAmISuccess) => {
-      return new Go({path: ['/dashboard']});
     })
   );
 }

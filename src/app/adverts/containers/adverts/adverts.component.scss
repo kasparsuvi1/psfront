@@ -2,9 +2,20 @@
   margin-right: 1rem;
 }
 
-@media (max-width: 625px) {
+.btn {
+  float: right;
+  margin-top: 13.5px;
+}
+
+@media (max-width: 765px) {
   .form__field {
     margin-right: 0;
     width: 100%;
+  }
+
+  .btn {
+    margin-left: 0 !important;
+    width: 100%;
+    float: none;
   }
 }

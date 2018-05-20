@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {getRestos} from '../../store/selectors';
+import {getRestos, getRestosLoading, getRestosLoaded} from '../../store/selectors';
 import {GetRestos} from '../../store/actions';
 import {RestosViewState} from '../../store/reducers';
 
@@ -26,6 +26,8 @@ import {RestosViewState} from '../../store/reducers';
       [paginator]="true"
       [filter]="{filterString: 'Filter restaurants'}"
       [clickable]="true"
+      [loading]="$restosLoading | async"
+      [loaded]="$restosLoaded | async"
       path="restos/">
     </app-table>
   `,
@@ -33,6 +35,8 @@ import {RestosViewState} from '../../store/reducers';
 })
 export class RestosComponent implements OnInit {
   $restos: Observable<Resto[]>;
+  $restosLoading: Observable<Boolean>;
+  $restosLoaded: Observable<Boolean>;
 
   columns = [
     {columnDef: 'name', header: 'Restaurant name', cell: row => `${row.name}`},
@@ -46,5 +50,8 @@ export class RestosComponent implements OnInit {
   ngOnInit() {
     this.$restos = this.store.select(getRestos);
     this.store.dispatch(new GetRestos());
+
+    this.$restosLoaded = this.store.select(getRestosLoaded);
+    this.$restosLoading = this.store.select(getRestosLoading);
   }
 }

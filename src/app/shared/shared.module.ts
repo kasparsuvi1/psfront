@@ -19,6 +19,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 // components
 import {MessageComponent} from './components/message/message.component';
 import {TableComponent} from './components/table/table.component';
+import {LoaderComponent} from './components/loader/loader.component';
 
 // pipes
 import {DataSourcePipe} from './pipe/data-source.pipe';
@@ -41,7 +42,7 @@ import {StateTranslaterPipe} from './pipe/state-translater.pipe';
     MatSelectModule,
     MatTooltipModule
   ],
-  declarations: [MessageComponent, TableComponent, DataSourcePipe, HourMinPipe, StateTranslaterPipe],
-  exports: [MessageComponent, TableComponent, DataSourcePipe, HourMinPipe, StateTranslaterPipe]
+  declarations: [MessageComponent, TableComponent, DataSourcePipe, HourMinPipe, StateTranslaterPipe, LoaderComponent],
+  exports: [MessageComponent, TableComponent, DataSourcePipe, HourMinPipe, StateTranslaterPipe, LoaderComponent]
 })
 export class SharedModule {}

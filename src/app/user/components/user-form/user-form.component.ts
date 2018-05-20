@@ -59,6 +59,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
         <button class="btn save" color="primary" type="button" mat-raised-button (click)="emitData()">
           Save
         </button>
+
+        <p><a routerLink="/user/password-change">Change password!</a></p>
+
       </form>
     </div>
   `,

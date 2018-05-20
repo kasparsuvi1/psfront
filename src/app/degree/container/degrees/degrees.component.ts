@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {DegreesViewState} from '../../store/reducers';
-import {getDegrees} from '../../store/selectors';
+import {getDegrees, getDegreesLoading, getDegreesLoaded} from '../../store/selectors';
 import {GetDegrees} from '../../store/actions';
 
 @Component({
@@ -26,14 +26,17 @@ import {GetDegrees} from '../../store/actions';
       [paginator]="true"
       [filter]="{filterString: 'Filter degrees'}"
       [clickable]="true"
+      [loading]="$degreesLoading | async"
+      [loaded]="$degreesLoaded | async"
       path="degrees/">
     </app-table>
-
   `,
   styleUrls: ['./degrees.component.scss']
 })
 export class DegreesComponent implements OnInit {
   $degrees: Observable<Degree[]>;
+  $degreesLoading: Observable<Boolean>;
+  $degreesLoaded: Observable<Boolean>;
 
   columns = [
     {columnDef: 'id', header: 'ID', cell: row => `${row.id}`},
@@ -45,5 +48,8 @@ export class DegreesComponent implements OnInit {
   ngOnInit() {
     this.$degrees = this.store.select(getDegrees);
     this.store.dispatch(new GetDegrees());
+
+    this.$degreesLoaded = this.store.select(getDegreesLoaded);
+    this.$degreesLoading = this.store.select(getDegreesLoading);
   }
 }

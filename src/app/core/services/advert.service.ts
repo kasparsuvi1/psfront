@@ -17,6 +17,7 @@ export class AdvertService {
   }
 
   addAdvert(advert: Advert): Observable<Advert> {
+    console.log(advert);
     return this.httpClient.post('/api/private/advert/new', advert).pipe(map(res => res as Advert));
   }
 

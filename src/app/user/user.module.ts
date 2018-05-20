@@ -26,6 +26,7 @@ import {Ng5TimePickerModule} from 'ng5-time-picker';
 import {ProfileComponent} from './containers/profile/profile.component';
 import {UserFormComponent} from './components/user-form/user-form.component';
 import {AdvertComponent} from './components/advert/advert.component';
+import { PasswordChangeComponent } from './containers/password-change/password-change.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,7 @@ import {AdvertComponent} from './components/advert/advert.component';
     MatDatepickerModule,
     MatNativeDateModule
   ],
-  declarations: [ProfileComponent, UserFormComponent, AdvertComponent],
+  declarations: [ProfileComponent, UserFormComponent, AdvertComponent, PasswordChangeComponent],
   providers: [UserService, HotelService, RestoService]
 })
 export class UserModule {}

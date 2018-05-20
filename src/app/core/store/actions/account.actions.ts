@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {AccountModel} from '../../models/account.models';
+import {Go} from '../actions';
 
 export const LOGIN = '[Account] Login Attempt';
 export const LOGIN_FAIL = '[Account] Not Authenticated';
