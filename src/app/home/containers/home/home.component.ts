@@ -8,7 +8,7 @@ import {Go} from '../../../core/store/actions/router.actions';
   template: `
     <section class="jumbotron">
       <span class="jumbotron__login" routerLink="/login">Login</span>
-      <img class="jumbotron__logo" src="../../../../assets/images/title_logo2.png" alt="Logo">
+      <img class="jumbotron__logo" src="../../../../assets/images/logo.png" alt="Logo">
 
       <h1>Meet strangers</h1>
       <p>With the same intrests. No strings attached, you meet, eat, talk and learn from each other.

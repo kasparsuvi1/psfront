@@ -5,7 +5,7 @@ import {Component, OnInit} from '@angular/core';
   template: `
     <div class="fill-background">
       <div class="centered-box centered-box--wide">
-        <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/title_logo2.png" alt="Logo">
+        <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/logo.png" alt="Logo">
 
         <h1>Thanks for being awesome!</h1>
         <p>We sent a activation link to your email. It is valid for 15 minutes. Go active your account and be back soon!</p>

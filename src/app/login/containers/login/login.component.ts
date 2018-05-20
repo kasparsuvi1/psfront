@@ -14,7 +14,7 @@ import {FormBuilder, Validators} from '@angular/forms';
       <span class="fill-background__back" routerLink="/"><mat-icon>keyboard_backspace</mat-icon> Back to homepage</span>
 
       <form class="centered-box" [formGroup]="form">
-        <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/title_logo2.png" alt="Logo">
+        <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/logo.png" alt="Logo">
 
         <mat-form-field class="">
           <input matInput placeholder="Email" formControlName="email">

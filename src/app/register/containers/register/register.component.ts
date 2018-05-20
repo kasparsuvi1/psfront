@@ -14,7 +14,7 @@ import {RegisterViewState} from '../../store/reducers';
       <form class="centered-box centered-box--long" [formGroup]="form">
         <h1 class="headline">Register</h1>
         <p class="muted">Join our community now!</p>
-        <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/title_logo2.png" alt="Logo">
+        <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/logo.png" alt="Logo">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Email" formControlName="email">
           <mat-error>Email is not valid</mat-error>
