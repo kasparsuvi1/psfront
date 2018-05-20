@@ -14,7 +14,7 @@ import {FormBuilder, Validators} from '@angular/forms';
       <span class="fill-background__back" routerLink="/"><mat-icon>keyboard_backspace</mat-icon> Back to homepage</span>
 
       <form class="centered-box" [formGroup]="form">
-        <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/logo.png" alt="Logo">
+        <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/title_logo2.png" alt="Logo">
 
         <mat-form-field class="">
           <input matInput placeholder="Email" formControlName="email">
@@ -28,7 +28,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 
         <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Login</button>
         <div class="mt-1">
-          <span class="muted">What? You haven't registered yet?</span> <a routerLink="/register">Click here!</a> <br>
+          <span class="muted">What? You haven't registered yet? </span> <a routerLink="/register">Click here!</a> <br>
           <span class="muted dp-block mt-1">Didn't get the activation link? <a routerLink="/register/resend">Send again!</a></span>
         </div>
       </form>

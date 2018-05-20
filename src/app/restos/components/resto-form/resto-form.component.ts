@@ -15,10 +15,10 @@ import {VALID} from '@angular/forms/src/model';
       <form [formGroup]="form" class="admin-form">
 
         <mat-form-field class="form-field">
-          <input  matInput placeholder="Resto name"
+          <input  matInput placeholder="Restaurant name"
                   formControlName="name">
           <mat-error *ngIf="form.controls['name'].errors">
-            Resto name is required!
+            Restaurant name is required!
           </mat-error>
 
         </mat-form-field>
@@ -47,7 +47,7 @@ import {VALID} from '@angular/forms/src/model';
         </mat-form-field>
 
         <button class="btn" type="button" mat-raised-button (click)="emitData()">
-          Salvesta
+          Save
         </button>
         <button class="btn admin-form__delete"
                 *ngIf="resto && resto.id"

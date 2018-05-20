@@ -13,8 +13,8 @@ import {RegisterViewState} from '../../store/reducers';
 
       <form class="centered-box centered-box--long" [formGroup]="form">
         <h1 class="headline">Register</h1>
-        <p class="muted">Join to our community now!</p>
-        <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/logo.png" alt="Logo">
+        <p class="muted">Join our community now!</p>
+        <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/title_logo2.png" alt="Logo">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Email" formControlName="email">
           <mat-error>Email is not valid</mat-error>
@@ -34,7 +34,7 @@ import {RegisterViewState} from '../../store/reducers';
         <button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Register</button>
 
         <div class="mt-1">
-          <span class="muted">Already have an account?</span> <a routerLink="/login">Log in!</a>
+          <span class="muted">Already have an account? </span> <a routerLink="/login">Log in!</a>
         </div>
       </form>
     </div>

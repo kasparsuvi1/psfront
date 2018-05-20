@@ -10,12 +10,12 @@ import {RestosViewState} from '../../store/reducers';
   template: `
     <div class="card">
       <div class="card__title">
-        <h2 class="mat-title">Restos</h2>
+        <h2 class="mat-title">Restaurant</h2>
         <button
           class="btn btn--inline"
           mat-raised-button
           routerLink="/restos/new">
-          Add new Resto
+          Add a new Restaurant
         </button>
       </div>
     </div>
@@ -24,7 +24,7 @@ import {RestosViewState} from '../../store/reducers';
       [data]="$restos | async | dataSource"
       [columns]="columns"
       [paginator]="true"
-      [filter]="{filterString: 'Filter restos'}"
+      [filter]="{filterString: 'Filter restaurants'}"
       [clickable]="true"
       path="restos/">
     </app-table>
@@ -35,7 +35,7 @@ export class RestosComponent implements OnInit {
   $restos: Observable<Resto[]>;
 
   columns = [
-    {columnDef: 'name', header: 'Resto name', cell: row => `${row.name}`},
+    {columnDef: 'name', header: 'Restaurant name', cell: row => `${row.name}`},
     {columnDef: 'hotelName', header: 'Hotel name', cell: row => `${row}`},
     {columnDef: 'country', header: 'Country', cell: row => `${row.country}`},
     {columnDef: 'city', header: 'City', cell: row => `${row.city}`},

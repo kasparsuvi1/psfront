@@ -40,7 +40,7 @@ import {Component, OnInit, Input} from '@angular/core';
     </mat-expansion-panel>
   </mat-accordion>
   <p class="muted" *ngIf="!responses.length">
-    You don't have any resonses yet!
+    You don't have any responses yet!
   </p>
   `,
   styleUrls: ['./responses.component.scss']

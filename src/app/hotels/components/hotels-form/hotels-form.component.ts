@@ -31,7 +31,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
         </mat-form-field>
 
         <button class="btn" type="button" mat-raised-button (click)="emitData()">
-          Salvesta
+          Save
         </button>
 
         <button class="btn admin-form__delete"

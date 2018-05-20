@@ -35,16 +35,16 @@ describe('psfront App', () => {
     expect(page.getLoginText()).toEqual('Login');
   });
 
-  it('should login to test account', () => {
+/*  it('should login to test account', () => {
     page.navigateTo();
     page.getHomeLoginButton().click();
 
-    // page.getEmailField().sendKeys('kasutaja@professionalstrangers.com');
-    // page.getPasswordField().sendKeys('X-66SFKX1TmPLinvf3qHGBKAQN4XxRNg8c3MIqyjLc_bmd723qv121t8qmJbXZRK');
+     page.getEmailField().sendKeys('kasutaja@professionalstrangers.com');
+     page.getPasswordField().sendKeys('X-66SFKX1TmPLinvf3qHGBKAQN4XxRNg8c3MIqyjLc_bmd723qv121t8qmJbXZRK');
 
     page.getLoginButton().click();
 
     browser.debugger();
     expect(page.getDashboardButton()).toEqual('DASHBOARD');
-  });
+  }); */
 });

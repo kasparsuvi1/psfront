@@ -55,7 +55,7 @@ export const routes: Routes = [
     loadChildren: '../restos/restos.module#RestosModule',
     canActivate: [AuthGuardService],
     data: {
-      title: 'RESTOS',
+      title: 'RESTAURANTS',
       expectedRoles: [RoleValues.ADMIN_USER]
     }
   },

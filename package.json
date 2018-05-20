@@ -71,7 +71,7 @@
     "karma-jasmine-html-reporter": "^1.1.0",
     "ngrx-store-freeze": "^0.2.2",
     "protractor": "^5.3.2",
-    "stylelint": "^9.2.0",
+    "stylelint": "^9.2.1",
     "stylelint-config-sass-guidelines": "^5.0.0",
     "stylelint-order": "^0.8.0",
     "stylelint-scss": "^3.1.0",

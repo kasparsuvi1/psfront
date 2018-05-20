@@ -44,7 +44,7 @@ import {Validators, FormBuilder} from '@angular/forms';
 
         <!-- Resto -->
         <mat-form-field>
-          <mat-select placeholder="Restoran" formControlName="restos">
+          <mat-select placeholder="Restaurant" formControlName="restos">
             <mat-option *ngFor="let resto of restos" [value]="[{id: resto.id}]">
               {{ resto.name }}
             </mat-option>

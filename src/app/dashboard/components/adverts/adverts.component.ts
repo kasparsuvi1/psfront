@@ -41,13 +41,13 @@ import {Store} from '@ngrx/store';
       </ng-container>
 
       <ng-container *ngIf="!advert.responses.length">
-        <p class="muted">There is none responses yet!</p>
+        <p class="muted">There are no responses yet!</p>
       </ng-container>
 
     </mat-expansion-panel>
   </mat-accordion>
   <p class="muted" *ngIf="!adverts.length">
-    You don't have any advert yet!
+    You don't have any adverts yet!
   </p>
 
   `,

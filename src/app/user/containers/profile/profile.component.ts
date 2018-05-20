@@ -31,7 +31,7 @@ import {getRestos, getFilteredRestos} from '../../store/selectors/restos.selecto
         </div>
         <div>
           <h4 class="focused">{{ user.totalAdverts || '0'}}</h4>
-          <p class="muted">Posted Adverts</p>
+          <p class="muted">Posted adverts</p>
         </div>
         <div>
           <h4 class="focused">{{ user.totalResponses || '0'}}</h4>

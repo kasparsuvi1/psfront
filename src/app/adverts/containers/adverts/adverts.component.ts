@@ -59,7 +59,7 @@ import {getDegrees} from '../../../core/store/selectors/degrees.selectors';
 
     <ng-container *ngIf="$adverts | async as adverts">
       <p class="muted" *ngIf="!adverts.length">
-        Sorry, there isn't any advert :(
+        Sorry, there are no adverts as of now :(
       </p>
     </ng-container>
   </div>

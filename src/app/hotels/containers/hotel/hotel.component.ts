@@ -18,7 +18,7 @@ import {GetHotels, DeleteHotel, UpdateHotel} from '../../store/actions';
       [data]="restos | dataSource"
       [columns]="restoColumns"
       [paginator]="true"
-      [filter]="{filterString: 'Filter restos'}"
+      [filter]="{filterString: 'Filter restaurants'}"
       [clickable]="true"
       path="restos/">
     </app-table>
@@ -35,7 +35,7 @@ export class HotelComponent implements OnInit, OnDestroy {
   $hotel: Subscription;
 
   restoColumns = [
-    {columnDef: 'name', header: 'Resto name', cell: row => `${row.name}`},
+    {columnDef: 'name', header: 'Restaurant name', cell: row => `${row.name}`},
     {columnDef: 'hotel', header: 'Hotel name', cell: row => `${this.hotel.name}`},
     {columnDef: 'country', header: 'Country', cell: row => `${row.country}`},
     {columnDef: 'city', header: 'City', cell: row => `${row.city}`},
