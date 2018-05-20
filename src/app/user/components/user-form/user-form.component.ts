@@ -22,7 +22,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
           </mat-select>
         </mat-form-field>
         <mat-form-field class="form-field">
-          <mat-select placeholder="degree" formControlName="degree">
+          <mat-select placeholder="Degree" formControlName="degree">
             <mat-option *ngFor="let degree of degrees" [value]="degree.id">
               {{ degree.name }}
             </mat-option>
