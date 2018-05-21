@@ -25,7 +25,7 @@ import {RegisterViewState} from '../../store/reducers';
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <input type="password" matInput placeholder="Password" formControlName="password">
-          <mat-error>Passwords is required</mat-error>
+          <mat-error>Password is required</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <input type="password" matInput placeholder="Confim password" formControlName="confirmPassword">
