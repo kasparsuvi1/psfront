@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnChanges} from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
 import {Store} from '@ngrx/store';
 import {State, WhoAmI} from '../store';
@@ -80,6 +80,7 @@ export class AppComponent implements OnInit {
       this.account = res as AccountModel;
     });
     this.$user = this.store.select(getUserData);
+
     if (this.account.userId) {
       this.store.dispatch(new WhoAmI(this.account.userId));
     }

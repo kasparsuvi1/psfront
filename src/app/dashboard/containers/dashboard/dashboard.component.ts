@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {RouterModule, Routes} from '@angular/router';
-import {State, GetUserAdverts, GetUserResponses, DeclineResponse, AcceptResponse} from '../../../core/store';
+import {State, GetUserAdverts, GetUserResponses, DeclineResponse, AcceptResponse, getAccountData, WhoAmI} from '../../../core/store';
 import {getUserAdverts} from '../../../core/store/selectors/adverts.selectors';
 import {getUserResponses} from '../../../core/store/selectors/responses.selectors';
+import {AccountModel} from '../../../core/models/account.models';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,6 +30,8 @@ import {getUserResponses} from '../../../core/store/selectors/responses.selector
 export class DashboardComponent implements OnInit {
   $userAdverts: Observable<Advert[]>;
   $userResponses: Observable<Response[]>;
+  $accountSubscription: Subscription;
+  account: AccountModel;
 
   constructor(private store: Store<State>) {}
 
@@ -38,6 +41,15 @@ export class DashboardComponent implements OnInit {
 
     this.$userResponses = this.store.select(getUserResponses);
     this.store.dispatch(new GetUserResponses());
+
+    this.$accountSubscription = this.store.select(getAccountData).subscribe(res => {
+      this.account = res as AccountModel;
+    });
+
+    if (this.account.userId) {
+      console.log('here2!', this.account.userId);
+      this.store.dispatch(new WhoAmI(this.account.userId));
+    }
   }
 
   declineResponse(payload) {
