@@ -30,7 +30,7 @@ import {getRestos, getFilteredRestos} from '../../store/selectors/restos.selecto
           <p class="muted">{{ user.occupation ? user.occupation.name : 'Unknown' }}</p>
         </div>
         <div>
-          <h4 class="focused">{{ user.totalAdverts || '0'}}</h4>
+          <h4 class="focused">{{ user.totalInvitations || '0'}}</h4>
           <p class="muted">Posted adverts</p>
         </div>
         <div>
