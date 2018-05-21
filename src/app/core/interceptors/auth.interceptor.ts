@@ -19,9 +19,8 @@ export class AuthInterceptor implements HttpInterceptor {
     // const hash = Math.floor(Math.random() * 900000) + 100000;
     // console.log('Request: ', req.url, ' - and hash - ', hash);
 
-    const urlStart = req.url.substring(0, 12);
-
-    if (urlStart !== '/oauth/token' && urlStart !== '/api/public/') {
+    const urlVariables = req.url.split('/');
+    if (urlVariables.indexOf('oauth') === -1 && urlVariables.indexOf('public') === -1) {
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${this.account.access_token}`
