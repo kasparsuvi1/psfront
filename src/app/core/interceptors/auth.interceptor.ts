@@ -16,8 +16,8 @@ export class AuthInterceptor implements HttpInterceptor {
     this.store.select(getAccountData).subscribe(res => {
       this.account = res;
     });
-    const hash = Math.floor(Math.random() * 900000) + 100000;
-    console.log('Request: ', req.url, ' - and hash - ', hash);
+    // const hash = Math.floor(Math.random() * 900000) + 100000;
+    // console.log('Request: ', req.url, ' - and hash - ', hash);
 
     const noheader = ['/oauth/token', 'api/public/register/new-user', '/api/public/register/resend-registration-confirmation'];
 

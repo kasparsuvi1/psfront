@@ -43,8 +43,6 @@ export class MessagesService {
   }
 
   warn(message: string) {
-    console.log(message);
-    console.log('olkensiiin2');
     this.showMessage(MessageType.Warning, message);
   }
 

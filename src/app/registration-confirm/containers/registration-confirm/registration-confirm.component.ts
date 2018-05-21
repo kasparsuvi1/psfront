@@ -12,7 +12,7 @@ import {ConfirmRegistration} from '../../store/actions';
   template: `
   <div class="fill-background">
     <div class="centered-box centered-box--wide">
-      <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/title_logo2.png" alt="Logo">
+      <img class="centered-box__logo" routerLink="/" src="../../../../assets/images/logo.png" alt="Logo">
 
       <h1>Thanks for being awesome!</h1>
       <p>Ur account should be now activated, if not then contact our administrator!</p>

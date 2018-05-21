@@ -57,14 +57,10 @@ export class AccountEffects {
     })
   );
 
-  @Effect()
+  @Effect({dispatch: false})
   LoginFail = this.actions$.ofType(fromAccount.LOGIN_FAIL).pipe(
     map((action: fromAccount.LoginFail) => {
-      if (action.payload) {
-        console.log(action.payload.message);
-        this.messagesService.warn(action.payload.message);
-      }
-      return new Go({path: ['/login']});
+      this.messagesService.warn('Invalid username or password!');
     })
   );
 

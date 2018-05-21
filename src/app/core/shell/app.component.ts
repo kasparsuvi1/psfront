@@ -33,7 +33,7 @@ import {routes} from '../core-routing.module';
         <div fxLayout="row" fxShow="false" fxShow.gt-sm *ngIf="$user | async as user">
           <button [routerLink]="['/user']" mat-button>
             <mat-icon class="material-icons">account_circle</mat-icon>
-            {{user?.alias ? user.alias : 'username'}}
+            {{user.alias ? user.alias : 'username'}}
           </button>
         </div>
         <button mat-button (click)="logout()">
