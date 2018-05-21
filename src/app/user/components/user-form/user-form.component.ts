@@ -91,7 +91,7 @@ export class UserFormComponent implements OnChanges {
     if (this.user.id && this.form.valid) {
       let value = this.form.value;
       value = value.occupation ? {...this.user, ...value, occupation: {id: value.occupation}} : {...this.user, ...value};
-      value = value.degree ? {...this.user, ...value, occupation: {id: value.degree}} : {...this.user, ...value};
+      value = value.degree ? {...this.user, ...value, degree: {id: value.degree}} : {...this.user, ...value};
       this.save.emit(value);
     } else {
       this.markFormGroupTouched(this.form);
