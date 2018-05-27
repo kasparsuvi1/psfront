@@ -27,18 +27,21 @@ import {FormBuilder, Validators, FormGroup} from '@angular/forms';
             </mat-error>
           </mat-form-field>
 
-          <button class="btn" type="button" mat-raised-button (click)="emitData()">
-            {{degree && degree.id ? 'Save' : 'Add'}}
-          </button>
+          <div class="admin-form__actions">
+            <button class="btn"
+                    *ngIf="degree && degree.id"
+                    color="warn"
+                    type="button"
+                    mat-raised-button
+                    (click)="deleteDegree()">
+              Delete
+            </button>
 
-          <button class="btn admin-form__delete"
-                  *ngIf="degree && degree.id"
-                  color="warn"
-                  type="button"
-                  mat-raised-button
-                  (click)="deleteDegree()">
-            Delete
-          </button>
+            <button class="btn" type="button" mat-raised-button (click)="emitData()">
+              {{degree && degree.id ? 'Save degree' : 'Add degree'}}
+            </button>
+          </div>
+
         </form>
       </div>
     </div>

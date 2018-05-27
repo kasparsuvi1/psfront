@@ -31,19 +31,20 @@ import {FormBuilder, Validators, FormGroup} from '@angular/forms';
             </mat-error>
           </mat-form-field>
 
-          <button class="btn" type="button" mat-raised-button (click)="emitData()">
-            Save
-          </button>
+          <div class="admin-form__actions">
+            <button class="btn"
+                    *ngIf="occupation && occupation.id"
+                    color="warn"
+                    type="button"
+                    mat-raised-button
+                    (click)="deleteOccupation()">
+              Delete
+            </button>
 
-          <button class="btn admin-form__delete"
-                  *ngIf="occupation && occupation.id"
-                  color="warn"
-                  type="button"
-                  mat-raised-button
-                  (click)="deleteOccupation()">
-            Delete
-          </button>
-
+            <button class="btn" type="button" mat-raised-button (click)="emitData()">
+              {{occupation && occupation.id ? 'Save occupation' : 'Add occupation'}}
+            </button>
+          </div>
         </form>
       </div>
     </div>

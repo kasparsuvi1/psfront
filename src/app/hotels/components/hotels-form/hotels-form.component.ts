@@ -30,18 +30,21 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
                   (onAddressChange)="adressChange($event)">
         </mat-form-field>
 
-        <button class="btn" type="button" mat-raised-button (click)="emitData()">
-          Save
-        </button>
+        <div class="admin-form__actions">
+          <button class="btn"
+                  *ngIf="hotel && hotel.id"
+                  color="warn"
+                  type="button"
+                  mat-raised-button
+                  (click)="deleteHotel()">
+            Delete
+          </button>
 
-        <button class="btn admin-form__delete"
-                *ngIf="hotel && hotel.id"
-                color="warn"
-                type="button"
-                mat-raised-button
-                (click)="deleteHotel()">
-          Delete
-        </button>
+          <button class="btn" type="button" mat-raised-button (click)="emitData()">
+            {{hotel && hotel.id ? 'Save hotel' : 'Add hotel'}}
+          </button>
+        </div>
+
       </form>
     </div>
   </div>

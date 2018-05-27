@@ -46,17 +46,19 @@ import {VALID} from '@angular/forms/src/model';
           </mat-select>
         </mat-form-field>
 
-        <button class="btn" type="button" mat-raised-button (click)="emitData()">
-          Save
-        </button>
-        <button class="btn admin-form__delete"
-                *ngIf="resto && resto.id"
-                color="warn"
-                type="button"
-                mat-raised-button
-                (click)="deleteResto()">
-          Delete
-        </button>
+        <div class="admin-form__actions">
+          <button class="btn"
+                  color="warn"
+                  type="button"
+                  mat-raised-button
+                  (click)="deleteResto()">
+            Delete
+          </button>
+
+          <button class="btn" type="button" mat-raised-button (click)="emitData()">
+            {{resto && resto.id ? 'Save Restoran' : 'Add Restoran'}}
+          </button>
+        </div>
       </form>
     </div>
   </div>

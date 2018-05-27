@@ -9,7 +9,8 @@
 .admin-form {
   max-width: 400px;
 
-  &__delete {
-    float: right;
+  &__actions {
+    display: flex;
+    justify-content: space-between;
   }
 }
