@@ -87,9 +87,7 @@ export class HotelsFormComponent implements OnInit {
 
   emitData() {
     if (this.form.valid && this.hotel.id) {
-      console.log({...this.hotel, ...this.form.value});
-      this.test = {...this.hotel, ...this.form.value};
-      // this.save.emit({...this.hotel, ...this.form.value});
+      this.save.emit({...this.hotel, ...this.form.value});
     } else if (this.form.valid && !this.hotel.id) {
       this.add.emit(this.form.value);
     } else {

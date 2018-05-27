@@ -62,7 +62,6 @@ export class RegisterComponent {
         password: this.form.get('password').value,
         email: this.form.get('email').value
       };
-      console.log('Registered:', payload);
       this.store.dispatch(new Register(payload));
     }
   }

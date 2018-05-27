@@ -39,7 +39,6 @@ export class RegistrationConfirmComponent implements OnInit {
   ngOnInit() {}
 
   registrationConfrim(token) {
-    console.log(token);
     this.store.dispatch(new ConfirmRegistration(token));
   }
 }
