@@ -18,10 +18,8 @@
 }
 
 .response {
-  &not:first-of-type {
-    border-top-color: rgba(0, 0, 0, 0.12);
-    border-top-style: solid;
-    border-top-width: 1px;
+  &:not(:first-of-type) {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
   }
 
   &__body {
@@ -38,4 +36,19 @@
 
 .accepted-time {
   margin: 0;
+}
+
+.advert {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+  margin-bottom: 0.5rem;
+
+  &__text {
+    margin-top: 0;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

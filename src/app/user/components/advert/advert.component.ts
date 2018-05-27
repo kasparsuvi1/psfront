@@ -80,7 +80,6 @@ export class AdvertComponent implements OnInit {
   @Output() add = new EventEmitter<Advert>();
   @Output() ChangeRestoFilter = new EventEmitter<number>();
 
-  // TODO: BUG IF TIME IS OVER 23:00, it will give time 25..
   startTime = {hour: new Date().getHours() + 1, minute: 0, format: 24};
   endTime = {hour: new Date().getHours() + 2, minute: 0, format: 24};
   date = new Date();
@@ -104,25 +103,26 @@ export class AdvertComponent implements OnInit {
   ngOnInit() {
     this.preferredEnd = this.form.get('preferredEnd');
     this.preferredStart = this.form.get('preferredStart');
-    this.preferredEnd.setValue(this.setTimeDate(this.endTime, this.date));
-    this.preferredStart.setValue(this.setTimeDate(this.startTime, this.date));
+    this.preferredEnd.setValue(this.setTimeDate(this.endTime, new Date()));
+    this.preferredStart.setValue(this.setTimeDate(this.startTime, new Date()));
   }
 
   startTimeChange(time) {
-    this.preferredStart.setValue(this.setTimeDate(time, this.date));
+    this.preferredStart.setValue(this.setTimeDate(time, new Date(this.date)));
   }
 
   endTimeChange(time) {
-    this.preferredEnd.setValue(this.setTimeDate(time, this.date));
+    this.preferredEnd.setValue(this.setTimeDate(time, new Date(this.date)));
   }
 
   dateChange(date) {
-    this.preferredEnd.setValue(this.setTimeDate(this.endTime, date.value));
-    this.preferredStart.setValue(this.setTimeDate(this.startTime, date.value));
+    this.date = date.value;
+    this.preferredEnd.setValue(this.setTimeDate(this.endTime, new Date(this.date)));
+    this.preferredStart.setValue(this.setTimeDate(this.startTime, new Date(this.date)));
   }
 
   emitData() {
-    if (this.form.valid) {
+    if (this.form.valid && this.preferredEnd.value > this.preferredStart.value) {
       const payload = {...this.form.value};
       delete payload['date'];
       this.add.emit(payload);
@@ -130,9 +130,12 @@ export class AdvertComponent implements OnInit {
   }
 
   setTimeDate(time, date: Date) {
+    if (time.hour === 24) {
+      time.hour = 0;
+    }
     date.setHours(time.hour);
     date.setMinutes(time.minute);
-    return date.toISOString();
+    return date;
   }
 
   hotelChange(event) {

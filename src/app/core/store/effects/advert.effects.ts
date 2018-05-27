@@ -95,7 +95,7 @@ export class AdvertsEffect {
     map(() => new GetUserAdverts()),
     map(() => {
       this.messagesService.success(messages.deleteAdvert.success);
-      return new Go({path: [`/dashboard/`]});
+      return new GetUserAdverts();
     })
   );
 

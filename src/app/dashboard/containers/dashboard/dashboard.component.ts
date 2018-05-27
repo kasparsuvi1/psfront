@@ -2,7 +2,17 @@ import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable, Subscription} from 'rxjs';
 import {RouterModule, Routes} from '@angular/router';
-import {State, GetUserAdverts, GetUserResponses, DeclineResponse, AcceptResponse, getAccountData, WhoAmI} from '../../../core/store';
+import {
+  State,
+  GetUserAdverts,
+  GetUserResponses,
+  DeclineResponse,
+  AcceptResponse,
+  getAccountData,
+  WhoAmI,
+  DeleteResponse,
+  DeleteAdvert
+} from '../../../core/store';
 import {getUserAdverts} from '../../../core/store/selectors/adverts.selectors';
 import {getUserResponses} from '../../../core/store/selectors/responses.selectors';
 import {AccountModel} from '../../../core/models/account.models';
@@ -16,13 +26,12 @@ import {AccountModel} from '../../../core/models/account.models';
       <!-- User Adverts -->
       <app-adverts  [adverts]="$userAdverts | async"
                     (accept)="acceptResponse($event)"
-                    (decline)="declineResponse($event)"></app-adverts>
+                    (decline)="declineResponse($event)"
+                    (delete)="deleteAdvert($event)"></app-adverts>
+
       <!-- User Responses -->
       <app-responses [responses]="$userResponses | async"></app-responses>
     </div>
-    <!-- {{$userAdverts | async | json}}
-    <hr>
-    {{$userResponses | async | json}} -->
 
   `,
   styleUrls: ['./dashboard.component.scss']
@@ -47,7 +56,6 @@ export class DashboardComponent implements OnInit {
     });
 
     if (this.account.userId) {
-      console.log('here2!', this.account.userId);
       this.store.dispatch(new WhoAmI(this.account.userId));
     }
   }
@@ -58,5 +66,9 @@ export class DashboardComponent implements OnInit {
 
   acceptResponse(payload) {
     this.store.dispatch(new AcceptResponse(payload));
+  }
+
+  deleteAdvert(payload) {
+    this.store.dispatch(new DeleteAdvert(payload));
   }
 }
