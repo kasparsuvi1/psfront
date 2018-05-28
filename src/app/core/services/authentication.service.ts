@@ -29,4 +29,36 @@ export class AuthenticationService {
   whoAmI(id): Observable<User> {
     return this.httpClient.get(`/api/private/user/${id}`).pipe(map(res => res as User));
   }
+
+  getToken(): string {
+    const account = JSON.parse(localStorage.getItem('account'));
+    return account.access_token;
+  }
+
+  getTokenExpirationDate(token: string): Date {
+    const decoded = decode(token);
+
+    if (decoded.exp === undefined) {
+      return null;
+    }
+
+    const date = new Date(0);
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
+
+  isTokenExpired(token?: string): boolean {
+    if (!token) {
+      token = this.getToken();
+    }
+    if (!token) {
+      return true;
+    }
+
+    const date = this.getTokenExpirationDate(token);
+    if (date === undefined) {
+      return false;
+    }
+    return !(date.valueOf() > new Date().valueOf());
+  }
 }
