@@ -24,6 +24,7 @@ import {Validators, FormBuilder} from '@angular/forms';
           <input  matInput
                   [matDatepicker]="date"
                   [min]="minDate"
+                  [max]="maxDate"
                   placeholder="Choose a date"
                   formControlName="date"
                   (dateChange)="dateChange($event)">
@@ -84,6 +85,7 @@ export class AdvertComponent implements OnInit {
   endTime = {hour: new Date().getHours() + 2, minute: 0, format: 24};
   date = new Date();
   minDate = new Date();
+  maxDate = new Date();
   types = [{value: 'BREAKFAST', text: 'Breakfast'}, {value: 'LUNCH', text: 'Lunch'}, {value: 'DINNER', text: 'Dinner'}];
   preferredStart;
   preferredEnd;
@@ -101,6 +103,7 @@ export class AdvertComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.maxDate.setFullYear(this.maxDate.getFullYear() + 1);
     this.preferredEnd = this.form.get('preferredEnd');
     this.preferredStart = this.form.get('preferredStart');
     this.preferredEnd.setValue(this.setTimeDate(this.endTime, new Date()));
